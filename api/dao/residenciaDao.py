@@ -1,0 +1,9 @@
+from api.dao.baseDao import BaseDao
+
+class ResidenciaDao(BaseDao):
+    def __init__(self):
+        super().__init__()
+        super().set_coll(self.db.residencia)
+
+    def get_by_filter(self, filters):
+        pass
