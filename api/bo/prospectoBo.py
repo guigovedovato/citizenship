@@ -6,7 +6,13 @@ class ProspectoBo(BaseBo):
         super().__init__(ProspectoDao())
 
     def insert(self, entity):
-        pass
+        return self.context.insert(entity)
 
-    def do_analise(self, entities):
-        pass
+    def do_analise(self, entity_id):
+        #TODO
+        return {"analise": "a analise {0} nao contem erros".format(entity_id)}
+
+    def update(self, entity_id, entity_newer):
+        entity = self.context.get_by_id(entity_id)
+        entity_updated = self.parse.parse_prospecto(entity, entity_newer)
+        return self.context.update(entity_updated)

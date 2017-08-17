@@ -1,5 +1,4 @@
 from app import app
-
 from flask import send_from_directory
 import os
 
@@ -24,3 +23,15 @@ def comuneView():
 @app.route("/residencia")
 def residenciaView():
     return send_from_directory(root, 'residencia.htm')
+
+@app.route("/prospecto/novo")
+def prospectoForm():
+    return send_from_directory(root, 'prospectoform.htm')
+
+@app.route("/comune/novo")
+def comuneForm():
+    return send_from_directory(root, 'comuneform.htm')
+
+@app.route("/residencia/novo")
+def residenciaForm():
+    return send_from_directory(root, 'residenciaform.htm')
