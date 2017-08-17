@@ -13,15 +13,14 @@ class Cliente(Resource):
         else:
             parameter = json.loads(parameter)
             if parameter.get('id'):
-                return {'cliente': self.cliente.get_by_id(int(parameter["id"]))}, 201
+                return {'cliente': self.cliente.get_by_id(parameter["id"])}, 201
             elif parameter.get('contract'):
-                return {'cliente': self.cliente.get_contract(int(parameter["id"]))}, 201
+                return {'cliente': self.cliente.get_contract(parameter["id"])}, 201
             elif parameter.get('board'):
                 return {'clientes': self.cliente.get_board()}, 201
             else:
                 return {'clientes': self.cliente.get_by_filter(parameter)}, 201
 
     def put(self, parameter):
-        cliente_id = int(parameter)
         cliente = request.json
-        return {'cliente': self.cliente.update(cliente_id, cliente)}, 201
+        return {'cliente': self.cliente.update(parameter, cliente)}, 201

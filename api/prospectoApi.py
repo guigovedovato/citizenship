@@ -13,16 +13,15 @@ class Prospecto(Resource):
         else:
             parameter = json.loads(parameter)
             if parameter.get('id'):
-                return {'prospecto': self.prospecto.get_by_id(int(parameter["id"]))}, 201
+                return {'prospecto': self.prospecto.get_by_id(parameter["id"])}, 201
             elif parameter.get('analise'):
-                return {'prospecto': self.prospecto.do_analise(int(parameter["id"]))}, 201
+                return {'prospecto': self.prospecto.do_analise(parameter["id"])}, 201
             else:
                 return {'prospectos': self.prospecto.get_by_filter(parameter)}, 201
 
     def put(self, parameter):
-        prospecto_id = int(parameter)
         prospecto = request.json
-        return {'prospecto': self.prospecto.update(prospecto_id, prospecto)}, 201
+        return {'prospecto': self.prospecto.update(parameter, prospecto)}, 201
 
     def post(self):
         prospecto = request.json

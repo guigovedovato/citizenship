@@ -1,10 +1,8 @@
-from api.common.validation import Validation
-from api.common.parse import Parse
+import api.common.utils as utils
 
 class BaseBo:
     def __init__(self, context):
         self.context = context
-        self.parse = Parse()
 
     def get_all(self):
         return self.context.get_all()
@@ -13,4 +11,12 @@ class BaseBo:
         return self.context.get_by_id(entity_id)
 
     def get_by_filter(self, filters):
-        return self.context.get_by_filter(filters)
+        query = utils.intersection(filters)
+        if not query:
+            return self.context.get_all()
+        else:
+            return self.context.get_by_filter(query)
+    
+    def update(self, entity_id, entity_newer):
+        entity_updated = utils.intersection(entity_newer)
+        return self.context.update(entity_id, entity_updated)

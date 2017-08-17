@@ -1,4 +1,5 @@
 from api.dao.context import Database
+from datetime import datetime
 
 class BaseDao:
     def __init__(self):
@@ -33,7 +34,36 @@ class BaseDao:
                 "done": str(False)
             }
 
-    def update(self, entity):
+    def get_by_filter(self, query):    
+        comunes_filtered = [
+            {
+                "_id": "ObjectId('584d947dea542a13e9ec7ae7')",
+                "data_criacao": "15/08/2017",
+                "comune_nome":"Barbarano Romano",
+                "abrasileiramento": False,
+                "obito_obrigatorio": True,
+                "auto_declaracao": False,
+                "status": True,
+                "contato_nome":"Giulia",
+                "contato_telefone":"0761414601",
+                "contato_email":"comune.barbaranoromano@pec.it"
+            },
+            {
+                "_id": "ObjectId('584d947dea542a13e9ec9iu8')",
+                "data_criacao": "15/08/2017",
+                "comune_nome":"San Giovani in Tuscia",
+                "abrasileiramento": True,
+                "obito_obrigatorio": False,
+                "auto_declaracao": True,
+                "status": True,
+                "contato_nome":"Luciano",
+                "contato_telefone":"0761414601",
+                "contato_email":"comune.barbaranoromano@pec.it"
+            }
+        ]
+        return comunes_filtered
+
+    def update(self, entity_id, entity):
         return entity
 
     def insert(self, entity):

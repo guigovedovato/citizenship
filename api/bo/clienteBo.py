@@ -12,8 +12,3 @@ class ClienteBo(BaseBo):
     def get_board(self):
         #TODO
         return self.context.get_all()
-
-    def update(self, entity_id, entity_newer):
-        entity = self.context.get_by_id(entity_id)
-        entity_updated = self.parse.parse_cliente(entity, entity_newer)
-        return self.context.update(entity_updated)

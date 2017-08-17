@@ -13,14 +13,13 @@ class Residencia(Resource):
         else:
             parameter = json.loads(parameter)
             if parameter.get('id'):
-                return {'residencia': self.residencia.get_by_id(int(parameter["id"]))}, 201
+                return {'residencia': self.residencia.get_by_id(parameter["id"])}, 201
             else:
                 return {'residencias': self.residencia.get_by_filter(parameter)}, 201
 
     def put(self, parameter):
-        residencia_id = int(parameter)
         residencia = request.json
-        return {'residencia': self.residencia.update(residencia_id, residencia)}, 201
+        return {'residencia': self.residencia.update(parameter, residencia)}, 201
 
     def post(self):
         residencia = request.json
