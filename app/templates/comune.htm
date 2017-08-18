@@ -54,6 +54,27 @@
 
                         <!-- Filtro -->
                         <section class="box features">
+                            <form id="comuneForm">
+                                <fieldset>
+                                    <legend>Filtro</legend>
+                                    <div class="row 50%">
+                                        <div class="3u 12u(mobile)">
+                                            <input type="text" placeholder="Nome" name="nome" id="nome" value=""> de: <input type="date" name="data_inicial" id="data_inicial"> até <input type="date" name="data_final" id="data_final">
+                                        </div>
+                                        <div class="6u 12u(mobile)">
+                                            <input type="checkbox" name="abrasileiramento" id="abrasileiramento"> Abrasileiramento
+                                            <br> <input type="checkbox" name="obito" id="obito"> Óbito obrigatório
+                                            <br> <input type="checkbox" name="auto_declaracao" id="auto_declaracao"> Auto declaração de transferência de residência
+                                            <br> <input type="checkbox" name="ativo" id="ativo"> Ativo
+                                        </div>
+                                    </div>
+                                    <div class="buttons">
+                                        <input type="button" value="Novo">
+                                        <input type="reset" value="Limpar">
+                                        <input type="submit" value="Pesquisar">
+                                    </div>
+                                </fieldset>
+                            </form>
                         </section>
 
                         <!-- GRID -->

@@ -59,7 +59,6 @@ dd,
 ol,
 ul,
 li,
-fieldset,
 form,
 label,
 legend,
@@ -1543,6 +1542,7 @@ form label {
 form input[type="text"],
 form input[type="email"],
 form input[type="password"],
+form input[type="date"],
 form select,
 form textarea {
     -webkit-appearance: none;
@@ -1555,6 +1555,7 @@ form textarea {
 form input[type="text"]:focus,
 form input[type="email"]:focus,
 form input[type="password"]:focus,
+form input[type="date"]:focus,
 form select:focus,
 form textarea:focus {
     border-color: #a1cd9b;
@@ -1563,6 +1564,7 @@ form textarea:focus {
 form input[type="text"],
 form input[type="email"],
 form input[type="password"],
+form form input[type="date"],
 form select {
     line-height: 3em;
     padding: 0 1em;
@@ -2578,4 +2580,8 @@ table.default thead {
 .d5 {
     color: #000000;
     background-color: #FDC600;
+}
+
+.buttons {
+    float: right;
 }
