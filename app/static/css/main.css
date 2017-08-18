@@ -1531,10 +1531,10 @@ ol.default li {
 /* Forms */
 
 form label {
-    display: block;
+    /* display: block; */
     margin: 0 0 1em 0;
     font-family: 'Open Sans Condensed', sans-serif;
-    font-weight: 700;
+    /* font-weight: 700; */
     text-transform: uppercase;
     color: #6b7770;
 }
