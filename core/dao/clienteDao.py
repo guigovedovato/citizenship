@@ -1,4 +1,4 @@
-from api.dao.baseDao import BaseDao
+from core.dao.baseDao import BaseDao
 
 class ClienteDao(BaseDao):
     def __init__(self):

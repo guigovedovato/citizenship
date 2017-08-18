@@ -1,7 +1,7 @@
 from flask import request
 from flask_restful import Resource
 import json
-from api.bo.clienteBo import ClienteBo
+from core.bo.clienteBo import ClienteBo
 
 class Cliente(Resource):
     def __init__(self):

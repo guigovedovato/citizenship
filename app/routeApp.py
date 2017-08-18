@@ -1,37 +1,39 @@
 from app import app
-from flask import send_from_directory
+from flask import render_template, url_for
 import os
-
-root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "templates")
 
 @app.route("/")
 def index():
-    return send_from_directory(root, 'index.htm')
-
-@app.route("/prospecto")
-def prospectoView():
-    return send_from_directory(root, 'prospecto.htm')
+    return render_template('board.htm')
 
 @app.route("/cliente")
 def clienteView():
-    return send_from_directory(root, 'cliente.htm')
+    return render_template('cliente.htm')
+
+@app.route("/agenda")
+def agendaView():
+    return render_template('agenda.htm')
+
+@app.route("/prospecto")
+def prospectoView():
+    return render_template('prospecto.htm')
 
 @app.route("/comune")
 def comuneView():
-    return send_from_directory(root, 'comune.htm')
+    return render_template('comune.htm')
 
 @app.route("/residencia")
 def residenciaView():
-    return send_from_directory(root, 'residencia.htm')
+    return render_template('residencia.htm')
 
 @app.route("/prospecto/novo")
 def prospectoForm():
-    return send_from_directory(root, 'prospectoform.htm')
+    return render_template('prospectoform.htm')
 
 @app.route("/comune/novo")
 def comuneForm():
-    return send_from_directory(root, 'comuneform.htm')
+    return render_template('comuneform.htm')
 
 @app.route("/residencia/novo")
 def residenciaForm():
-    return send_from_directory(root, 'residenciaform.htm')
+    return render_template('residenciaform.htm')

@@ -1,1 +1,62 @@
-<h1>Prospecto</h1>
+<!DOCTYPE HTML>
+<!--
+	TXT by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+    <title>Tarantella Acessoria Consular e Turismo</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" type="image/ico" href="{{url_for('static', filename='favicon.ico')}}" />
+    <!--[if lte IE 8]><script src="{{url_for('static', filename='js/ie/html5shiv.js')}}"></script><![endif]-->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="{{url_for('static', filename='css/ie8.css')}}" /><![endif]-->
+</head>
+
+<body class="homepage">
+    <div id="page-wrapper">
+
+        <!-- Nav -->
+        <nav id="nav">
+            <ul>
+                <li><a href="/">Board</a></li>
+                <li class="current">
+                    <a href="/prospecto">Prospectos</a>
+                    <ul>
+                        <li><a href="/prospecto/novo">Novo</a></li>
+                    </ul>
+                </li>
+                <li><a href="/cliente">Cliente</a></li>
+                <li>
+                    <a href="/comune">Comune</a>
+                    <ul>
+                        <li><a href="/comune/novo">Novo</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/residencia">Residencia</a>
+                    <ul>
+                        <li><a href="/residencia/novo">Novo</a></li>
+                    </ul>
+                </li>
+                <li><a href="/agenda">Agenda</a></li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/jquery.dropotron.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/skel.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/skel-viewport.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/util.js')}}"></script>
+    <!--[if lte IE 8]><script src="{{url_for('static', filename='js/ie/respond.min.js')}}"></script><![endif]-->
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+
+</body>
+
+</html>

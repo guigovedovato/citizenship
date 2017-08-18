@@ -1,7 +1,7 @@
 from flask import request
 from flask_restful import Resource
 import json
-from api.bo.prospectoBo import ProspectoBo
+from core.bo.prospectoBo import ProspectoBo
 
 class Prospecto(Resource):
     def __init__(self):

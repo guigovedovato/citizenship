@@ -1,7 +1,7 @@
 from flask import request
 from flask_restful import Resource
 import json
-from api.bo.comuneBo import ComuneBo
+from core.bo.comuneBo import ComuneBo
 
 class Comune(Resource):
     def __init__(self):

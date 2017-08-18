@@ -1,5 +1,5 @@
-from api.bo.baseBo import BaseBo
-from api.dao.comuneDao import ComuneDao
+from core.bo.baseBo import BaseBo
+from core.dao.comuneDao import ComuneDao
 
 class ComuneBo(BaseBo):
     def __init__(self):

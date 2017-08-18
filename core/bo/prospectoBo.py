@@ -1,5 +1,5 @@
-from api.bo.baseBo import BaseBo
-from api.dao.prospectoDao import ProspectoDao
+from core.bo.baseBo import BaseBo
+from core.dao.prospectoDao import ProspectoDao
 
 class ProspectoBo(BaseBo):
     def __init__(self):

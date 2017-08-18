@@ -1,4 +1,4 @@
-import api.common.utils as utils
+import core.common.utils as utils
 
 class BaseBo:
     def __init__(self, context):

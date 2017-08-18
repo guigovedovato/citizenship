@@ -1,7 +1,7 @@
 from flask import request
 from flask_restful import Resource
 import json
-from api.bo.residenciaBo import ResidenciaBo
+from core.bo.residenciaBo import ResidenciaBo
 
 class Residencia(Resource):
     def __init__(self):

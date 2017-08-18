@@ -1,5 +1,5 @@
-from api.bo.baseBo import BaseBo
-from api.dao.clienteDao import ClienteDao
+from core.bo.baseBo import BaseBo
+from core.dao.clienteDao import ClienteDao
 
 class ClienteBo(BaseBo):
     def __init__(self):
