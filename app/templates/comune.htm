@@ -11,9 +11,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" type="image/ico" href="{{url_for('static', filename='favicon.ico')}}" />
-    <!--[if lte IE 8]><script src="{{url_for('static', filename='js/ie/html5shiv.js')}}"></script><![endif]-->
     <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}" />
-    <!--[if lte IE 8]><link rel="stylesheet" href="{{url_for('static', filename='css/ie8.css')}}" /><![endif]-->
 </head>
 
 <body class="homepage">
@@ -56,14 +54,18 @@
                         <section class="box features">
                             <form id="comuneForm">
                                 <fieldset>
-                                    <legend>Filtro</legend>
+                                    <legend>Pesquisa</legend>
                                     <div class="row 50%">
                                         <div class="4u 12u(mobile)">
                                             <input type="text" placeholder="Nome" name="nome" id="nome" value="">
-                                            <label>de:</label><input type="date" name="data_inicial" id="data_inicial">
-                                            <label>até:</label><input type="date" name="data_final" id="data_final">
                                         </div>
-                                        <div class="6u 12u(mobile)">
+                                        <div class="3u 12u(mobile)">
+                                            <label>Cadastramento:</label>
+                                            <br> de:
+                                            <input type="date" name="data_inicial" id="data_inicial"> até:
+                                            <input type="date" name="data_final" id="data_final">
+                                        </div>
+                                        <div class="4u 12u(mobile)">
                                             <input type="checkbox" name="abrasileiramento" id="abrasileiramento"> <label for="abrasileiramento">Abrasileiramento</label>
                                             <br> <input type="checkbox" name="obito" id="obito"> <label for="obito">Óbito obrigatório</label>
                                             <br> <input type="checkbox" name="auto_declaracao" id="auto_declaracao"> <label for="auto_declaracao">Auto declaração de transferência de residência</label>
@@ -81,6 +83,89 @@
 
                         <!-- GRID -->
                         <section class="box features">
+                            <table class="default">
+                                <thead>
+                                    <tr>
+                                        <th>Nome do Comune</th>
+                                        <th>Nome do(a) Anagrafe</th>
+                                        <th>Telefone de Contato</th>
+                                        <th>Ativo</th>
+                                        <th>Ação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Barbarano Romano</td>
+                                        <td>Giulia</td>
+                                        <td>(76) 8765-2202</td>
+                                        <td>sim</td>
+                                        <td>
+                                            <img class="image-button" src="{{url_for('static', filename='images/edit.png')}}" alt="Editar">
+                                            <img class="image-button" src="{{url_for('static', filename='images/exclude.png')}}" alt="Inativar">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>San Giovani</td>
+                                        <td>Luciano</td>
+                                        <td>(76) 8765-2202</td>
+                                        <td>sim</td>
+                                        <td>
+                                            <img class="image-button" src="{{url_for('static', filename='images/edit.png')}}" alt="Editar">
+                                            <img class="image-button" src="{{url_for('static', filename='images/exclude.png')}}" alt="Inativar">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Blera</td>
+                                        <td>Marcos</td>
+                                        <td>(76) 8765-2202</td>
+                                        <td>não</td>
+                                        <td>
+                                            <img class="image-button" src="{{url_for('static', filename='images/edit.png')}}" alt="Editar">
+                                            <img class="image-button" src="{{url_for('static', filename='images/exclude.png')}}" alt="Inativar">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Blera</td>
+                                        <td>Marcos</td>
+                                        <td>(76) 8765-2202</td>
+                                        <td>não</td>
+                                        <td>
+                                            <img class="image-button" src="{{url_for('static', filename='images/edit.png')}}" alt="Editar">
+                                            <img class="image-button" src="{{url_for('static', filename='images/exclude.png')}}" alt="Inativar">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Blera</td>
+                                        <td>Marcos</td>
+                                        <td>(76) 8765-2202</td>
+                                        <td>não</td>
+                                        <td>
+                                            <img class="image-button" src="{{url_for('static', filename='images/edit.png')}}" alt="Editar">
+                                            <img class="image-button" src="{{url_for('static', filename='images/exclude.png')}}" alt="Inativar">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Blera</td>
+                                        <td>Marcos</td>
+                                        <td>(76) 8765-2202</td>
+                                        <td>não</td>
+                                        <td>
+                                            <img class="image-button" src="{{url_for('static', filename='images/edit.png')}}" alt="Editar">
+                                            <img class="image-button" src="{{url_for('static', filename='images/exclude.png')}}" alt="Inativar">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Blera</td>
+                                        <td>Marcos</td>
+                                        <td>(76) 8765-2202</td>
+                                        <td>não</td>
+                                        <td>
+                                            <img class="image-button" src="{{url_for('static', filename='images/edit.png')}}" alt="Editar">
+                                            <img class="image-button" src="{{url_for('static', filename='images/exclude.png')}}" alt="Inativar">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </section>
 
                     </div>
@@ -96,7 +181,6 @@
     <script src="{{url_for('static', filename='js/skel.min.js')}}"></script>
     <script src="{{url_for('static', filename='js/skel-viewport.min.js')}}"></script>
     <script src="{{url_for('static', filename='js/util.js')}}"></script>
-    <!--[if lte IE 8]><script src="{{url_for('static', filename='js/ie/respond.min.js')}}"></script><![endif]-->
     <script src="{{url_for('static', filename='js/main.js')}}"></script>
 
 </body>

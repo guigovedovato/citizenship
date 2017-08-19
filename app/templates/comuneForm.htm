@@ -11,9 +11,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" type="image/ico" href="{{url_for('static', filename='favicon.ico')}}" />
-    <!--[if lte IE 8]><script src="{{url_for('static', filename='js/ie/html5shiv.js')}}"></script><![endif]-->
     <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}" />
-    <!--[if lte IE 8]><link rel="stylesheet" href="{{url_for('static', filename='css/ie8.css')}}" /><![endif]-->
 </head>
 
 <body class="homepage">
@@ -54,6 +52,29 @@
 
                         <!-- Form -->
                         <section class="box features">
+                            <h2><span id="action">Novo</span></h2>
+                            <form id="comune">
+                                <div class="row 50%">
+                                    <div class="4u 12u(mobile)">
+                                        <label>Nome do comune</label>
+                                        <input type="text" placeholder="digite o nome aqui" name="nome_comune" id="nome_comune" value="">
+                                        <label>Nome do(a) anagrafe</label>
+                                        <input type="text" placeholder="digite o nome aqui" name="nome_comune" id="nome_comune" value="">
+                                        <label>Telefone de contato</label>
+                                        <input type="text" placeholder="digite o telefone aqui" name="nome_comune" id="nome_comune" value="">
+                                        <label>E-mail de contato</label>
+                                        <input type="email" placeholder="digite o e-mail aqui" name="nome_comune" id="nome_comune" value="">
+                                        <input type="checkbox" name="abrasileiramento" id="abrasileiramento"> <label for="abrasileiramento">Abrasileiramento</label>
+                                        <br> <input type="checkbox" name="obito" id="obito"> <label for="obito">Óbito obrigatório</label>
+                                        <br> <input type="checkbox" name="auto_declaracao" id="auto_declaracao"> <label for="auto_declaracao">Auto declaração de transferência de residência</label>
+                                        <br> <input type="checkbox" name="ativo" id="ativo"> <label for="ativo">Ativo</label>
+                                    </div>
+                                </div>
+                                <div class="buttons">
+                                    <input type="button" value="Voltar" onclick="location.href='/comune';">
+                                    <input type="submit" value="Salvar">
+                                </div>
+                            </form>
                         </section>
 
                     </div>
@@ -69,7 +90,6 @@
     <script src="{{url_for('static', filename='js/skel.min.js')}}"></script>
     <script src="{{url_for('static', filename='js/skel-viewport.min.js')}}"></script>
     <script src="{{url_for('static', filename='js/util.js')}}"></script>
-    <!--[if lte IE 8]><script src="{{url_for('static', filename='js/ie/respond.min.js')}}"></script><![endif]-->
     <script src="{{url_for('static', filename='js/main.js')}}"></script>
 
 </body>
