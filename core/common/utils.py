@@ -4,3 +4,6 @@ def intersection(list):
 def like(query, parameter):
     query[parameter] = {"$regex": query[parameter]}
     return query
+
+def dates(query):
+    pass

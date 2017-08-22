@@ -7,4 +7,4 @@ class ComuneBo(BaseBo):
         super().__init__(ComuneDao())
 
     def get_by_filter(self, filters):
-        return super().get_by_filter(filters, ["nome"])
+        return super().get_by_filter(filters, ["nome_comune"])

@@ -15,6 +15,11 @@
 </head>
 
 <body class="homepage">
+    <!-- loader -->
+    <div id="load">
+        <div class="loader"></div>
+    </div>
+
     <div id="page-wrapper">
 
         <!-- Nav -->
@@ -57,7 +62,7 @@
                                     <legend>Pesquisa</legend>
                                     <div class="row 50%">
                                         <div class="4u 12u(mobile)">
-                                            <input type="text" placeholder="Nome" name="nome" id="nome" value="">
+                                            <input type="text" placeholder="Nome" name="nome_comune" id="nome_comune" value="">
                                         </div>
                                         <div class="3u 12u(mobile)">
                                             <label>Cadastramento:</label>
@@ -93,78 +98,7 @@
                                         <th>Ação</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Barbarano Romano</td>
-                                        <td>Giulia</td>
-                                        <td>(76) 8765-2202</td>
-                                        <td>sim</td>
-                                        <td>
-                                            <img class="image-button" src="{{url_for('static', filename='images/edit.png')}}" alt="Editar">
-                                            <img class="image-button" src="{{url_for('static', filename='images/exclude.png')}}" alt="Inativar">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>San Giovani</td>
-                                        <td>Luciano</td>
-                                        <td>(76) 8765-2202</td>
-                                        <td>sim</td>
-                                        <td>
-                                            <img class="image-button" src="{{url_for('static', filename='images/edit.png')}}" alt="Editar">
-                                            <img class="image-button" src="{{url_for('static', filename='images/exclude.png')}}" alt="Inativar">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Blera</td>
-                                        <td>Marcos</td>
-                                        <td>(76) 8765-2202</td>
-                                        <td>não</td>
-                                        <td>
-                                            <img class="image-button" src="{{url_for('static', filename='images/edit.png')}}" alt="Editar">
-                                            <img class="image-button" src="{{url_for('static', filename='images/exclude.png')}}" alt="Inativar">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Blera</td>
-                                        <td>Marcos</td>
-                                        <td>(76) 8765-2202</td>
-                                        <td>não</td>
-                                        <td>
-                                            <img class="image-button" src="{{url_for('static', filename='images/edit.png')}}" alt="Editar">
-                                            <img class="image-button" src="{{url_for('static', filename='images/exclude.png')}}" alt="Inativar">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Blera</td>
-                                        <td>Marcos</td>
-                                        <td>(76) 8765-2202</td>
-                                        <td>não</td>
-                                        <td>
-                                            <img class="image-button" src="{{url_for('static', filename='images/edit.png')}}" alt="Editar">
-                                            <img class="image-button" src="{{url_for('static', filename='images/exclude.png')}}" alt="Inativar">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Blera</td>
-                                        <td>Marcos</td>
-                                        <td>(76) 8765-2202</td>
-                                        <td>não</td>
-                                        <td>
-                                            <img class="image-button" src="{{url_for('static', filename='images/edit.png')}}" alt="Editar">
-                                            <img class="image-button" src="{{url_for('static', filename='images/exclude.png')}}" alt="Inativar">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Blera</td>
-                                        <td>Marcos</td>
-                                        <td>(76) 8765-2202</td>
-                                        <td>não</td>
-                                        <td>
-                                            <img class="image-button" src="{{url_for('static', filename='images/edit.png')}}" alt="Editar">
-                                            <img class="image-button" src="{{url_for('static', filename='images/exclude.png')}}" alt="Inativar">
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody></tbody>
                             </table>
                         </section>
 

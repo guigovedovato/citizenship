@@ -9,18 +9,18 @@ class Cliente(Resource):
 
     def get(self, parameter=""):
         if parameter == "":
-            return {'clientes': self.cliente.get_all()}, 201
+            return self.cliente.get_all()}, 201
         else:
             parameter = json.loads(parameter)
             if parameter.get('id'):
-                return {'cliente': self.cliente.get_by_id(parameter["id"])}, 201
+                return self.cliente.get_by_id(parameter["id"]), 201
             elif parameter.get('contract'):
-                return {'cliente': self.cliente.get_contract(parameter["contract"])}, 201
+                return self.cliente.get_contract(parameter["contract"]), 201
             elif parameter.get('board'):
-                return {'clientes': self.cliente.get_board()}, 201
+                return self.cliente.get_board(), 201
             else:
-                return {'clientes': self.cliente.get_by_filter(parameter)}, 201
+                return self.cliente.get_by_filter(parameter), 201
 
     def put(self, parameter):
         cliente = request.json
-        return {'cliente': self.cliente.update(parameter, cliente)}, 201
+        return self.cliente.update(parameter, cliente), 201
