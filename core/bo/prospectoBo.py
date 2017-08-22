@@ -14,9 +14,17 @@ class ProspectoBo(BaseBo):
         ex_prospecto = self.update(entity_id, {"cliente":"True"})
         cliente = ClienteBo()
         cliente.insert(ex_prospecto)
-        return "o prospecto {0} foi convertido para cliente com sucesso".format(ex_prospecto["nome"])
+        return "O prospecto {0} foi convertido para cliente com sucesso".format(ex_prospecto["nome"])
 
     def do_analise(self, entity_id):
+        analise = json.loads(self.context.find_fields(entity_id, {"analise": 1, "_id": 0}))
+        if not analise.get("analise"):
+            analise = self.analise(entity_id)
+            self.update(entity_id, {"analise": analise})
+            return analise
+        else:
+            return analise.get("analise")
+
+    def analise(self, entity_id):
         #TODO
-        analise = "a analise {0} nao contem erros".format(entity_id)
-        return self.update(entity_id, {"analise": analise})
+        return "a analise {0} nao contem erros".format(entity_id)

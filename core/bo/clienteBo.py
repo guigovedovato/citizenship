@@ -15,5 +15,8 @@ class ClienteBo(BaseBo):
         return self.get_all()
 
     def insert(self, entity):
+        #TODO
         entity.pop("_id")
-        return json.loads(self.context.insert(entity))
+        entity.pop("analise")
+        entity_insert = entity
+        return json.loads(self.context.insert(entity_insert))

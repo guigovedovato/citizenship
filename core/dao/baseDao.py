@@ -33,3 +33,6 @@ class BaseDao:
         entity["data_criacao"] = str(datetime.now().date())
         entity_inserted = self.coll.insert_one(entity).inserted_id
         return self.get_by_id(str(entity_inserted))
+
+    def find_fields(self, entity_id, fields):
+        return json_util.dumps(self.coll.find_one({'_id': ObjectId(entity_id)}, fields))
