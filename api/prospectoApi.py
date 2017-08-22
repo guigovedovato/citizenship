@@ -15,7 +15,9 @@ class Prospecto(Resource):
             if parameter.get('id'):
                 return {'prospecto': self.prospecto.get_by_id(parameter["id"])}, 201
             elif parameter.get('analise'):
-                return {'prospecto': self.prospecto.do_analise(parameter["id"])}, 201
+                return {'prospecto': self.prospecto.do_analise(parameter["analise"])}, 201
+            elif parameter.get('convert'):
+                return {'prospecto': self.prospecto.convert(parameter["convert"])}, 201
             else:
                 return {'prospectos': self.prospecto.get_by_filter(parameter)}, 201
 

@@ -21,3 +21,6 @@ class BaseBo:
     def update(self, entity_id, entity_newer):
         entity_updated = utils.intersection(entity_newer)
         return json.loads(self.context.update(entity_id, entity_updated))
+
+    def insert(self, entity):
+        return json.loads(self.context.insert(entity))

@@ -25,6 +25,7 @@ class BaseDao:
         return json_util.dumps(self.coll.find(query))
 
     def update(self, entity_id, entity):
+        entity["data_atualizacao"] = str(datetime.now().date())
         entity_updated = self.coll.update({'_id': ObjectId(entity_id)}, {'$set': entity})
         return self.get_by_id(entity_id)
 

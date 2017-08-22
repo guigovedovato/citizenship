@@ -15,7 +15,7 @@ class Cliente(Resource):
             if parameter.get('id'):
                 return {'cliente': self.cliente.get_by_id(parameter["id"])}, 201
             elif parameter.get('contract'):
-                return {'cliente': self.cliente.get_contract(parameter["id"])}, 201
+                return {'cliente': self.cliente.get_contract(parameter["contract"])}, 201
             elif parameter.get('board'):
                 return {'clientes': self.cliente.get_board()}, 201
             else:
