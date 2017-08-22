@@ -11,11 +11,13 @@ class BaseBo:
     def get_by_id(self, entity_id):
         return json.loads(self.context.get_by_id(entity_id))
 
-    def get_by_filter(self, filters):
+    def get_by_filter(self, filters, likes):
         query = utils.intersection(filters)
         if not query:
             return self.get_all()
         else:
+            for like in likes:
+                query = utils.like(query, like)
             return json.loads(self.context.get_by_filter(query))
     
     def update(self, entity_id, entity_newer):

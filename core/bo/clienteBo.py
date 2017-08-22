@@ -20,3 +20,6 @@ class ClienteBo(BaseBo):
         entity.pop("analise")
         entity_insert = entity
         return json.loads(self.context.insert(entity_insert))
+
+    def get_by_filter(self, filters):
+        return super().get_by_filter(filters, [])

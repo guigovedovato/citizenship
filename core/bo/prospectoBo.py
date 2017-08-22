@@ -28,3 +28,6 @@ class ProspectoBo(BaseBo):
     def analise(self, entity_id):
         #TODO
         return "a analise {0} nao contem erros".format(entity_id)
+
+    def get_by_filter(self, filters):
+        return super().get_by_filter(filters, [])
