@@ -10,7 +10,7 @@ class Singleton(type):
 class Database(metaclass=Singleton):
     def __init__(self):
         self.client = MongoClient('localhost', 27017)
-        self.base = self.client.acessoria
+        self.base = self.client.assessoria
         
     def get_base(self):
         return self.base

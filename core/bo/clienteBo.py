@@ -7,8 +7,8 @@ class ClienteBo(BaseBo):
 
     def get_contract(self, entity_id):
         #TODO
-        return self.context.get_by_id(entity_id)
+        return self.get_by_id(entity_id)
 
     def get_board(self):
         #TODO
-        return self.context.get_all()
+        return self.get_all()
