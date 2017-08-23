@@ -1,6 +1,7 @@
 from core.bo.baseBo import BaseBo
 from core.dao.clienteDao import ClienteDao
 import json
+import core.common.utils as utils
 
 class ClienteBo(BaseBo):
     def __init__(self):
@@ -14,12 +15,15 @@ class ClienteBo(BaseBo):
         #TODO
         return self.get_all()
 
+    def get_by_filter(self, filters):
+        return super().get_by_filter(filters, [])
+
     def insert(self, entity):
         #TODO
         entity.pop("_id")
         entity.pop("analise")
         entity_insert = entity
-        return json.loads(self.context.insert(entity_insert))
+        return super().insert(entity_insert)
 
-    def get_by_filter(self, filters):
-        return super().get_by_filter(filters, [])
+    def update(self, entity_id, entity):
+        return super().update(entity_id, entity)

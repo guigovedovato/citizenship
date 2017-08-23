@@ -2,6 +2,7 @@ from core.bo.baseBo import BaseBo
 from core.dao.prospectoDao import ProspectoDao
 import json
 from core.bo.clienteBo import ClienteBo
+import core.common.utils as utils
 
 class ProspectoBo(BaseBo):
     def __init__(self):
@@ -31,3 +32,9 @@ class ProspectoBo(BaseBo):
 
     def get_by_filter(self, filters):
         return super().get_by_filter(filters, [])
+
+    def insert(self, entity):
+        return super().insert(entity)
+
+    def update(self, entity_id, entity):
+        return super().update(entity_id, entity)

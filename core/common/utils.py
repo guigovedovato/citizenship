@@ -20,3 +20,8 @@ def fromOnToBoolean(query):
     for key, value in query.items():
         if value == "on":
             query[key] = "True"
+
+def itensFalse(entity, itens):
+    for item in itens:
+        if not entity.get(item):
+            entity[item] = str(False)

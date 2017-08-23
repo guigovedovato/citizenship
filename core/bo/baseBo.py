@@ -21,12 +21,10 @@ class BaseBo:
             utils.dates(query)
             return json.loads(self.context.get_by_filter(query))
     
-    def update(self, entity_id, entity_newer):
-        utils.fromOnToBoolean(entity_newer)
-        entity_updated = utils.fieldBlank(entity_newer)
-        return json.loads(self.context.update(entity_id, entity_updated))
+    def update(self, entity_id, entity):
+        utils.fromOnToBoolean(entity)
+        return json.loads(self.context.update(entity_id, entity))
 
     def insert(self, entity):
         utils.fromOnToBoolean(entity)
-        entity_newer = utils.fieldBlank(entity)
-        return json.loads(self.context.insert(entity_newer))
+        return json.loads(self.context.insert(entity))
