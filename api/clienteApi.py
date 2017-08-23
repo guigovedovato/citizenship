@@ -9,7 +9,7 @@ class Cliente(Resource):
 
     def get(self, parameter=""):
         if parameter == "":
-            return self.cliente.get_all()}, 201
+            return self.cliente.get_all(), 201
         else:
             parameter = json.loads(parameter)
             if parameter.get('id'):

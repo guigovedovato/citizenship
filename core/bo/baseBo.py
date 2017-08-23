@@ -12,17 +12,21 @@ class BaseBo:
         return json.loads(self.context.get_by_id(entity_id))
 
     def get_by_filter(self, filters, likes):
-        query = utils.intersection(filters)
+        query = utils.fieldBlank(filters)
         if not query:
             return self.get_all()
         else:
             for like in likes:
-                query = utils.like(query, like)
+                utils.like(query, like)
+            utils.dates(query)
             return json.loads(self.context.get_by_filter(query))
     
     def update(self, entity_id, entity_newer):
-        entity_updated = utils.intersection(entity_newer)
+        utils.fromOnToBoolean(entity_newer)
+        entity_updated = utils.fieldBlank(entity_newer)
         return json.loads(self.context.update(entity_id, entity_updated))
 
     def insert(self, entity):
-        return json.loads(self.context.insert(entity))
+        utils.fromOnToBoolean(entity)
+        entity_newer = utils.fieldBlank(entity)
+        return json.loads(self.context.insert(entity_newer))

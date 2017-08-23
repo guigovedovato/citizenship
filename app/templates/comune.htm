@@ -16,8 +16,13 @@
 
 <body class="homepage">
     <!-- loader -->
-    <div id="load">
+    <div id="load" class="back">
         <div class="loader"></div>
+    </div>
+
+    <!-- messager -->
+    <div id="messager" class="back">
+        <div id="message"></div>
     </div>
 
     <div id="page-wrapper">
@@ -71,16 +76,16 @@
                                             <input type="date" name="data_final" id="data_final">
                                         </div>
                                         <div class="4u 12u(mobile)">
-                                            <input type="checkbox" name="abrasileiramento" id="abrasileiramento"> <label for="abrasileiramento">Abrasileiramento</label>
-                                            <br> <input type="checkbox" name="obito" id="obito"> <label for="obito">Óbito obrigatório</label>
-                                            <br> <input type="checkbox" name="auto_declaracao" id="auto_declaracao"> <label for="auto_declaracao">Auto declaração de transferência de residência</label>
-                                            <br> <input type="checkbox" name="ativo" id="ativo"> <label for="ativo">Ativo</label>
+                                            <input type="checkbox" name="abrasileiramento" id="abrasileiramento" value="True"> <label for="abrasileiramento">Abrasileiramento</label>
+                                            <br> <input type="checkbox" name="obito" id="obito" value="True"> <label for="obito">Óbito obrigatório</label>
+                                            <br> <input type="checkbox" name="auto_declaracao" id="auto_declaracao" value="True"> <label for="auto_declaracao">Auto declaração de transferência de residência</label>
+                                            <br> <input type="checkbox" name="ativo" id="ativo" value="True"> <label for="ativo">Ativo</label>
                                         </div>
                                     </div>
                                     <div class="buttons">
                                         <input type="button" value="Novo" onclick="location.href='/comune/novo';">
                                         <input type="reset" value="Limpar">
-                                        <input type="submit" value="Pesquisar">
+                                        <input type="submit" value="Pesquisar" id="btnSubmit">
                                     </div>
                                 </fieldset>
                             </form>
@@ -116,6 +121,7 @@
     <script src="{{url_for('static', filename='js/skel-viewport.min.js')}}"></script>
     <script src="{{url_for('static', filename='js/util.js')}}"></script>
     <script src="{{url_for('static', filename='js/main.js')}}"></script>
+    <script src="{{url_for('static', filename='js/application/base.js')}}"></script>
     <script src="{{url_for('static', filename='js/application/comune.js')}}"></script>
 
 </body>

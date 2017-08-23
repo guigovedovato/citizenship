@@ -30,7 +30,8 @@ class BaseDao:
         return self.get_by_id(entity_id)
 
     def insert(self, entity):
-        entity["data_criacao"] = str(datetime.now().date())
+        entity["ativo"] = str(True)
+        entity["data_cadastro"] = str(datetime.now().date())
         entity_inserted = self.coll.insert_one(entity).inserted_id
         return self.get_by_id(str(entity_inserted))
 
