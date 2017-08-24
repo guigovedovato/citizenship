@@ -1,8 +1,28 @@
 $(document).ready(function() {
+    if (session())
+        research();
     $("table").hide();
     if (document.getElementById("data_final"))
         getToday();
 });
+
+function session() {
+    if (sessionStorage.actual) {
+        sessionStorage.last = sessionStorage.actual;
+        sessionStorage.actual = window.location.pathname;
+    } else {
+        sessionStorage.actual = window.location.pathname;
+    }
+    if ((String(sessionStorage.last).includes("novo") || String(sessionStorage.last).includes("edit")) &&
+        (!String(sessionStorage.actual).includes("novo") || !String(sessionStorage.actual).includes("edit")))
+        return true;
+    else
+        return false;
+}
+
+function research() {
+    $("#btnSubmit").click();
+}
 
 $("#data_inicial").change(function() {
     document.getElementById("data_final").setAttribute("min", this.value);
