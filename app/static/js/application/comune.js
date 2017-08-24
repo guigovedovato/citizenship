@@ -1,5 +1,6 @@
 $("#comuneSearch").submit(function(e) {
     e.preventDefault(); //prevent submit
+    sessionStorage.search = true;
     $("#load").show();
     tbody = $("tbody");
     tbody.empty();

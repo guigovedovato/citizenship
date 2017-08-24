@@ -11,13 +11,25 @@ function session() {
         sessionStorage.last = sessionStorage.actual;
         sessionStorage.actual = window.location.pathname;
     } else {
+        sessionStorage.search = false;
         sessionStorage.actual = window.location.pathname;
     }
-    if ((String(sessionStorage.last).includes("novo") || String(sessionStorage.last).includes("edit")) &&
-        (!String(sessionStorage.actual).includes("novo") || !String(sessionStorage.actual).includes("edit")))
-        return true;
-    else
+    if (verifySession()) {
+        if (sessionStorage.search == "true") {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        if (sessionStorage.last == sessionStorage.actual)
+            sessionStorage.search = false;
         return false;
+    }
+}
+
+function verifySession() {
+    return (String(sessionStorage.last).includes("novo") || String(sessionStorage.last).includes("edit")) &&
+        (!String(sessionStorage.actual).includes("novo") || !String(sessionStorage.actual).includes("edit"))
 }
 
 function research() {
