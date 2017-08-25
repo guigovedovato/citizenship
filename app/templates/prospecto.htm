@@ -16,8 +16,13 @@
 
 <body class="homepage">
     <!-- loader -->
-    <div id="load">
+    <div id="load" class="back">
         <div class="loader"></div>
+    </div>
+
+    <!-- messager -->
+    <div id="messager" class="back">
+        <div id="message"></div>
     </div>
 
     <div id="page-wrapper">
@@ -49,6 +54,64 @@
             </ul>
         </nav>
 
+        <!-- Main -->
+        <div id="main-wrapper">
+            <div id="main" class="container">
+                <div class="row 200%">
+                    <div class="12u">
+
+                        <!-- Filtro -->
+                        <section class="box features">
+                            <form id="prospectoSearch">
+                                <fieldset>
+                                    <legend>Pesquisa</legend>
+                                    <div class="row 50%">
+                                        <div class="4u 12u(mobile)">
+
+                                        </div>
+                                        <div class="4u 12u(mobile)">
+                                            <label for="ativo">Ativo</label>
+                                            <select id="ativo" name="ativo">
+                                                        <option value="">Todos</option>
+                                                        <option value="True">Sim</option>
+                                                        <option value="False">Não</option>
+                                                    </select>
+                                        </div>
+                                        <div class="4u 12u(mobile)">
+                                            <label>Cadastramento:</label>
+                                            <br> de:
+                                            <input type="date" name="data_inicial" id="data_inicial"> até:
+                                            <input type="date" name="data_final" id="data_final">
+                                        </div>
+                                    </div>
+                                    <div class="buttons">
+                                        <input type="button" value="Novo" onclick="location.href='/prospecto/novo';">
+                                        <input type="reset" value="Limpar">
+                                        <input type="submit" value="Pesquisar" id="btnSubmit">
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </section>
+
+                        <!-- GRID -->
+                        <section class="box features">
+                            <table class="default">
+                                <thead>
+                                    <tr>
+
+                                        <th>Ativo</th>
+                                        <th>Ação</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </section>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Scripts -->
@@ -58,6 +121,8 @@
     <script src="{{url_for('static', filename='js/skel-viewport.min.js')}}"></script>
     <script src="{{url_for('static', filename='js/util.js')}}"></script>
     <script src="{{url_for('static', filename='js/main.js')}}"></script>
+    <script src="{{url_for('static', filename='js/application/base.js')}}"></script>
+    <script src="{{url_for('static', filename='js/application/prospecto.js')}}"></script>
 
 </body>
 

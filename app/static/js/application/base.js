@@ -1,6 +1,7 @@
 $(document).ready(function() {
-    if (session())
-        research();
+    session();
+    if (verifySession())
+        setTimeout(research, 100);
     $("table").hide();
     if (document.getElementById("data_final"))
         getToday();
@@ -14,7 +15,15 @@ function session() {
         sessionStorage.search = false;
         sessionStorage.actual = window.location.pathname;
     }
-    if (verifySession()) {
+}
+
+function cansearch() {
+    return (String(sessionStorage.last).includes("novo") || String(sessionStorage.last).includes("edit")) &&
+        (!String(sessionStorage.actual).includes("novo") || !String(sessionStorage.actual).includes("edit"))
+}
+
+function verifySession() {
+    if (cansearch()) {
         if (sessionStorage.search == "true") {
             return true;
         } else {
@@ -25,11 +34,6 @@ function session() {
             sessionStorage.search = false;
         return false;
     }
-}
-
-function verifySession() {
-    return (String(sessionStorage.last).includes("novo") || String(sessionStorage.last).includes("edit")) &&
-        (!String(sessionStorage.actual).includes("novo") || !String(sessionStorage.actual).includes("edit"))
 }
 
 function research() {
@@ -74,13 +78,20 @@ function setMessage(msg) {
     $("#messager").show();
 }
 
-function getButtons(urlEdit, urlInactivate, id) {
-    return '<td>' +
-        '<img class="image-button btnEdit" src="static/images/edit.png" alt="Editar" _id="' +
+function getButtons(urlEdit, urlAction, id, field, convert) {
+    btnc = "";
+    if (convert != "") {
+        btnc = '<img class="image-button btnConvert" src="static/images/convert.png" alt="Converter para Cliente"' +
+            ' url=\'' + urlAction + '{"convert":"' + id + '"}' + '\' onclick="btnConvert(this)">';
+    }
+    btn = '<td>';
+    btn += btnc;
+    btn += '<img class="image-button btnEdit" src="static/images/edit.png" alt="Editar" _id="' +
         id + '" url="' + urlEdit + '" onclick="btnEdit(this)">' +
         '<img class="image-button btnInactivate" src="static/images/exclude.png" alt="Inativar" _id="' +
-        id + '" url="' + urlInactivate + '" onclick="btnInactivate(this, \'nome_comune\')">' +
-        '</td>'
+        id + '" url="' + urlAction + '" onclick="btnInactivate(this, \'' + field + '\')">' +
+        '</td>';
+    return btn;
 }
 
 function btnEdit(btn) {
@@ -101,4 +112,104 @@ function btnInactivate(btn, who) {
             $("#btnSubmit").click();
         }
     });
+}
+
+function btnConvert(btn) {
+    $("#load").show();
+    $.getJSON($(btn).attr("url"))
+        .done(function(data) {
+            $("#load").hide();
+            setMessage("Prospecto inativado com sucesso.");
+            $("#btnSubmit").click();
+        })
+        .fail(function(data) {
+            $("#load").hide();
+            setMessage("Houve um erro ao realizar esta operação.");
+        });
+}
+
+function search(urlGET, urlEdit, fields, dataSerialized, field, convert = "") {
+    sessionStorage.search = true;
+    $("#load").show();
+    tbody = $("tbody");
+    tbody.empty();
+    $.getJSON(urlGET + dataSerialized)
+        .done(function(data) {
+            if (data && data != "") {
+                data.forEach(function(element) {
+                    var tr = $('<tr>');
+                    fields.forEach(function(attr) {
+                        if (attr == "ativo")
+                            if (element[attr] == "True")
+                                tr.append('<td>Sim</td>');
+                            else
+                                tr.append('<td>Não</td>');
+                        else
+                            tr.append('<td>' + element[attr] + '</td>');
+                    });
+                    tr.append(getButtons(urlEdit, urlGET, element["_id"]["$oid"], field, convert));
+                    tbody.append(tr);
+                });
+            } else {
+                var tr = $('<tr>');
+                tr.append('<td colspan="5" class="empty">Não foram encontrados registros para essa consulta.</td>');
+                tbody.append(tr);
+            }
+            $("#load").hide();
+            $("table").show();
+        })
+        .fail(function(data) {
+            $("#load").hide();
+            setMessage("Houve um erro ao fazer a consulta.");
+        });
+}
+
+String.prototype.format = function() {
+    var formatted = this;
+    for (var arg in arguments) {
+        formatted = formatted.replace("{" + arg + "}", arguments[arg]);
+    }
+    return formatted;
+};
+
+function postData(dataSerialized, url) {
+    return $.ajax({
+        url: url,
+        type: 'POST',
+        contentType: "application/json; charset=utf-8",
+        data: dataSerialized,
+        dataType: "json"
+    });
+}
+
+function submitForm(dataSerialized, url, form, message, field) {
+    $("#load").show();
+    id = $("#_id").html();
+    if (!id) {
+        post = postData(dataSerialized, url);
+        post.done(function(response) {
+            $("#load").hide();
+            setMessage(message.format(response[field]));
+        });
+        post.fail(function() {
+            $("#load").hide();
+            setMessage("Houve um erro ao salvar.");
+        });
+    } else {
+        $.ajax({
+            url: url + "/" + id,
+            type: 'PUT',
+            contentType: "application/json; charset=utf-8",
+            data: dataSerialized,
+            dataType: "json",
+            success: function(response) {
+                $("#load").hide();
+                setMessage(message.format(response[field]));
+            },
+            error: function() {
+                $("#load").hide();
+                setMessage("Houve um erro ao salvar.");
+            }
+        });
+    }
 }

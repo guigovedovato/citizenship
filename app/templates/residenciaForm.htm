@@ -16,8 +16,13 @@
 
 <body class="homepage">
     <!-- loader -->
-    <div id="load">
+    <div id="load" class="back">
         <div class="loader"></div>
+    </div>
+
+    <!-- messager -->
+    <div id="messager" class="back">
+        <div id="message"></div>
     </div>
 
     <div id="page-wrapper">
@@ -49,6 +54,39 @@
             </ul>
         </nav>
 
+        <!-- Main -->
+        <div id="main-wrapper">
+            <div id="main" class="container">
+                <div class="row 200%">
+                    <div class="12u">
+
+                        <!-- Form -->
+                        <section class="box features">
+                            {% if residencia %}
+                            <h2>Edição</h2>
+                            {% else %}
+                            <h2>Novo</h2>
+                            {% endif %}
+                            <form id="residenciaForm">
+                                <div class="row 50%">
+                                    <div class="4u 12u(mobile)">
+                                        {% if residencia %}
+                                        <span id="_id" hidden>{{residencia["_id"]["$oid"]}}</span> {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="buttons">
+                                    <input type="button" value="Voltar" onclick="window.history.go(-1);">
+                                    <input type="submit" value="Salvar">
+                                </div>
+                            </form>
+                        </section>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Scripts -->
@@ -58,6 +96,8 @@
     <script src="{{url_for('static', filename='js/skel-viewport.min.js')}}"></script>
     <script src="{{url_for('static', filename='js/util.js')}}"></script>
     <script src="{{url_for('static', filename='js/main.js')}}"></script>
+    <script src="{{url_for('static', filename='js/application/base.js')}}"></script>
+    <script src="{{url_for('static', filename='js/application/residencia.js')}}"></script>
 
 </body>
 
