@@ -25,3 +25,10 @@ def itensFalse(entity, itens):
     for item in itens:
         if not entity.get(item):
             entity[item] = str(False)
+
+def is_number(var):
+    try:
+        int(var)
+        return True
+    except:
+        return False

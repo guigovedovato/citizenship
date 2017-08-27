@@ -41,3 +41,7 @@ function doAnalise() {
         analise(id)
     }
 }
+
+function callAnaliseURL() {
+    location.href = "/prospecto/analise/" + $("#_id").html();
+}

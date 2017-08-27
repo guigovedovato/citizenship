@@ -2,6 +2,7 @@ from core.dao.context import Database
 from datetime import datetime
 from pymongo import MongoClient
 from bson import ObjectId, json_util
+import core.common.utils as utils
 
 class BaseDao:
     def __init__(self):
@@ -19,6 +20,8 @@ class BaseDao:
         return json_util.dumps(output)
 
     def get_by_id(self, entity_id):
+        if(utils.is_number(entity_id)):
+            return json_util.dumps([])
         return json_util.dumps(self.coll.find_one({'_id': ObjectId(entity_id)}))
 
     def get_by_filter(self, query):
@@ -36,4 +39,7 @@ class BaseDao:
         return self.get_by_id(str(entity_inserted))
 
     def find_fields(self, entity_id, fields):
+        if(utils.is_number(entity_id)):
+            return json_util.dumps([])
         return json_util.dumps(self.coll.find_one({'_id': ObjectId(entity_id)}, fields))
+

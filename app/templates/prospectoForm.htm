@@ -35,6 +35,7 @@
                     <a href="/prospecto">Prospectos</a>
                     <ul>
                         <li><a href="/prospecto/novo">Novo</a></li>
+                        <li><a href="/prospecto/analise/0">Analise</a></li>
                     </ul>
                 </li>
                 <li><a href="/cliente">Cliente</a></li>
@@ -77,8 +78,9 @@
 
                                 <div class="buttons">
                                     <input type="button" value="Voltar" onclick="window.history.go(-1);">
-                                    <input type="submit" value="Salvar">
-                                    <input type="button" value="Analisar" onclick="doAnalise()">
+                                    <input type="submit" value="Salvar"> {% if prospecto %}
+                                    <input type="button" value="Analise" onclick="callAnaliseURL()"> {% else %}
+                                    <input type="button" value="Analise" onclick="location.href='/prospecto/analise/0';"> {% endif %}
                                 </div>
                             </form>
                         </section>

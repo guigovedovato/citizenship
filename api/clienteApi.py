@@ -14,8 +14,8 @@ class Cliente(Resource):
             parameter = json.loads(parameter)
             if parameter.get('id'):
                 return self.cliente.get_by_id(parameter["id"]), 201
-            elif parameter.get('contract'):
-                return self.cliente.get_contract(parameter["contract"]), 201
+            elif parameter.get('document'):
+                return self.cliente.get_documents(parameter), 201
             elif parameter.get('board'):
                 return self.cliente.get_board(), 201
             else:

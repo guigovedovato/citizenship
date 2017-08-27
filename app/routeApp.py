@@ -33,6 +33,13 @@ def prospectoView():
 def prospectoNovo():
     return render_template('prospectoform.htm', prospecto = None)
 
+@app.route("/prospecto/analise/<entity_id>")
+def prospectoAnalise(entity_id):
+    from core.bo.prospectoBo import ProspectoBo
+    prospecto = ProspectoBo()
+    entity = prospecto.find_fields(entity_id, {"nome": 1, "_id": 0})
+    return render_template('analise.htm', prospecto = entity)
+
 @app.route("/prospecto/edit/<entity_id>")
 def prospectoEdit(entity_id):
     from core.bo.prospectoBo import ProspectoBo

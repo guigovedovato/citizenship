@@ -7,9 +7,9 @@ class ClienteBo(BaseBo):
     def __init__(self):
         super().__init__(ClienteDao())
 
-    def get_contract(self, entity_id):
+    def get_documents(self, document):
         #TODO
-        return self.get_by_id(entity_id)
+        return self.get_by_id(document["entity_id"])
 
     def get_board(self):
         #TODO
