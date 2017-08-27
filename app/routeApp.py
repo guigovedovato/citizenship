@@ -37,7 +37,7 @@ def prospectoNovo():
 def prospectoAnalise(entity_id):
     from core.bo.prospectoBo import ProspectoBo
     prospecto = ProspectoBo()
-    entity = prospecto.find_fields(entity_id, {"nome": 1, "_id": 0})
+    entity = prospecto.find_fields_byID(entity_id, {"cognome": 1, "nome": 1, "_id": 1})
     return render_template('analise.htm', prospecto = entity)
 
 @app.route("/prospecto/edit/<entity_id>")

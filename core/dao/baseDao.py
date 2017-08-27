@@ -20,7 +20,7 @@ class BaseDao:
         return json_util.dumps(output)
 
     def get_by_id(self, entity_id):
-        if(utils.is_number(entity_id)):
+        if(utils.isNumber(entity_id)):
             return json_util.dumps([])
         return json_util.dumps(self.coll.find_one({'_id': ObjectId(entity_id)}))
 
@@ -38,8 +38,10 @@ class BaseDao:
         entity_inserted = self.coll.insert_one(entity).inserted_id
         return self.get_by_id(str(entity_inserted))
 
-    def find_fields(self, entity_id, fields):
-        if(utils.is_number(entity_id)):
+    def find_fields_byID(self, entity_id, fields):
+        if(utils.isNumber(entity_id)):
             return json_util.dumps([])
         return json_util.dumps(self.coll.find_one({'_id': ObjectId(entity_id)}, fields))
 
+    def find_fields(self, fields):
+        return json_util.dumps(self.coll.find({}, fields))

@@ -9,7 +9,7 @@ class ComuneBo(BaseBo):
         self.fields = ["abrasileiramento","obito","auto_declaracao"]
 
     def get_by_filter(self, filters):
-        return super().get_by_filter(filters, ["nome_comune"])
+        return super().get_by_filter(filters, ["nome_comune"], [])
 
     def insert(self, entity):
         utils.itensFalse(entity, self.fields)

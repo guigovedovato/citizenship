@@ -16,7 +16,7 @@ class ClienteBo(BaseBo):
         return self.get_all()
 
     def get_by_filter(self, filters):
-        return super().get_by_filter(filters, [])
+        return super().get_by_filter(filters, [], [])
 
     def insert(self, entity):
         #TODO

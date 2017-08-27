@@ -68,15 +68,24 @@
                                     <legend>Pesquisa</legend>
                                     <div class="row 50%">
                                         <div class="4u 12u(mobile)">
-
-                                        </div>
-                                        <div class="4u 12u(mobile)">
+                                            <label for="comune_select">Comune</label>
+                                            <select id="comune_select" name="comune">
+                                                <option value="">Todos</option>
+                                            </select>
                                             <label for="ativo">Ativo</label>
                                             <select id="ativo" name="ativo">
-                                                    <option value="">Todos</option>
-                                                    <option value="True">Sim</option>
-                                                    <option value="False">Não</option>
-                                                </select>
+                                                <option value="">Todos</option>
+                                                <option value="True">Sim</option>
+                                                <option value="False">Não</option>
+                                            </select>
+                                        </div>
+                                        <div class="4u 12u(mobile)">
+                                            <label for="camas">Quantidade de camas</label>
+                                            <input type="number" placeholder="insira a quantidade" name="camas" id="camas" value="" min="1">
+                                            <label for="quartos">Quantidade de quartos</label>
+                                            <input type="number" placeholder="insira a quantidade" name="quartos" id="quartos" value="" min="1">
+                                            <label for="vagas">Quantidade de vagas</label>
+                                            <input type="number" placeholder="insira a quantidade" name="vagas" id="vagas" value="" min="1">
                                         </div>
                                         <div class="4u 12u(mobile)">
                                             <label>Cadastramento:</label>
@@ -99,7 +108,10 @@
                             <table class="default">
                                 <thead>
                                     <tr>
-
+                                        <th>Nome do Comune</th>
+                                        <th>Capacidade</th>
+                                        <th>Vagas</th>
+                                        <th>Lotação</th>
                                         <th>Ativo</th>
                                         <th>Ação</th>
                                     </tr>

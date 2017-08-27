@@ -18,7 +18,7 @@ class ProspectoBo(BaseBo):
         return "O prospecto {0} foi convertido para cliente com sucesso".format(ex_prospecto["nome"])
 
     def do_analise(self, entity_id):
-        analise = self.find_fields(entity_id, {"analise": 1, "_id": 0})
+        analise = self.find_fields_byID(entity_id, {"analise": 1, "_id": 0})
         if not analise.get("analise"):
             analise = self.analise(entity_id)
             self.update(entity_id, {"analise": analise})
@@ -31,13 +31,21 @@ class ProspectoBo(BaseBo):
         return "a analise {0} nao contem erros".format(entity_id)
 
     def get_by_filter(self, filters):
-        return super().get_by_filter(filters, [])
+        filters.update({"cliente":"False"})
+        return super().get_by_filter(filters, ["cognome","nome"], [])
 
     def insert(self, entity):
+        self.setColaborador(entity)
         return super().insert(entity)
 
     def update(self, entity_id, entity):
         return super().update(entity_id, entity)
 
-    def find_fields(self, entity_id, fields):
-        return json.loads(self.context.find_fields(entity_id, fields))
+    def setColaborador(self, query):
+        c = ["c1", "c2", "c3", "c4"]
+        colaboradores = []
+        for key in c:
+            if query.get(key):
+                colaboradores.append(query[key])
+                query.pop(key)             
+        query["colaborador"] = colaboradores
