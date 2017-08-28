@@ -16,6 +16,7 @@ class ComuneBo(BaseBo):
         return super().insert(entity)
 
     def update(self, entity_id, entity):
+        self.fields.append("ativo")
         utils.itensFalse(entity, self.fields)
         return super().update(entity_id, entity)
 

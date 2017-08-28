@@ -72,7 +72,51 @@
                                 <div class="row 50%">
                                     <div class="4u 12u(mobile)">
                                         {% if prospecto %}
-                                        <span id="_id" hidden>{{prospecto["_id"]["$oid"]}}</span> {% else %}
+                                        <span id="_id" hidden>{{prospecto["_id"]["$oid"]}}</span>
+                                        <label>Cognome</label>
+                                        <h2>{{prospecto["cognome"]}}</h2>
+                                        <label>Nome</label>
+                                        <h2>{{prospecto["nome"]}}</h2>
+                                        <label>Celular</label>
+                                        <input type="text" placeholder="digite o celular aqui" name="celular" id="celular" value="{{prospecto['celular']}}">
+                                        <label>E-mail</label>
+                                        <input type="email" placeholder="digite o e-mail aqui" name="email" id="email" value="{{prospecto['email']}}">
+                                        <label>Indicação</label>
+                                        <h2>{{prospecto['indicacao']}}</h2>
+                                        <label>Colaborador</label>
+                                        <h2>{{prospecto['colaborador']}}</h2>
+                                        <label for="negociador">Negociador</label>
+                                        <select id="negociador" name="negociador">
+                                            {% if prospecto['negociador'] == "Jadson" %}
+                                            <option value="Jadson" selected="selected">Jadson</option>
+                                            <option value="Carolina">Carolina</option>
+                                            {% else %}
+                                            <option value="Jadson">Jadson</option>
+                                            <option value="Carolina" selected="selected">Carolina</option>
+                                            {% endif %}
+                                        </select>
+                                        <label>Data de Contato</label>
+                                        <h2>{{prospecto['data_contato']}}</h2>
+                                        <label>Comentários</label>
+                                        <textarea id="comentario" name="comentario" placeholder="digite seu comentário">{{prospecto['comentario']}}</textarea>
+                                        <label>Busca de Certidão</label>
+                                        <select id="busca_certidao" name="busca_certidao">
+                                            {% if prospecto['busca_certidao'] == "True" %}
+                                            <option value="True" selected="selected">Sim</option>
+                                            <option value="False">Não</option>
+                                            {% else %}
+                                            <option value="True">Sim</option>
+                                            <option value="False" selected="selected">Não</option>
+                                            {% endif %}
+                                        </select>
+                                        <label>Data de Interesse</label>
+                                        <input type="date" name="data_interesse" id="data_interesse" value="{{prospecto['data_interesse']}}"> {% if prospecto["ativo"] == "True"%}
+                                        <input type="checkbox" name="ativo" id="ativo" checked="checked"> {% else %}
+                                        <input type="checkbox" name="ativo" id="ativo"> {% endif %}
+                                        <label for="ativo">Ativo</label> {% if prospecto["cliente"] == "True"%}
+                                        <br> <input type="checkbox" name="cliente" id="cliente" checked="checked"> {% else %}
+                                        <br> <input type="checkbox" name="cliente" id="cliente"> {% endif %}
+                                        <label for="cliente">Converter para cliente</label> {% else %}
                                         <label>Cognome</label>
                                         <input type="text" placeholder="digite o cognome aqui" name="cognome" id="cognome" value="">
                                         <label>Nome</label>

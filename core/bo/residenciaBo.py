@@ -16,6 +16,7 @@ class ResidenciaBo(BaseBo):
         return super().insert(entity)
 
     def update(self, entity_id, entity):
+        utils.itensFalse(entity, ["ativo"])
         utils.toInt(entity, ['capacidade','camas','vencimento_aluguel','quartos','vagas','capacidade_old'])
         if entity.get('capacidade_old'):
             if entity['capacidade_old'] > entity['capacidade'] :

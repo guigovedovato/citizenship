@@ -16,14 +16,16 @@ class ClienteBo(BaseBo):
         return self.get_all()
 
     def get_by_filter(self, filters):
-        return super().get_by_filter(filters, [], [])
+        return super().get_by_filter(filters, ["cognome","nome"], [])
 
     def insert(self, entity):
-        #TODO
-        entity.pop("_id")
-        entity.pop("analise")
-        entity_insert = entity
-        return super().insert(entity_insert)
+        self.setClient(entity, ["_id","cliente","data_atualizacao","ativo"])
+        return super().insert(entity)
+
+    def setClient(self, entity, fields):
+        for field in fields:
+            if entity.get(field):
+                entity.pop(field)
 
     def update(self, entity_id, entity):
         return super().update(entity_id, entity)

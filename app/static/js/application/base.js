@@ -123,7 +123,7 @@ function btnConvert(btn) {
     $.getJSON($(btn).attr("url"))
         .done(function(data) {
             $("#load").hide();
-            setMessage("Prospecto inativado com sucesso.");
+            setMessage(data);
             $("#btnSubmit").click();
         })
         .fail(function(data) {
@@ -247,4 +247,17 @@ function getComunes() {
                 comunes.append(new Option(element["nome_comune"], element["nome_comune"]));
             });
         });
+}
+
+function prepareComment() {
+    var comment = JSON.stringify($("#comentario").val());
+    new_comment = comment.substr(1);
+    new_comment = new_comment.substr(0, new_comment.length - 1);
+    $("#comentario").val(new_comment);
+}
+
+function setComment() {
+    var comment = $("#comentario").val();
+    var input = comment.replace(/\r?\\n/g, '\n');
+    $("#comentario").val(input);
 }

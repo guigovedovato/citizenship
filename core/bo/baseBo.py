@@ -24,10 +24,12 @@ class BaseBo:
             return json.loads(self.context.get_by_filter(query))
     
     def update(self, entity_id, entity):
+        entity = utils.fieldBlank(entity)
         utils.fromOnToBoolean(entity)
         return json.loads(self.context.update(entity_id, entity))
 
     def insert(self, entity):
+        entity = utils.fieldBlank(entity)
         utils.fromOnToBoolean(entity)
         return json.loads(self.context.insert(entity))
     
