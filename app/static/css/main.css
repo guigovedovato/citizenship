@@ -2594,6 +2594,7 @@ table.default thead {
 .image-button {
     cursor: pointer;
     margin-right: 5px;
+    width: 24px;
 }
 
 .loader {
