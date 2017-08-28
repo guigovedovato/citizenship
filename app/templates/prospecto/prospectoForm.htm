@@ -1,0 +1,106 @@
+{% extends './shared/_template.htm' %} {% block content %}
+
+<!-- Form -->
+<section class="box features">
+    {% if prospecto %}
+    <h2>Edição</h2>
+    {% else %}
+    <h2>Novo</h2>
+    {% endif %}
+    <form id="prospectoForm">
+        <div class="row 50%">
+            <div class="4u 12u(mobile)">
+                {% if prospecto %}
+                <span id="_id" hidden>{{prospecto["_id"]["$oid"]}}</span>
+                <label>Cognome</label>
+                <h2>{{prospecto["cognome"]}}</h2>
+                <label>Nome</label>
+                <h2>{{prospecto["nome"]}}</h2>
+                <label>Celular</label>
+                <input type="text" placeholder="digite o celular aqui" name="celular" id="celular" value="{{prospecto['celular']}}">
+                <label>E-mail</label>
+                <input type="email" placeholder="digite o e-mail aqui" name="email" id="email" value="{{prospecto['email']}}">
+                <label>Indicação</label>
+                <h2>{{prospecto['indicacao']}}</h2>
+                <label>Colaborador</label>
+                <h2>{{prospecto['colaborador']}}</h2>
+                <label for="negociador">Negociador</label>
+                <select id="negociador" name="negociador">
+                    {% if prospecto['negociador'] == "Jadson" %}
+                    <option value="Jadson" selected="selected">Jadson</option>
+                    <option value="Carolina">Carolina</option>
+                    {% else %}
+                    <option value="Jadson">Jadson</option>
+                    <option value="Carolina" selected="selected">Carolina</option>
+                    {% endif %}
+                </select>
+                <label>Data de Contato</label>
+                <h2>{{prospecto['data_contato']}}</h2>
+                <label>Comentários</label>
+                <textarea id="comentario" name="comentario" placeholder="digite seu comentário">{{prospecto['comentario']}}</textarea>
+                <label>Busca de Certidão</label>
+                <select id="busca_certidao" name="busca_certidao">
+                    {% if prospecto['busca_certidao'] == "True" %}
+                    <option value="True" selected="selected">Sim</option>
+                    <option value="False">Não</option>
+                    {% else %}
+                    <option value="True">Sim</option>
+                    <option value="False" selected="selected">Não</option>
+                    {% endif %}
+                </select>
+                <label>Data de Interesse</label>
+                <input type="date" name="data_interesse" id="data_interesse" value="{{prospecto['data_interesse']}}"> {% if prospecto["ativo"] == "True"%}
+                <input type="checkbox" name="ativo" id="ativo" checked="checked"> {% else %}
+                <input type="checkbox" name="ativo" id="ativo"> {% endif %}
+                <label for="ativo">Ativo</label> {% if prospecto["cliente"] == "True"%}
+                <br> <input type="checkbox" name="cliente" id="cliente" checked="checked"> {% else %}
+                <br> <input type="checkbox" name="cliente" id="cliente"> {% endif %}
+                <label for="cliente">Converter para cliente</label> {% else %}
+                <label>Cognome</label>
+                <input type="text" placeholder="digite o cognome aqui" name="cognome" id="cognome" value="">
+                <label>Nome</label>
+                <input type="text" placeholder="digite o nome aqui" name="nome" id="nome" value="">
+                <label>Celular</label>
+                <input type="text" placeholder="digite o celular aqui" name="celular" id="celular" value="">
+                <label>E-mail</label>
+                <input type="email" placeholder="digite o e-mail aqui" name="email" id="email" value="">
+                <label>Indicação</label>
+                <input type="text" placeholder="digite o nome da pessoa que indicou aqui" name="indicacao" id="indicacao" value="">
+                <fieldset>
+                    <legend>Colaborador</legend>
+                    <input type="checkbox" name="c1" id="c1" value="Arlindo"> <label for="c1">Arlindo</label> <br>
+                    <input type="checkbox" name="c2" id="c2" value="Mauro"> <label for="c2">Mauro</label> <br>
+                    <input type="checkbox" name="c3" id="c3" value="Califani"> <label for="c3">Califani</label> <br>
+                    <label>Outros</label>
+                    <input type="text" placeholder="digite o(s) nome(s) aqui separado por ;" name="c4" id="c4" value="">
+                </fieldset>
+                <label for="negociador">Negociador</label>
+                <select id="negociador" name="negociador">
+                    <option value="Jadson">Jadson</option>
+                    <option value="Carolina">Carolina</option>
+                </select>
+                <label>Data de Contato</label>
+                <input type="date" name="data_contato" id="data_contato" value="">
+                <label>Comentários</label>
+                <textarea id="comentario" name="comentario" placeholder="digite seu comentário"></textarea>
+                <label>Busca de Certidão</label>
+                <select id="busca_certidao" name="busca_certidao">
+                    <option value="True">Sim</option>
+                    <option value="False">Não</option>
+                </select>
+                <label>Data de Interesse</label>
+                <input type="date" name="data_interesse" id="data_interesse" value=""> {% endif %}
+            </div>
+        </div>
+
+        <div class="buttons">
+            <input type="button" value="Voltar" onclick="window.history.go(-1);">
+            <input type="submit" value="Salvar"> {% if prospecto %}
+            <input type="button" value="Analise" onclick="callAnaliseURL()"> {% endif %}
+        </div>
+    </form>
+</section>
+
+{% endblock %} {% block script %}
+<script src="{{url_for('static', filename='js/application/prospecto.js')}}"></script>
+{% endblock %}

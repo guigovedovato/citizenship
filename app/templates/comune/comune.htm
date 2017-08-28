@@ -1,0 +1,73 @@
+{% extends './shared/_template.htm' %} {% block content %}
+
+<!-- Filtro -->
+<section class="box features">
+    <form id="comuneSearch">
+        <fieldset>
+            <legend>Pesquisa</legend>
+            <div class="row 50%">
+                <div class="4u 12u(mobile)">
+                    <label for="nome_comune">Nome do Comune</label>
+                    <input type="text" placeholder="digite o nome" name="nome_comune" id="nome_comune" value="">
+                    <label for="abrasileiramento">Abrasileiramento</label>
+                    <select id="abrasileiramento" name="abrasileiramento">
+                                                <option value="">Todos</option>
+                                                <option value="True">Permite</option>
+                                                <option value="False">Não Permite</option>
+                                            </select>
+                    <label for="obito">Óbito</label>
+                    <select id="obito" name="obito">
+                                                <option value="">Todos</option>
+                                                <option value="True">Obrigatório</option>
+                                                <option value="False">Não Obrigatório</option>
+                                            </select>
+                </div>
+                <div class="4u 12u(mobile)">
+                    <label for="auto_declaracao">Auto declaração de transferência de residência</label>
+                    <select id="auto_declaracao" name="auto_declaracao">
+                                                <option value="">Todos</option>
+                                                <option value="True">Aceita</option>
+                                                <option value="False">Não Aceita</option>
+                                            </select>
+                    <label for="ativo">Ativo</label>
+                    <select id="ativo" name="ativo">
+                                                <option value="">Todos</option>
+                                                <option value="True">Sim</option>
+                                                <option value="False">Não</option>
+                                            </select>
+                </div>
+                <div class="4u 12u(mobile)">
+                    <label>Cadastramento:</label>
+                    <br> de:
+                    <input type="date" name="data_inicial" id="data_inicial"> até:
+                    <input type="date" name="data_final" id="data_final">
+                </div>
+            </div>
+            <div class="buttons">
+                <input type="button" value="Novo" onclick="location.href='/comune/novo';">
+                <input type="reset" value="Limpar">
+                <input type="submit" value="Pesquisar" id="btnSubmit">
+            </div>
+        </fieldset>
+    </form>
+</section>
+
+<!-- GRID -->
+<section class="box features">
+    <table class="default">
+        <thead>
+            <tr>
+                <th>Nome do Comune</th>
+                <th>Nome do(a) Anagrafe</th>
+                <th>Telefone de Contato</th>
+                <th>Ativo</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</section>
+
+{% endblock %} {% block script %}
+<script src="{{url_for('static', filename='js/application/comune.js')}}"></script>
+{% endblock %}

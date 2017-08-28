@@ -1,0 +1,24 @@
+{% extends './shared/_template.htm' %} {% block content %}
+
+<!-- Form -->
+<section class="box features">
+    <h2>Edição</h2>
+    <form id="clienteForm">
+        <div class="row 50%">
+            <div class="4u 12u(mobile)">
+                <span id="_id" hidden>{{cliente["_id"]["$oid"]}}</span>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <input type="button" value="Voltar" onclick="window.history.go(-1);">
+            <input type="submit" value="Salvar">
+            <input type="button" value="Contrato" onclick="getContrato()">
+            <input type="button" value="Imprimir" onclick="getRequerente()">
+        </div>
+    </form>
+</section>
+
+{% endblock %} {% block script %}
+<script src="{{url_for('static', filename='js/application/cliente.js')}}"></script>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends './shared/_template.htm' %} {% block content %}
+
+<!-- Form -->
+<section class="box features">
+    {% if comune %}
+    <h2>Edição</h2>
+    {% else %}
+    <h2>Novo</h2>
+    {% endif %}
+    <form id="comuneForm">
+        <div class="row 50%">
+            <div class="4u 12u(mobile)">
+                {% if comune %}
+                <span id="_id" hidden>{{comune["_id"]["$oid"]}}</span>
+                <label>Nome do comune</label>
+                <h2>{{comune["nome_comune"]}}</h2>
+                <label>Nome do(a) anagrafe</label>
+                <input type="text" placeholder="digite o nome aqui" name="nome_contato" id="nome_contato" value="{{comune['nome_contato']}}">
+                <label>Telefone de contato</label>
+                <input type="text" placeholder="digite o telefone aqui" name="telefone_contato" id="telefone_contato" value="{{comune['telefone_contato']}}">
+                <label>E-mail de contato</label>
+                <input type="email" placeholder="digite o e-mail aqui" name="email_contato" id="email_contato" value="{{comune['email_contato']}}"> {% else %}
+                <label>Nome do comune</label>
+                <input type="text" placeholder="digite o nome aqui" name="nome_comune" id="nome_comune" value="">
+                <label>Nome do(a) anagrafe</label>
+                <input type="text" placeholder="digite o nome aqui" name="nome_contato" id="nome_contato" value="">
+                <label>Telefone de contato</label>
+                <input type="text" placeholder="digite o telefone aqui" name="telefone_contato" id="telefone_contato" value="">
+                <label>E-mail de contato</label>
+                <input type="email" placeholder="digite o e-mail aqui" name="email_contato" id="email_contato" value=""> {% endif %} {% if comune["abrasileiramento"] == "True" %}
+                <input type="checkbox" name="abrasileiramento" id="abrasileiramento" checked="checked"> <label for="abrasileiramento">Abrasileiramento</label> {% else %}
+                <input type="checkbox" name="abrasileiramento" id="abrasileiramento"> <label for="abrasileiramento">Abrasileiramento</label> {% endif %} {% if comune["obito"] == "True" %}
+                <br> <input type="checkbox" name="obito" id="obito" checked="checked"> <label for="obito">Óbito obrigatório</label> {% else %}
+                <br> <input type="checkbox" name="obito" id="obito"> <label for="obito">Óbito obrigatório</label> {% endif %} {% if comune["auto_declaracao"] == "True" %}
+                <br> <input type="checkbox" name="auto_declaracao" id="auto_declaracao" checked="checked"> <label for="auto_declaracao">Auto declaração de transferência de residência</label> {% else %}
+                <br> <input type="checkbox" name="auto_declaracao" id="auto_declaracao"> <label for="auto_declaracao">Auto declaração de transferência de residência</label> {% endif %} {% if comune %} {% if comune["ativo"] == "True" %}
+                <br> <input type="checkbox" name="ativo" id="ativo" checked="checked"> <label for="ativo">Ativo</label> {% else %}
+                <br> <input type="checkbox" name="ativo" id="ativo"> <label for="ativo">Ativo</label> {% endif %} {% endif %}
+            </div>
+        </div>
+
+        <div class="buttons">
+            <input type="button" value="Voltar" onclick="window.history.go(-1);">
+            <input type="submit" value="Salvar">
+        </div>
+    </form>
+</section>
+
+{% endblock %} {% block script %}
+<script src="{{url_for('static', filename='js/application/comune.js')}}"></script>
+{% endblock %}
