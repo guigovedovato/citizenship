@@ -1,4 +1,6 @@
 from core.bo.baseBo import BaseBo
+from core.bo.boardBo import BoardBo
+from core.bo.documentBo import DocumentBo
 from core.dao.clienteDao import ClienteDao
 import json
 import core.common.utils as utils
@@ -7,13 +9,13 @@ class ClienteBo(BaseBo):
     def __init__(self):
         super().__init__(ClienteDao())
 
-    def get_documents(self, document):
-        #TODO
-        return self.get_by_id(document["entity_id"])
+    def get_document(self, document):
+        document = DocumentBo(self)
+        return document.get_document(document)
 
     def get_board(self):
-        #TODO
-        return self.get_all()
+        board = BoardBo()
+        return board.get_board()
 
     def get_by_filter(self, filters):
         return super().get_by_filter(filters, ["cognome","nome"], [])

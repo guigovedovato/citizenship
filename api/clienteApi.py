@@ -15,7 +15,7 @@ class Cliente(Resource):
             if parameter.get('id'):
                 return self.cliente.get_by_id(parameter["id"]), 201
             elif parameter.get('document'):
-                return self.cliente.get_documents(parameter), 201
+                return self.cliente.get_document(parameter), 201
             elif parameter.get('board'):
                 return self.cliente.get_board(), 201
             else:

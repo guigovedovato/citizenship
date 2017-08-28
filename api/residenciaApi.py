@@ -14,6 +14,8 @@ class Residencia(Resource):
             parameter = json.loads(parameter)
             if parameter.get('id'):
                 return self.residencia.get_by_id(parameter["id"]), 201
+            elif parameter.get('fields'):
+                return self.residencia.find_fields(parameter["fields"]), 201
             else:
                 return self.residencia.get_by_filter(parameter), 201
 
