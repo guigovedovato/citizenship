@@ -41,3 +41,14 @@ def toInt(query, fields):
     for field in fields:
         if(query.get(field)):
             query[field] = int(query[field])
+
+def getColaborador(listaColaboradores):
+    colaboradores = ""
+    for colaborador in listaColaboradores:
+        colaboradores += ", " + colaborador
+    return colaboradores[2:]
+
+def getData(date):
+    from datetime import datetime
+    d = datetime.strptime(date, '%Y-%m-%d')
+    return datetime.strftime(d, "%d/%m/%Y")

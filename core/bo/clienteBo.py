@@ -31,3 +31,9 @@ class ClienteBo(BaseBo):
 
     def update(self, entity_id, entity):
         return super().update(entity_id, entity)
+
+    def get_by_id(self, entity_id):
+        entity = super().get_by_id(entity_id)
+        entity["colaborador"] = utils.getColaborador(entity["colaborador"])
+        entity["data_contato"] = utils.getData(entity["data_contato"])
+        return entity

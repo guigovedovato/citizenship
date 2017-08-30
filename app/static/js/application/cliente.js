@@ -15,3 +15,8 @@ $("#clienteForm").submit(function(e) {
 function getDocuments() {
     alert("TODO");
 }
+
+$(document).ready(function() {
+    today = getToday();
+    document.getElementById("data_interesse").setAttribute("min", today);
+});

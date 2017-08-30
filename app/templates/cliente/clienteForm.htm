@@ -7,6 +7,53 @@
         <div class="row 50%">
             <div class="4u 12u(mobile)">
                 <span id="_id" hidden>{{cliente["_id"]["$oid"]}}</span>
+                <label>Cognome</label>
+                <h2>{{cliente["cognome"]}}</h2>
+                <label>Nome</label>
+                <h2>{{cliente["nome"]}}</h2>
+
+                <label>Celular</label>
+                <input type="text" placeholder="digite o celular aqui" name="celular" id="celular" value="{{cliente['celular']}}">
+                <label>E-mail</label>
+                <input type="email" placeholder="digite o e-mail aqui" name="email" id="email" value="{{cliente['email']}}">
+
+                <label>Indicação</label>
+                <h2>{{cliente['indicacao']}}</h2>
+                <label>Colaborador</label>
+                <h2>{{cliente['colaborador']}}</h2>
+
+                <label for="negociador">Negociador</label>
+                <select id="negociador" name="negociador">
+                    {% if cliente['negociador'] == "Jadson" %}
+                    <option value="Jadson" selected="selected">Jadson</option>
+                    <option value="Carolina">Carolina</option>
+                    {% else %}
+                    <option value="Jadson">Jadson</option>
+                    <option value="Carolina" selected="selected">Carolina</option>
+                    {% endif %}
+                </select>
+
+                <label>Data de Contato</label>
+                <h2>{{cliente['data_contato']}}</h2>
+
+                <label>Comentários</label>
+                <textarea id="comentario" name="comentario" placeholder="digite seu comentário">{{cliente['comentario']}}</textarea>
+                <label>Busca de Certidão</label>
+                <select id="busca_certidao" name="busca_certidao">
+                    {% if cliente['busca_certidao'] == "True" %}
+                    <option value="True" selected="selected">Sim</option>
+                    <option value="False">Não</option>
+                    {% else %}
+                    <option value="True">Sim</option>
+                    <option value="False" selected="selected">Não</option>
+                    {% endif %}
+                </select>
+                <label>Data de Interesse</label>
+                <input type="date" name="data_interesse" id="data_interesse" value="{{cliente['data_interesse']}}">
+                <label></label> {% if cliente %} {% if cliente["ativo"] == "True"%}
+                <input type="checkbox" name="ativo" id="ativo" checked="checked"> {% else %}
+                <input type="checkbox" name="ativo" id="ativo"> {% endif %}
+                <label for="ativo">Ativo</label> {% endif %}
             </div>
         </div>
 

@@ -18,6 +18,13 @@
                 <h2>{{residencia["endereco"]}}</h2>
                 <label>Nome do comune</label>
                 <h2>{{residencia["comune"]}}</h2>
+                {% else %}
+                <label>Endereço</label>
+                <input type="text" placeholder="digite o endereço aqui" name="endereco" id="endereco" value="">
+                <label for="comune_select">Comune</label>
+                <select id="comune_select" name="comune">
+                    <option value="">selecione o comune</option>
+                </select> {% endif %}
                 <label>Nome do proprietário</label>
                 <input type="text" placeholder="digite o nome do proprietario aqui" name="nome_proprietario" id="nome_proprietario" value="{{residencia['nome_proprietario']}}">
                 <label>Telefone do proprietário</label>
@@ -34,30 +41,9 @@
                 <label>Dia de vencimento do aluguel</label>
                 <input type="number" placeholder="digite o dia aqui" name="vencimento_aluguel" id="vencimento_aluguel" min="1" max="31" value="{{residencia['vencimento_aluguel']}}">
                 <label>Quantidade de Quartos</label>
-                <input type="number" placeholder="digite a quantidade aqui" name="quartos" id="quartos" min="1" value="{{residencia['quartos']}}"> {% if residencia["ativo"] == "True"%}
+                <input type="number" placeholder="digite a quantidade aqui" name="quartos" id="quartos" min="1" value="{{residencia['quartos']}}"> {% if residencia %} {% if residencia["ativo"] == "True"%}
                 <input type="checkbox" name="ativo" id="ativo" checked="checked"> <label for="ativo">Ativo</label> {% else %}
-                <br> <input type="checkbox" name="ativo" id="ativo"> <label for="ativo">Ativo</label> {% endif %} {% else %}
-                <label>Endereço</label>
-                <input type="text" placeholder="digite o endereço aqui" name="endereco" id="endereco" value="">
-                <label for="comune_select">Comune</label>
-                <select id="comune_select" name="comune">
-                                                <option value="">selecione o comune</option>
-                                            </select>
-                <label>Nome do proprietário</label>
-                <input type="text" placeholder="digite o nome do proprietario aqui" name="nome_proprietario" id="nome_proprietario" value="">
-                <label>Telefone do proprietário</label>
-                <input type="text" placeholder="digite o telefone do proprietario aqui" name="telefone_proprietario" id="telefone_proprietario" value="">
-                <label>Capacidade</label>
-                <input type="number" placeholder="digite a capacidade aqui" name="capacidade" id="capacidade" value="" min="1">
-                <label>Quantidade de Camas</label>
-                <input type="number" placeholder="digite a quantidade aqui" name="camas" id="camas" value="" min="1">
-                <label>Tipo de Gás</label>
-                <br><input type="radio" name="tipo_gas" id="tipo_gas" value="bombola"> Bombola
-                <br><input type="radio" name="tipo_gas" id="tipo_gas" value="encanado"> Encanado<br>
-                <label>Dia de vencimento do aluguel</label>
-                <input type="number" placeholder="digite o dia aqui" name="vencimento_aluguel" id="vencimento_aluguel" value="" min="1" max="31">
-                <label>Quantidade de Quartos</label>
-                <input type="number" placeholder="digite a quantidade aqui" name="quartos" id="quartos" value="" min="1"> {% endif %}
+                <br> <input type="checkbox" name="ativo" id="ativo"> <label for="ativo">Ativo</label> {% endif %} {% endif %}
             </div>
         </div>
 

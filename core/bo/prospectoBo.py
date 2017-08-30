@@ -46,14 +46,6 @@ class ProspectoBo(BaseBo):
 
     def get_by_id(self, entity_id):
         entity = super().get_by_id(entity_id)
-        entity["colaborador"] = self.getColaborador(entity["colaborador"])
-        from datetime import datetime
-        d = datetime.strptime(entity["data_contato"], '%Y-%m-%d')
-        entity["data_contato"] = datetime.strftime(d, "%d/%m/%Y")
+        entity["colaborador"] = utils.getColaborador(entity["colaborador"])
+        entity["data_contato"] = utils.getData(entity["data_contato"])
         return entity
-
-    def getColaborador(self, listaColaboradores):
-        colaboradores = ""
-        for colaborador in listaColaboradores:
-            colaboradores += ", " + colaborador
-        return colaboradores[2:]

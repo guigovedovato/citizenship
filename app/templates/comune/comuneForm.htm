@@ -10,24 +10,17 @@
     <form id="comuneForm">
         <div class="row 50%">
             <div class="4u 12u(mobile)">
-                {% if comune %}
+                <label>Nome do comune</label> {% if comune %}
                 <span id="_id" hidden>{{comune["_id"]["$oid"]}}</span>
-                <label>Nome do comune</label>
                 <h2>{{comune["nome_comune"]}}</h2>
+                {% else %}
+                <input type="text" placeholder="digite o nome aqui" name="nome_comune" id="nome_comune" value=""> {% endif %}
                 <label>Nome do(a) anagrafe</label>
                 <input type="text" placeholder="digite o nome aqui" name="nome_contato" id="nome_contato" value="{{comune['nome_contato']}}">
                 <label>Telefone de contato</label>
                 <input type="text" placeholder="digite o telefone aqui" name="telefone_contato" id="telefone_contato" value="{{comune['telefone_contato']}}">
                 <label>E-mail de contato</label>
-                <input type="email" placeholder="digite o e-mail aqui" name="email_contato" id="email_contato" value="{{comune['email_contato']}}"> {% else %}
-                <label>Nome do comune</label>
-                <input type="text" placeholder="digite o nome aqui" name="nome_comune" id="nome_comune" value="">
-                <label>Nome do(a) anagrafe</label>
-                <input type="text" placeholder="digite o nome aqui" name="nome_contato" id="nome_contato" value="">
-                <label>Telefone de contato</label>
-                <input type="text" placeholder="digite o telefone aqui" name="telefone_contato" id="telefone_contato" value="">
-                <label>E-mail de contato</label>
-                <input type="email" placeholder="digite o e-mail aqui" name="email_contato" id="email_contato" value=""> {% endif %} {% if comune["abrasileiramento"] == "True" %}
+                <input type="email" placeholder="digite o e-mail aqui" name="email_contato" id="email_contato" value="{{comune['email_contato']}}"> {% if comune["abrasileiramento"] == "True" %}
                 <input type="checkbox" name="abrasileiramento" id="abrasileiramento" checked="checked"> <label for="abrasileiramento">Abrasileiramento</label> {% else %}
                 <input type="checkbox" name="abrasileiramento" id="abrasileiramento"> <label for="abrasileiramento">Abrasileiramento</label> {% endif %} {% if comune["obito"] == "True" %}
                 <br> <input type="checkbox" name="obito" id="obito" checked="checked"> <label for="obito">Óbito obrigatório</label> {% else %}

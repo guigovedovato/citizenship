@@ -12,13 +12,9 @@ $("#prospectoForm").submit(function(e) {
     setComment();
 });
 
-function analise(id) {
+function analise(id) {}
 
-}
-
-function doAnalise() {
-
-}
+function doAnalise() {}
 
 function callAnaliseURL() {
     location.href = "/prospecto/analise/" + $("#_id").html();
