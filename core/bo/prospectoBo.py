@@ -14,8 +14,6 @@ class ProspectoBo(BaseBo):
     
     def convert(self, entity_id):
         ex_prospecto = self.update(entity_id, {"cliente":"True", "ativo":"False"})
-        cliente = ClienteBo()
-        cliente.insert(ex_prospecto)
         return "O prospecto {0} foi convertido para cliente com sucesso".format(ex_prospecto["cognome"])
 
     def do_analise(self, entity_id):
@@ -33,7 +31,10 @@ class ProspectoBo(BaseBo):
 
     def update(self, entity_id, entity):
         utils.itensFalse(entity, ["ativo"])
-        return super().update(entity_id, entity)
+        saved = super().update(entity_id, entity)
+        if(entity.get('cliente')):
+            self.to_convert(saved)
+        return saved
 
     def setColaborador(self, query):
         c = ["c1", "c2", "c3", "c4"]
@@ -46,6 +47,10 @@ class ProspectoBo(BaseBo):
 
     def get_by_id(self, entity_id):
         entity = super().get_by_id(entity_id)
-        entity["colaborador"] = utils.getColaborador(entity["colaborador"])
+        entity["colaborador"] = utils.getSeparatedByComma(entity["colaborador"])
         entity["data_contato"] = utils.getData(entity["data_contato"])
         return entity
+
+    def to_convert(self, entity):
+        cliente = ClienteBo()
+        cliente.insert(entity)

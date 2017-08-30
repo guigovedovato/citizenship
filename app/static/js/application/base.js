@@ -206,6 +206,32 @@ function postData(dataSerialized, url) {
     });
 }
 
+function uploadArquivo(url, id, form) {
+    var formData = new FormData(form);
+    $.ajax({
+        url: url + "/" + id,
+        type: 'POST',
+        data: formData,
+        async: false,
+        cache: false,
+        contentType: false,
+        enctype: 'multipart/form-data',
+        processData: false,
+        success: function(response) {
+            $("#load").hide();
+            $("#arquivo").val('');
+            if (response == true)
+                setMessage("Salvo com sucesso.");
+            else
+                setMessage("Houve um erro ao fazer o upload do arquivo.");
+        },
+        error: function() {
+            $("#load").hide();
+            setMessage("Houve um erro ao fazer o upload do arquivo.");
+        }
+    });
+}
+
 function submitForm(dataSerialized, url, form, message, field, form) {
     $("#load").show();
     id = $("#_id").html();
@@ -228,8 +254,12 @@ function submitForm(dataSerialized, url, form, message, field, form) {
             data: dataSerialized,
             dataType: "json",
             success: function(response) {
-                $("#load").hide();
-                setMessage(message.format(response[field]));
+                if (document.getElementById("arquivo")) {
+                    uploadArquivo(url, id, $(form)[0]);
+                } else {
+                    $("#load").hide();
+                    setMessage(message.format(response[field]));
+                }
             },
             error: function() {
                 $("#load").hide();

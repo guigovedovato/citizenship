@@ -42,11 +42,11 @@ def toInt(query, fields):
         if(query.get(field)):
             query[field] = int(query[field])
 
-def getColaborador(listaColaboradores):
-    colaboradores = ""
-    for colaborador in listaColaboradores:
-        colaboradores += ", " + colaborador
-    return colaboradores[2:]
+def getSeparatedByComma(listaOrigem):
+    destino = ""
+    for origem in listaOrigem:
+        destino += ", " + origem
+    return destino[2:]
 
 def getData(date):
     from datetime import datetime

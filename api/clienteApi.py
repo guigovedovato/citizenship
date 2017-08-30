@@ -24,3 +24,7 @@ class Cliente(Resource):
     def put(self, parameter):
         cliente = request.json
         return self.cliente.update(parameter, cliente), 201
+
+    def post(self, parameter):
+        file = request.files['arquivo']
+        return self.cliente.upload(parameter, file), 201

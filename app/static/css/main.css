@@ -1544,6 +1544,7 @@ form input[type="email"],
 form input[type="password"],
 form input[type="date"],
 form input[type="number"],
+form input[type="datetime-local"],
 form select,
 form textarea {
     /* -webkit-appearance: none; */
@@ -1558,6 +1559,7 @@ form input[type="email"]:focus,
 form input[type="password"]:focus,
 form input[type="date"]:focus,
 form input[type="number"]:focus,
+form input[type="datetime-local"]:focus,
 form select:focus,
 form textarea:focus {
     border-color: #a1cd9b;
@@ -1568,6 +1570,7 @@ form input[type="email"],
 form input[type="password"],
 form input[type="date"],
 form input[type="number"],
+form input[type="datetime-local"],
 form select {
     /* line-height: 3em; */
     padding: 0 1em;

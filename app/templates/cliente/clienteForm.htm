@@ -11,17 +11,14 @@
                 <h2>{{cliente["cognome"]}}</h2>
                 <label>Nome</label>
                 <h2>{{cliente["nome"]}}</h2>
-
                 <label>Celular</label>
                 <input type="text" placeholder="digite o celular aqui" name="celular" id="celular" value="{{cliente['celular']}}">
                 <label>E-mail</label>
                 <input type="email" placeholder="digite o e-mail aqui" name="email" id="email" value="{{cliente['email']}}">
-
                 <label>Indicação</label>
                 <h2>{{cliente['indicacao']}}</h2>
                 <label>Colaborador</label>
                 <h2>{{cliente['colaborador']}}</h2>
-
                 <label for="negociador">Negociador</label>
                 <select id="negociador" name="negociador">
                     {% if cliente['negociador'] == "Jadson" %}
@@ -32,10 +29,8 @@
                     <option value="Carolina" selected="selected">Carolina</option>
                     {% endif %}
                 </select>
-
                 <label>Data de Contato</label>
                 <h2>{{cliente['data_contato']}}</h2>
-
                 <label>Comentários</label>
                 <textarea id="comentario" name="comentario" placeholder="digite seu comentário">{{cliente['comentario']}}</textarea>
                 <label>Busca de Certidão</label>
@@ -49,19 +44,96 @@
                     {% endif %}
                 </select>
                 <label>Data de Interesse</label>
-                <input type="date" name="data_interesse" id="data_interesse" value="{{cliente['data_interesse']}}">
-                <label></label> {% if cliente %} {% if cliente["ativo"] == "True"%}
+                <h2>{{cliente['data_interesse']}}</h2>
+                {% if cliente %} {% if cliente["ativo"] == "True"%}
                 <input type="checkbox" name="ativo" id="ativo" checked="checked"> {% else %}
                 <input type="checkbox" name="ativo" id="ativo"> {% endif %}
                 <label for="ativo">Ativo</label> {% endif %}
+            </div>
+            <div class="4u 12u(mobile)">
+                <label>Nato a</label>
+                <input type="text" placeholder="digite a cidade aqui" name="nato_a" id="nato_a" value="{{cliente['nato_a']}}">
+                <label>Data de Nascimento</label>
+                <input type="date" name="data_nascimento" id="data_nascimento" value="{{cliente['data_nascimento']}}">
+                <label>Residência</label>
+                <input type="text" placeholder="digite o endereço aqui" name="residencia" id="residencia" value="{{cliente['residencia']}}">
+                <label>Estado Civil</label>
+                <span id="_estado_civil" hidden>{{cliente["estado_civil"]}}</span>
+                <select id="estado_civil_select" name="estado_civil">
+                    <option value="">Selecione um estado civil</option>
+                    <option value="solteiro">Solteiro(a)</option>
+                    <option value="casado">Casado(a)</option>
+                    <option value="divorciado">Divorciado(a)</option>
+                    <option value="viuvo">Viúvo(a)</option>
+                </select>
+                <label>Formação</label>
+                <input type="text" placeholder="digite a formação aqui" name="formacao" id="formacao" value="{{cliente['formacao']}}">
+                <label>Profissão</label>
+                <input type="text" placeholder="digite a profissão aqui" name="profissao" id="profissao" value="{{cliente['profissao']}}">
+                <label>Cognome do Pai</label>
+                <input type="text" placeholder="digite o cognome aqui" name="cognome_pai" id="cognome_pai" value="{{cliente['cognome_pai']}}">
+                <label>Nome do Pai</label>
+                <input type="text" placeholder="digite o nome aqui" name="nome_pai" id="nome_pai" value="{{cliente['nome_pai']}}">
+                <label>Pai Nato a</label>
+                <input type="text" placeholder="digite a cidade aqui" name="nato_a_pai" id="nato_a_pai" value="{{cliente['nato_a_pai']}}">
+                <label>Data de Nascimento do Pai</label>
+                <input type="date" name="data_nascimento_pai" id="data_nascimento_pai" value="{{cliente['data_nascimento_pai']}}">
+                <label>Cognome da Mãe</label>
+                <input type="text" placeholder="digite o cognome aqui" name="cognome_mae" id="cognome_mae" value="{{cliente['cognome_mae']}}">
+                <label>Nome da Mãe</label>
+                <input type="text" placeholder="digite o nome aqui" name="nome_mae" id="nome_mae" value="{{cliente['nome_mae']}}">
+                <label>Mãe Nato a</label>
+                <input type="text" placeholder="digite a cidade aqui" name="nato_a_mae" id="nato_a_mae" value="{{cliente['nato_a_mae']}}">
+                <label>Data de Nascimento da Mãe</label>
+                <input type="date" name="data_nascimento_mae" id="data_nascimento_mae" value="{{cliente['data_nascimento_mae']}}">
+            </div>
+            <div class="4u 12u(mobile)">
+                <label>Passaporte</label>
+                <input type="text" placeholder="digite o passaporte aqui" name="passaporte" id="passaporte" value="{{cliente['passaporte']}}">
+                <label>Data de Emissão do Passaporte</label>
+                <input type="date" name="data_emissao_passaporte" id="data_emissao_passaporte" value="{{cliente['data_emissao_passaporte']}}">
+                <label>Data/Hora de Chegada</label>
+                <input type="datetime-local" name="chegada" id="chegada" value="{{cliente['chegada']}}">
+                <label>Aeroporto</label>
+                <input type="text" placeholder="digite o aeroporto aqui" name="aeroporto" id="aeroporto" value="{{cliente['aeroporto']}}">
+                <label>Data de Entrada do Processo</label>
+                <input type="date" name="data_entrada_processo" id="data_entrada_processo" value="{{cliente['data_entrada_processo']}}">
+                <label>Comune</label>
+                <span id="_comune" hidden>{{cliente["comune"]}}</span>
+                <select id="comune_select" name="comune">
+                    <option value="">Selecione o comune</option>
+                </select>
+                <label>Residência na Itália</label>
+                <span id="_residencia_italia" hidden>{{cliente["residencia_italia"]}}</span>
+                <select id="residencia_select" name="residencia_italia">
+                    <option value="">Selecione a residência</option>
+                </select>
+                <label>Data de Entrada da Não Renúncia</label>
+                <input type="date" name="data_entrada_nr" id="data_entrada_nr" value="{{cliente['data_entrada_nr']}}">
+                <label>Data de Entrada do Passaporte Europeu</label>
+                <input type="date" name="data_entrada_passaporte" id="data_entrada_passaporte" value="{{cliente['data_entrada_passaporte']}}">
+                <label>Consulados</label>
+                <fieldset>
+                    <span id="_consulado" hidden>{{cliente["consulado"]}}</span>
+                    <legend>Consulados</legend>
+                    <input type="checkbox" class="consulados" name="BH" id="BH" value="BH"> <label>Belo Horizonte</label> <br>
+                    <input type="checkbox" class="consulados" name="SP" id="SP" value="SP"> <label>São Paulo</label> <br>
+                    <input type="checkbox" class="consulados" name="CR" id="CR" value="CR"> <label>Curitiba</label> <br>
+                    <input type="checkbox" class="consulados" name="PA" id="PA" value="PA"> <label>Porto Alegre</label> <br>
+                    <input type="checkbox" class="consulados" name="RJ" id="RJ" value="RJ"> <label>Rio de Janeiro</label> <br>
+                    <input type="checkbox" class="consulados" name="RC" id="RC" value="RC"> <label>Recife</label> <br>
+                    <input type="checkbox" class="consulados" name="BR" id="BR" value="BR"> <label>Brasília</label>
+                </fieldset>
+                <label>Upload de Arquivo</label>
+                <input id="arquivo" name="arquivo" type="file">
             </div>
         </div>
 
         <div class="buttons">
             <input type="button" value="Voltar" onclick="window.history.go(-1);">
             <input type="submit" value="Salvar">
-            <input type="button" value="Contrato" onclick="getContrato()">
-            <input type="button" value="Imprimir" onclick="getRequerente()">
+            <input type="button" value="Contrato" onclick="getDocuments('contrato')">
+            <input type="button" value="Imprimir" onclick="getDocuments('richiedente')">
         </div>
     </form>
 </section>
