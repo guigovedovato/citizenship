@@ -12,12 +12,12 @@ class ComuneBo(BaseBo):
         return super().get_by_filter(filters, ["nome_comune"], [])
 
     def insert(self, entity):
-        utils.itensFalse(entity, self.fields)
+        utils.itens_false(entity, self.fields)
         return super().insert(entity)
 
     def update(self, entity_id, entity):
         self.fields.append("ativo")
-        utils.itensFalse(entity, self.fields)
+        utils.itens_false(entity, self.fields)
         return super().update(entity_id, entity)
 
     

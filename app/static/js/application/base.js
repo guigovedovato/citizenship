@@ -206,7 +206,7 @@ function postData(dataSerialized, url) {
     });
 }
 
-function uploadArquivo(url, id, form) {
+function uploadArquivo(url, id, form, message) {
     var formData = new FormData(form);
     $.ajax({
         url: url + "/" + id,
@@ -221,9 +221,9 @@ function uploadArquivo(url, id, form) {
             $("#load").hide();
             $("#arquivo").val('');
             if (response == true)
-                setMessage("Salvo com sucesso.");
+                setMessage(message);
             else
-                setMessage("Houve um erro ao fazer o upload do arquivo.");
+                setMessage("Houve um erro ao salvar o arquivo.");
         },
         error: function() {
             $("#load").hide();
@@ -238,12 +238,10 @@ function submitForm(dataSerialized, url, form, message, field, form) {
     if (!id) {
         post = postData(dataSerialized, url);
         post.done(function(response) {
-            $("#load").hide();
             setMessage(message.format(response[field]));
             $(form)[0].reset();
         });
         post.fail(function() {
-            $("#load").hide();
             setMessage("Houve um erro ao salvar.");
         });
     } else {
@@ -255,17 +253,19 @@ function submitForm(dataSerialized, url, form, message, field, form) {
             dataType: "json",
             success: function(response) {
                 if (document.getElementById("arquivo")) {
-                    uploadArquivo(url, id, $(form)[0]);
+                    if ($('#arquivo').val())
+                        uploadArquivo(url, id, $(form)[0], message.format(response[field]));
+                    else
+                        setMessage(message.format(response[field]));
                 } else {
-                    $("#load").hide();
                     setMessage(message.format(response[field]));
                 }
             },
             error: function() {
-                $("#load").hide();
                 setMessage("Houve um erro ao salvar.");
             }
         });
+        $("#load").hide();
     }
 }
 

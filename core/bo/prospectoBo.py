@@ -25,32 +25,32 @@ class ProspectoBo(BaseBo):
         return super().get_by_filter(filters, ["cognome","nome"], [])
 
     def insert(self, entity):
-        self.setColaborador(entity)
+        set_colaborador(entity)
         entity["cliente"] = "False"
         return super().insert(entity)
 
     def update(self, entity_id, entity):
-        utils.itensFalse(entity, ["ativo"])
+        utils.itens_false(entity, ["ativo"])
         saved = super().update(entity_id, entity)
         if(entity.get('cliente')):
-            self.to_convert(saved)
+            to_convert(saved)
         return saved
-
-    def setColaborador(self, query):
-        c = ["c1", "c2", "c3", "c4"]
-        colaboradores = []
-        for key in c:
-            if query.get(key):
-                colaboradores.append(query[key])
-                query.pop(key)             
-        query["colaborador"] = colaboradores
 
     def get_by_id(self, entity_id):
         entity = super().get_by_id(entity_id)
-        entity["colaborador"] = utils.getSeparatedByComma(entity["colaborador"])
-        entity["data_contato"] = utils.getData(entity["data_contato"])
+        entity["colaborador"] = utils.get_separated_by_comma(entity["colaborador"])
+        entity["data_contato"] = utils.get_data(entity["data_contato"])
         return entity
 
-    def to_convert(self, entity):
-        cliente = ClienteBo()
-        cliente.insert(entity)
+def to_convert(entity):
+    cliente = ClienteBo()
+    cliente.insert(entity)
+
+def set_colaborador(query):
+    c_list = ["c1", "c2", "c3", "c4"]
+    colaboradores = []
+    for key in c_list:
+        if query.get(key):
+            colaboradores.append(query[key])
+            query.pop(key)             
+    query["colaborador"] = colaboradores

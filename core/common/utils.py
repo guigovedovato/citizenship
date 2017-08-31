@@ -1,4 +1,4 @@
-def fieldBlank(list):
+def field_blank(list):
     return {k:v for k, v in list.items() if v != ""}
 
 def like(query, parameter):
@@ -20,35 +20,38 @@ def dates(query):
             query["data_cadastro"].update({'$lte': query["data_final"]})
         query.pop("data_final")
 
-def fromOnToBoolean(query):
+def from_on_to_boolean(query):
     for key, value in query.items():
         if value == "on":
             query[key] = "True"
 
-def itensFalse(entity, itens):
+def itens_false(entity, itens):
     for item in itens:
         if not entity.get(item):
             entity[item] = str(False)
 
-def isNumber(var):
+def is_number(var):
     try:
         int(var)
         return True
     except:
         return False
 
-def toInt(query, fields):
+def to_int(query, fields):
     for field in fields:
         if(query.get(field)):
             query[field] = int(query[field])
 
-def getSeparatedByComma(listaOrigem):
+def get_separated_by_comma(lista_origem):
     destino = ""
-    for origem in listaOrigem:
+    for origem in lista_origem:
         destino += ", " + origem
     return destino[2:]
 
-def getData(date):
+def get_data(date):
     from datetime import datetime
-    d = datetime.strptime(date, '%Y-%m-%d')
-    return datetime.strftime(d, "%d/%m/%Y")
+    new_date = convert_date(date)
+    return datetime.strftime(new_date, "%d/%m/%Y")
+def convert_date(str_date):
+    from datetime import datetime
+    return datetime.strptime(str_date, '%Y-%m-%d')

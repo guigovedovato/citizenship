@@ -23,7 +23,8 @@ $(document).ready(function() {
     document.getElementById("data_nascimento_pai").setAttribute("max", today);
     document.getElementById("data_nascimento_mae").setAttribute("max", today);
     setEstadoCivil();
-    setConvulados();
+    setFormacao();
+    setConsulados();
     setTimeout(setComune, 100);
     setTimeout(setResidencia, 200);
 });
@@ -44,6 +45,11 @@ function setEstadoCivil() {
     $("#estado_civil_select").val(estadoCivil);
 }
 
+function setFormacao() {
+    formacao = $("#_formacao").html();
+    $("#formacao_select").val(formacao);
+}
+
 function setComune() {
     comune = $("#_comune").html();
     $("#comune_select").val(comune);
@@ -55,7 +61,7 @@ function setResidencia() {
     $("#residencia_select").val(residencia_italia);
 }
 
-function setConvulados() {
+function setConsulados() {
     jQuery('.consulados').each(function() {
         if ($("#_consulado").html().indexOf($(this).val()) > -1) {
             $(this).prop("checked", true);

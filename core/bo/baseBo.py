@@ -12,7 +12,7 @@ class BaseBo:
         return json.loads(self.context.get_by_id(entity_id))
 
     def get_by_filter(self, filters, likes, gtes):
-        query = utils.fieldBlank(filters)
+        query = utils.field_blank(filters)
         if not query:
             return self.get_all()
         else:
@@ -24,19 +24,19 @@ class BaseBo:
             return json.loads(self.context.get_by_filter(query))
     
     def update(self, entity_id, entity):
-        entity = utils.fieldBlank(entity)
-        utils.fromOnToBoolean(entity)
+        entity = utils.field_blank(entity)
+        utils.from_on_to_boolean(entity)
         return json.loads(self.context.update(entity_id, entity))
 
     def insert(self, entity):
-        entity = utils.fieldBlank(entity)
-        utils.fromOnToBoolean(entity)
+        entity = utils.field_blank(entity)
+        utils.from_on_to_boolean(entity)
         return json.loads(self.context.insert(entity))
     
     def find_fields_byID(self, entity_id, fields):
         return json.loads(self.context.find_fields_byID(entity_id, fields))
 
     def find_fields(self, fields):
-        fields = {k:1 for k in fields }
+        fields = {k:1 for k in fields}
         fields.update({'_id':0})
         return json.loads(self.context.find_fields(fields))

@@ -67,7 +67,16 @@
                     <option value="viuvo">Viúvo(a)</option>
                 </select>
                 <label>Formação</label>
-                <input type="text" placeholder="digite a formação aqui" name="formacao" id="formacao" value="{{cliente['formacao']}}">
+                <span id="_formacao" hidden>{{cliente["formacao"]}}</span>
+                <select id="formacao_select" name="formacao">
+                    <option value="">Selecione a formação</option>
+                    <option value="superiorc">Superior Completo</option>
+                    <option value="superiori">Superior Incompleto</option>
+                    <option value="medioc">Ensino Mério Completo</option>
+                    <option value="medioi">Ensino Mério Incompleto</option>
+                    <option value="fundamentalc">Fundamental Completo</option>
+                    <option value="fundamentali">Fundamental Incompleto</option>
+                </select>
                 <label>Profissão</label>
                 <input type="text" placeholder="digite a profissão aqui" name="profissao" id="profissao" value="{{cliente['profissao']}}">
                 <label>Cognome do Pai</label>

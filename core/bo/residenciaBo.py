@@ -12,12 +12,12 @@ class ResidenciaBo(BaseBo):
 
     def insert(self, entity):
         entity["vagas"] = int(entity["capacidade"])
-        utils.toInt(entity, ['capacidade','camas','vencimento_aluguel','quartos'])
+        utils.to_int(entity, ['capacidade','camas','vencimento_aluguel','quartos'])
         return super().insert(entity)
 
     def update(self, entity_id, entity):
-        utils.itensFalse(entity, ["ativo"])
-        utils.toInt(entity, ['capacidade','camas','vencimento_aluguel','quartos','vagas','capacidade_old'])
+        utils.itens_false(entity, ["ativo"])
+        utils.to_int(entity, ['capacidade','camas','vencimento_aluguel','quartos','vagas','capacidade_old'])
         if entity.get('capacidade_old'):
             if entity['capacidade_old'] > entity['capacidade'] :
                 entity['vagas'] -= 1;
@@ -25,3 +25,6 @@ class ResidenciaBo(BaseBo):
                 entity['vagas'] += 1;
             entity.pop('capacidade_old')
         return super().update(entity_id, entity)
+
+    def decrease_vaga(self, residencia):
+        pass
