@@ -16,6 +16,8 @@ class Residencia(Resource):
                 return self.residencia.get_by_id(parameter["id"]), 201
             elif parameter.get('fields'):
                 return self.residencia.find_fields(parameter["fields"]), 201
+            elif parameter.get('comune'):
+                return self.residencia.get_by_comune(parameter), 201
             else:
                 return self.residencia.get_by_filter(parameter), 201
 

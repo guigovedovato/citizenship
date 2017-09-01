@@ -38,13 +38,16 @@ class BaseDao:
         entity_inserted = self.coll.insert_one(entity).inserted_id
         return self.get_by_id(str(entity_inserted))
 
-    def find_fields_byID(self, entity_id, fields):
+    def find_fields_by_id(self, entity_id, fields):
         if(utils.is_number(entity_id)):
             return json_util.dumps([])
         return json_util.dumps(self.coll.find_one({'_id': ObjectId(entity_id)}, fields))
 
     def find_fields(self, fields):
-        return json_util.dumps(self.coll.find({}, fields))
+        return json_util.dumps(self.coll.find({"ativo":"True"}, fields))
 
-    def get_by_filter_fields(self, query, fields, order):
-        return json_util.dumps(self.coll.find(query, fields).sort(order, pymongo.ASCENDING))
+    def get_by_filter_fields(self, query, fields, order=""):
+        request = self.coll.find(query, fields)
+        if order != "":
+            request.sort(order, pymongo.ASCENDING)
+        return json_util.dumps(request)

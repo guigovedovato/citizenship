@@ -13,18 +13,25 @@ $(document).ready(function() {
 });
 
 function session() {
-    if (sessionStorage.actual) {
-        sessionStorage.last = sessionStorage.actual;
-        sessionStorage.actual = window.location.pathname;
+    if (sessionStorage.current) {
+        sessionStorage.last = sessionStorage.current;
+        sessionStorage.current = window.location.pathname;
     } else {
         sessionStorage.search = false;
-        sessionStorage.actual = window.location.pathname;
+        sessionStorage.current = window.location.pathname;
     }
 }
 
 function canSearch() {
     return (String(sessionStorage.last).includes("novo") || String(sessionStorage.last).includes("edit")) &&
-        (!String(sessionStorage.actual).includes("novo") || !String(sessionStorage.actual).includes("edit"))
+        (!String(sessionStorage.current).includes("novo") || !String(sessionStorage.current).includes("edit")) &&
+        (verifyIsNewDomain())
+}
+
+function verifyIsNewDomain() {
+    var last = (sessionStorage.last).split("/");
+    var current = (sessionStorage.current).split("/");
+    return current[1] == last[1]
 }
 
 function verifySession() {
@@ -35,7 +42,7 @@ function verifySession() {
             return false;
         }
     } else {
-        if (sessionStorage.last == sessionStorage.actual)
+        if (sessionStorage.last == sessionStorage.current)
             sessionStorage.search = false;
         return false;
     }

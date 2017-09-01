@@ -28,9 +28,20 @@ class ClienteBo(BaseBo):
     def update(self, entity_id, entity):
         set_consulados(entity)
         utils.from_on_to_boolean(entity)
-        if(entity["residencia_italia"]):
-            residencia = ResidenciaBo()
-            residencia.decrease_vaga(entity["residencia_italia"])
+        utils.itens_false(entity, ["ativo"])
+        if entity["ativo"] == "False" or entity["data_chegada_aire"] != "":
+            if entity["_residencia_italia"] != "":
+                residencia = ResidenciaBo()
+                residencia.increase_vaga(entity["_residencia_italia"])
+                entity["_residencia_italia"] = ""
+        else:
+            if entity["residencia_italia"] != entity["_residencia_italia"]:
+                residencia = ResidenciaBo()
+                if entity["residencia_italia"] != "":
+                    residencia.decrease_vaga(entity["residencia_italia"])
+                if entity["_residencia_italia"] != "":
+                    residencia.increase_vaga(entity["_residencia_italia"])
+                entity["_residencia_italia"] = entity["residencia_italia"]
         return json.loads(self.context.update(entity_id, entity))
 
     def get_by_id(self, entity_id):
@@ -46,7 +57,7 @@ class ClienteBo(BaseBo):
         return entity
 
     def upload(self, entity_id, file):
-        entity = self.find_fields_byID(entity_id, {"cognome":1,"nome":1, "_id":0})
+        entity = self.find_fields_by_id(entity_id, {"cognome":1,"nome":1, "_id":0})
         document = DocumentBo()
         return document.save_document(file, entity)
 

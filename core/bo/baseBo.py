@@ -33,8 +33,8 @@ class BaseBo:
         utils.from_on_to_boolean(entity)
         return json.loads(self.context.insert(entity))
     
-    def find_fields_byID(self, entity_id, fields):
-        return json.loads(self.context.find_fields_byID(entity_id, fields))
+    def find_fields_by_id(self, entity_id, fields):
+        return json.loads(self.context.find_fields_by_id(entity_id, fields))
 
     def find_fields(self, fields):
         fields = {k:1 for k in fields}

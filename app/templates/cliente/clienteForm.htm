@@ -49,6 +49,8 @@
                 <input type="checkbox" name="ativo" id="ativo" checked="checked"> {% else %}
                 <input type="checkbox" name="ativo" id="ativo"> {% endif %}
                 <label for="ativo">Ativo</label> {% endif %}
+                <br> <label>Upload de Arquivo</label>
+                <input id="arquivo" name="arquivo" type="file">
             </div>
             <div class="4u 12u(mobile)">
                 <label>Nato a</label>
@@ -105,22 +107,20 @@
                 <input type="datetime-local" name="chegada" id="chegada" value="{{cliente['chegada']}}">
                 <label>Aeroporto</label>
                 <input type="text" placeholder="digite o aeroporto aqui" name="aeroporto" id="aeroporto" value="{{cliente['aeroporto']}}">
-                <label>Data de Entrada do Processo</label>
-                <input type="date" name="data_entrada_processo" id="data_entrada_processo" value="{{cliente['data_entrada_processo']}}">
                 <label>Comune</label>
                 <span id="_comune" hidden>{{cliente["comune"]}}</span>
                 <select id="comune_select" name="comune">
                     <option value="">Selecione o comune</option>
                 </select>
                 <label>Residência na Itália</label>
-                <span id="_residencia_italia" hidden>{{cliente["residencia_italia"]}}</span>
+                <input type="hidden" id="_residencia_italia" name="_residencia_italia" value="{{cliente['_residencia_italia']}}">
                 <select id="residencia_select" name="residencia_italia">
                     <option value="">Selecione a residência</option>
                 </select>
+                <label>Data de Entrada do Processo</label>
+                <input type="date" name="data_entrada_processo" id="data_entrada_processo" value="{{cliente['data_entrada_processo']}}">
                 <label>Data de Entrada da Não Renúncia</label>
                 <input type="date" name="data_entrada_nr" id="data_entrada_nr" value="{{cliente['data_entrada_nr']}}">
-                <label>Data de Entrada do Passaporte Europeu</label>
-                <input type="date" name="data_entrada_passaporte" id="data_entrada_passaporte" value="{{cliente['data_entrada_passaporte']}}">
                 <label>Consulados</label>
                 <fieldset>
                     <span id="_consulado" hidden>{{cliente["consulado"]}}</span>
@@ -133,8 +133,10 @@
                     <input type="checkbox" class="consulados" name="RC" id="RC" value="RC"> <label>Recife</label> <br>
                     <input type="checkbox" class="consulados" name="BR" id="BR" value="BR"> <label>Brasília</label>
                 </fieldset>
-                <label>Upload de Arquivo</label>
-                <input id="arquivo" name="arquivo" type="file">
+                <label>Data de Entrada do Passaporte Europeu</label>
+                <input type="date" name="data_entrada_passaporte" id="data_entrada_passaporte" value="{{cliente['data_entrada_passaporte']}}">
+                <label>Data de Chegada do AIRE</label>
+                <input type="date" name="data_chegada_aire" id="data_chegada_aire" value="{{cliente['data_chegada_aire']}}">
             </div>
         </div>
 

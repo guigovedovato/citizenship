@@ -57,7 +57,7 @@ function setComune() {
 }
 
 function setResidencia() {
-    residencia_italia = $("#_residencia_italia").html();
+    var residencia_italia = $("#_residencia_italia").val();
     $("#residencia_select").val(residencia_italia);
 }
 

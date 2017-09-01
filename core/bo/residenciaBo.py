@@ -26,5 +26,23 @@ class ResidenciaBo(BaseBo):
             entity.pop('capacidade_old')
         return super().update(entity_id, entity)
 
-    def decrease_vaga(self, residencia):
-        pass
+    def decrease_vaga(self, endereco):
+        residencia = json.loads(self.get_residencia(endereco))
+        residencia[0]["vagas"] -= 1
+        self.set_residencia(residencia)
+    
+    def increase_vaga(self, endereco):
+        residencia = json.loads(self.get_residencia(endereco))
+        residencia[0]["vagas"] += 1
+        self.set_residencia(residencia)
+
+    def get_residencia(self, endereco):
+        return self.context.get_by_filter_fields({"endereco":endereco},{"vagas":1})
+
+    def set_residencia(self, residencia):
+        new_residence = {"vagas":residencia[0]["vagas"]}
+        super().update(residencia[0]["_id"]["$oid"], new_residence)
+
+    def get_by_comune(self, comune):
+        comune.update({"ativo":"True"})
+        return json.loads(self.context.get_by_filter_fields(comune, {"endereco":1}))

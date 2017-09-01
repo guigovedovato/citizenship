@@ -56,7 +56,7 @@ class BoardBo(BaseBo):
         passaporte = []
         start_date = (datetime.now().date() - timedelta(days=20))
         end_date = (start_date + timedelta(days=5))
-        clientes = self.search({"data_entrada_passaporte":{'$lte':str(end_date), '$ne':""}}, 
+        clientes = self.search({"data_entrada_passaporte":{'$lte':str(end_date), '$ne':""}, "data_chegada_aire":""}, 
                           {"cognome":1, "nome":1, "data_entrada_passaporte":1, "comune":1, "_id":0},
                           "data_entrada_passaporte")
         for cliente in clientes:
@@ -76,7 +76,8 @@ class BoardBo(BaseBo):
         return json.loads(json.dumps(board))
 
     def search(self, query, fields, order):
-        return json.loads(self.context.get_by_filter_fields(query,fields, order))
+        query.update({"ativo":"True"})
+        return json.loads(self.context.get_by_filter_fields(query, fields, order))
     
     def set_recepcao(self, cliente, data, hora, expiracao):
         return {"cognome":cliente["cognome"], "nome":cliente["nome"], "data":utils.get_data(data), "hora":hora, "aeroporto":cliente["aeroporto"], "expiracao":expiracao}
