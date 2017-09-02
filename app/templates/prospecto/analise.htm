@@ -1,3 +1,179 @@
-{% extends './shared/_template.htm' %} {% block content %} {% endblock %} {% block script %}
-<script src="{{url_for('static', filename='js/application/prospecto.js')}}"></script>
+{% extends './shared/_template.htm' %} {% block content %}
+
+<!-- Form -->
+<section class="box features">
+    {% if analise %}
+    <h2>Edição</h2>
+    {% else %}
+    <h2>Novo</h2>
+    {% endif %}
+    <form id="analiseForm">
+        {% if analise %}
+        <h2>{{analise["prospecto"]}}</h2>
+        {% else %}
+        <div class="4u 12u(mobile)">
+            <label for="prospecto_select">Prospecto</label>
+            <select id="prospecto_select" name="prospecto">
+                <option value="">Selecione o Prospecto</option>
+            </select>
+            <br>
+        </div>
+        {% endif %}
+        <table class="analise">
+            <thead>
+                <tr>
+                    <th style="width:5%">Parentesco</th>
+                    <th style="width:5%">Ato</th>
+                    <th style="width:25%">Nome</th>
+                    <th style="width:25%">Local</th>
+                    <th style="width:1%">Data</th>
+                    <th style="width:7%">Idade</th>
+                    <th style="width:20%">Conjuge</th>
+                    <th style="width:11%">Doc</th>
+                    <th style="width:1%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Requerente -->
+                <tr>
+                    <td rowspan="2" style="vertical-align:middle">Requerente</td>
+                    <td>Nascimento</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="date"></td>
+                    <td></td>
+                    <td></td>
+                    <td><input type="text"></td>
+                    <td rowspan="2" style="vertical-align:middle"><img class="image-button" onclick="addLine('menores','requerente')" src="{{url_for('static', filename='images/add.png')}}"></td>
+                </tr>
+                <tr class="requerente">
+                    <td>Casamento</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="date"></td>
+                    <td><input type="number"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <!-- Pai/Mãe -->
+                <tr>
+                    <td rowspan="5" style="vertical-align:middle">Pai/Mãe</td>
+                    <td>Nascimento</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="date"></td>
+                    <td></td>
+                    <td></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>Casamento</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="date"></td>
+                    <td><input type="number"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>Óbito</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="date"></td>
+                    <td><input type="number"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>Nasc Requerente</td>
+                    <td><input type="text"></td>
+                    <td></td>
+                    <td></td>
+                    <td><input type="number"></td>
+                    <td><input type="text"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Cas Requerente</td>
+                    <td><input type="text"></td>
+                    <td></td>
+                    <td></td>
+                    <td><input type="number"></td>
+                    <td><input type="text"></td>
+                    <td></td>
+                </tr>
+                <!-- Avô/Avó -->
+                <tr>
+                    <td rowspan="6" style="vertical-align:middle">Avô/Avó</td>
+                    <td>Nascimento</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="date"></td>
+                    <td></td>
+                    <td></td>
+                    <td><input type="text"></td>
+                    <td rowspan="6" style="vertical-align:middle"><img id="btnAvo" class="image-button" onclick="addLine('bisavo','avo')" src="{{url_for('static', filename='images/add.png')}}"></td>
+                </tr>
+                <tr>
+                    <td>Casamento</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="date"></td>
+                    <td><input type="number"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>Óbito</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="date"></td>
+                    <td><input type="number"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>Nasc Pai/Mãe</td>
+                    <td><input type="text"></td>
+                    <td></td>
+                    <td></td>
+                    <td><input type="number"></td>
+                    <td><input type="text"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Cas Pai/Mãe</td>
+                    <td><input type="text"></td>
+                    <td></td>
+                    <td></td>
+                    <td><input type="number"></td>
+                    <td><input type="text"></td>
+                    <td></td>
+                </tr>
+                <tr class="avo">
+                    <td>Nasc Requerente</td>
+                    <td><input type="text"></td>
+                    <td></td>
+                    <td></td>
+                    <td><input type="number"></td>
+                    <td><input type="text"></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="buttons">
+            <input type="button" value="Voltar" onclick="window.history.go(-1);">
+            <input type="button" value="Analisar" onclick="doAnalise()">
+        </div>
+    </form>
+</section>
+
+{% endblock %} {% block script %}
+<script src="{{url_for('static', filename='js/application/analise.js')}}"></script>
+<script>
+    $(document).ready(function() {
+        $("table").show();
+    });
+</script>
 {% endblock %}

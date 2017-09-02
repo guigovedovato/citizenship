@@ -14,12 +14,8 @@ $("#prospectoForm").submit(function(e) {
         $(':input[type="submit"]').prop('disabled', true);
 });
 
-function analise(id) {}
-
-function doAnalise() {}
-
 function callAnaliseURL() {
-    location.href = "/prospecto/analise/" + $("#_id").html();
+    location.href = "/prospecto/analise/" + $("#_analise").html();
 }
 
 $('#cliente').change(function() {

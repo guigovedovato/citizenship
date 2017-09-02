@@ -2657,3 +2657,34 @@ table.default thead {
 .empty {
     text-align: center;
 }
+
+table.analise {
+    width: 100%;
+}
+
+table.analise tr {
+    border-top: solid 2px #E7EAE8;
+}
+
+table.analise tr:first-child {
+    border-top: 0;
+}
+
+table.analise td {
+    padding: 0.1em 0 0.4em 0.5em
+}
+
+table.analise th {
+    text-align: left;
+    padding: 0.5em 1em 0.5em 1em;
+    margin: 0 0 1em 0;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #6b7770;
+}
+
+table.analise thead {
+    background: #E7EAE8;
+    color: #fff;
+}

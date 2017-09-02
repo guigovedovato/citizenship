@@ -3,6 +3,7 @@ from api.clienteApi import Cliente
 from api.prospectoApi import Prospecto
 from api.comuneApi import Comune
 from api.residenciaApi import Residencia
+from api.analiseApi import Analise
 
 api.add_resource(Cliente, '/api/cliente', endpoint = 'clientes')
 api.add_resource(Cliente, '/api/cliente/<parameter>', endpoint = 'cliente')
@@ -15,3 +16,6 @@ api.add_resource(Comune, '/api/comune/<parameter>', endpoint = 'comune')
 
 api.add_resource(Residencia, '/api/residencia', endpoint = 'residencias')
 api.add_resource(Residencia, '/api/residencia/<parameter>', endpoint = 'residencia')
+
+api.add_resource(Analise, '/api/analise/', endpoint = 'analises')
+api.add_resource(Analise, '/api/analise/<parameter>', endpoint = 'analise')

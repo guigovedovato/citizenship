@@ -2,7 +2,7 @@ import json
 import core.common.utils as utils
 import os
 
-FILES = "c:\\AssessoriaManager"
+FILES = "c:\\AssessoriaManager\\files"
 
 class DocumentBo():
     def get_document(self, document):

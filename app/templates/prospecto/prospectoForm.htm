@@ -12,6 +12,7 @@
             <div class="4u 12u(mobile)">
                 {% if prospecto %}
                 <span id="_id" hidden>{{prospecto["_id"]["$oid"]}}</span>
+                <span id="_analise" hidden>{{prospecto["cognome"]}} {{prospecto["nome"]}}</span>
                 <label>Cognome</label>
                 <h2>{{prospecto["cognome"]}}</h2>
                 <label>Nome</label>

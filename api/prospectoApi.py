@@ -18,6 +18,8 @@ class Prospecto(Resource):
                 return self.prospecto.do_analise(parameter["analise"]), 201
             elif parameter.get('convert'):
                 return self.prospecto.convert(parameter["convert"]), 201
+            elif parameter.get('fields'):
+                return self.prospecto.find_fields(parameter["fields"]), 201
             else:
                 return self.prospecto.get_by_filter(parameter), 201
 

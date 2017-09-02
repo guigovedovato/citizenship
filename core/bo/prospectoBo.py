@@ -16,10 +16,6 @@ class ProspectoBo(BaseBo):
         ex_prospecto = self.update(entity_id, {"cliente":"True", "ativo":"False"})
         return "O prospecto {0} foi convertido para cliente com sucesso".format(ex_prospecto["cognome"])
 
-    def do_analise(self, entity_id):
-        analise = AnaliseBo()
-        return analise.do_analise(entity_id)
-
     def get_by_filter(self, filters):
         filters.update({"cliente":"False"})
         return super().get_by_filter(filters, ["cognome","nome"], [])
