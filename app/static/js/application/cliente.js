@@ -8,7 +8,7 @@ $("#clienteForm").submit(function(e) {
     e.preventDefault(); //prevent submit
     prepareComment();
     data = serializeToJson($(this).serializeArray());
-    submitForm(data, "/api/cliente", "clienteForm", "Cliente {0} salvo com sucesso.", "cognome", this);
+    submitForm(data, "/api/cliente", true, "Cliente {0} salvo com sucesso.", "cognome", this);
     setComment();
 });
 

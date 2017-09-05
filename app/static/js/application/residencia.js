@@ -7,5 +7,5 @@ $("#residenciaSearch").submit(function(e) {
 $("#residenciaForm").submit(function(e) {
     e.preventDefault(); //prevent submit
     data = serializeToJson($(this).serializeArray());
-    submitForm(data, "/api/residencia", "residenciaForm", "Residencia {0} salva com sucesso.", "endereco", this);
+    submitForm(data, "/api/residencia", true, "Residencia {0} salva com sucesso.", "endereco", this);
 });

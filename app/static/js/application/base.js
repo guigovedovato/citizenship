@@ -83,9 +83,12 @@ function serializeToJson(serializer) {
     return JSON.stringify(JSON.parse(_string));
 }
 
-function setMessage(msg) {
+function setMessage(msg, refresh = true) {
     $("#message").html("<span>" + msg + "</span>");
-    $("#message").append('<div class="buttons"><input type="button" value="OK" onclick="$(\'#messager\').hide();"></div>');
+    if (refresh)
+        $("#message").append('<div class="buttons"><input type="button" value="OK" onclick="$(\'#messager\').hide();"></div>');
+    else
+        $("#message").append('<div class="buttons"><input type="button" value="OK" onclick="window.location.reload();"></div>');
     $("#messager").show();
 }
 
@@ -239,14 +242,15 @@ function uploadArquivo(url, id, form, message) {
     });
 }
 
-function submitForm(dataSerialized, url, form, message, field, form) {
+function submitForm(dataSerialized, url, reset, message, field, form) {
     $("#load").show();
     id = $("#_id").html();
     if (!id) {
         post = postData(dataSerialized, url);
         post.done(function(response) {
-            setMessage(message.format(response[field]));
-            $(form)[0].reset();
+            setMessage(message.format(response[field]), reset);
+            if (reset)
+                $(form)[0].reset();
         });
         post.fail(function() {
             setMessage("Houve um erro ao salvar.");
@@ -272,8 +276,8 @@ function submitForm(dataSerialized, url, form, message, field, form) {
                 setMessage("Houve um erro ao salvar.");
             }
         });
-        $("#load").hide();
     }
+    $("#load").hide();
 }
 
 function getComunes() {

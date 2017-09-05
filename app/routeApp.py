@@ -48,11 +48,11 @@ def prospectoView():
 def prospectoNovo():
     return render_template('prospecto/prospectoform.htm', prospecto = None, current_prospecto = "current")
 
-@app.route("/prospecto/analise/<entity>")
-def prospectoAnalise(entity):
+@app.route("/prospecto/analise/<entity_name>")
+def prospectoAnalise(entity_name):
     from core.bo.analiseBo import AnaliseBo
     analise = AnaliseBo()
-    entity = analise.get_by_prospecto(entity)
+    entity = analise.get_by_prospecto(entity_name)
     return render_template('prospecto/analise.htm', analise = entity, current_prospecto = "current")
 
 @app.route("/prospecto/edit/<entity_id>")

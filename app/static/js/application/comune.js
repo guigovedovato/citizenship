@@ -7,5 +7,5 @@ $("#comuneSearch").submit(function(e) {
 $("#comuneForm").submit(function(e) {
     e.preventDefault(); //prevent submit
     data = serializeToJson($(this).serializeArray());
-    submitForm(data, "/api/comune", "comuneForm", "Comune {0} salvo com sucesso.", "nome_comune", this);
+    submitForm(data, "/api/comune", true, "Comune {0} salvo com sucesso.", "nome_comune", this);
 });

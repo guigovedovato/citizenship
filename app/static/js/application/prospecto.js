@@ -8,7 +8,7 @@ $("#prospectoForm").submit(function(e) {
     e.preventDefault(); //prevent submit
     prepareComment();
     data = serializeToJson($(this).serializeArray());
-    submitForm(data, "/api/prospecto", "prospectoForm", "Prospecto {0} salvo com sucesso.", "cognome", this);
+    submitForm(data, "/api/prospecto", true, "Prospecto {0} salvo com sucesso.", "cognome", this);
     setComment();
     if ($('#cliente').is(":checked"))
         $(':input[type="submit"]').prop('disabled', true);
