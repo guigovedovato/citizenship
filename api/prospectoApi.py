@@ -14,8 +14,6 @@ class Prospecto(Resource):
             parameter = json.loads(parameter)
             if parameter.get('id'):
                 return self.prospecto.get_by_id(parameter["id"]), 201
-            elif parameter.get('analise'):
-                return self.prospecto.do_analise(parameter["analise"]), 201
             elif parameter.get('convert'):
                 return self.prospecto.convert(parameter["convert"]), 201
             elif parameter.get('fields'):

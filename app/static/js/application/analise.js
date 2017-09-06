@@ -10,7 +10,7 @@ function getProspectos() {
 
 function doAnalise() {
     data = serializeToJson($("#analiseForm").serializeArray());
-    submitForm(data, "/api/analise", false, "Análise do prospecto {0} salvo com sucesso.", "prospecto", this);
+    submitForm(data, "/api/analise", false, "Análise do prospecto {0} salva com sucesso.", "prospecto", this);
 }
 
 function addLine(who, where) {
