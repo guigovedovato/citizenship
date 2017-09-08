@@ -26,6 +26,7 @@ class ProspectoBo(BaseBo):
         return super().insert(entity)
 
     def update(self, entity_id, entity):
+        set_colaborador(entity)
         utils.itens_false(entity, ["ativo"])
         saved = super().update(entity_id, entity)
         if(entity.get('cliente')):
@@ -35,7 +36,9 @@ class ProspectoBo(BaseBo):
     def get_by_id(self, entity_id):
         entity = super().get_by_id(entity_id)
         entity["colaborador"] = utils.get_separated_by_comma(entity["colaborador"])
-        entity["data_contato"] = utils.get_data(entity["data_contato"])
+        if entity.get("data_contato"):
+            entity["data_contato"] = utils.get_data(entity["data_contato"])
+        print(entity)
         return entity
 
 def to_convert(entity):

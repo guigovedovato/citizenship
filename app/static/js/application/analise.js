@@ -8,9 +8,70 @@ function getProspectos() {
         });
 }
 
+function getAnalise() {
+    id = $("#_id").html();
+    if (id)
+        $.get("/api/analise/" + id)
+        .done(function(response) {
+            inputResponse(response);
+        });
+}
+
+function inputResponse(response) {
+    if (response.hasOwnProperty('nascimento_bisavo_nome')) {
+        setTimeout($("#btnAvo").click(), 100);
+    }
+    if (response.hasOwnProperty('nascimento_trisavo_nome')) {
+        setTimeout($("#btnBisavo").click(), 100);
+    }
+    if (response.hasOwnProperty('nascimento_menor_nome1')) {
+        setTimeout($("#btnMenor").click(), 100);
+        verifyMenor(response);
+    }
+    for (var el in response) {
+        $("#" + el).val(response[el]);
+    }
+}
+
+function verifyMenor(data) {
+    for (i = 2; i <= 10; i++) {
+        if (data.hasOwnProperty('nascimento_menor_nome' + i)) {
+            setTimeout($("#btnMenor").click(), 100);
+        }
+    }
+}
+
+function inputAlertClass(data) {
+    for (var el in data) {
+        $("#" + el).addClass("alert");
+    }
+}
+
 function doAnalise() {
-    data = serializeToJson($("#analiseForm").serializeArray());
-    submitForm(data, "/api/analise", false, "Análise do prospecto {0} salva com sucesso.", "prospecto", this);
+    $("#load").show();
+    dataSerialized = serializeToJson($("#analiseForm").serializeArray());
+    url = "/api/analise";
+    id = $("#_id").html();
+    if (!id) {
+        post = postData(dataSerialized, url);
+        post.done(function(response) {
+            inputAlertClass(response);
+            setMessage("Análise realizada com sucesso.");
+        });
+        post.fail(function() {
+            setMessage("Houve um erro ao salvar.");
+        });
+    } else {
+        put = putData(dataSerialized, url);
+        put.done(function(response) {
+            inputAlertClass(response);
+            setMessage("Análise realizada com sucesso.");
+        });
+        put.fail(function() {
+            setMessage("Houve um erro ao salvar.");
+        });
+    }
+    $("#load").hide();
 }
 
 function addLine(who, where) {
@@ -33,12 +94,12 @@ function addMenores(where) {
     tr.attr("class", "menores");
     tr.append("<td>Filhos Menores</td>");
     tr.append("<td>Nascimento</td>");
-    tr.append("<td><input type='text' name='nascimento_menor" + sessionStorage.menor_click + "_nome' id='nascimento_menor" + sessionStorage.menor_click + "_nome' placeholder='Digite o nome' value=''></td>");
-    tr.append("<td><input type='text' name='nascimento_menor" + sessionStorage.menor_click + "_local' id='nascimento_menor" + sessionStorage.menor_click + "_local' placeholder='Digite o local' value=''></td>");
-    tr.append("<td><input type='date' name='nascimento_menor" + sessionStorage.menor_click + "_data' id='nascimento_menor" + sessionStorage.menor_click + "_data' value=''></td>");
+    tr.append("<td><input type='text' name='nascimento_menor_nome" + sessionStorage.menor_click + "' id='nascimento_menor_nome" + sessionStorage.menor_click + "' placeholder='Digite o nome' value=''></td>");
+    tr.append("<td><input type='text' name='nascimento_menor_local" + sessionStorage.menor_click + "' id='nascimento_menor_local" + sessionStorage.menor_click + "' placeholder='Digite o local' value=''></td>");
+    tr.append("<td><input type='date' name='nascimento_menor_data" + sessionStorage.menor_click + "' id='nascimento_menor_data" + sessionStorage.menor_click + "' value=''></td>");
     tr.append("<td></td>");
     tr.append("<td></td>");
-    tr.append("<td><input type='text' name='nascimento_menor" + sessionStorage.menor_click + "_doc' id='nascimento_menor" + sessionStorage.menor_click + "_doc' placeholder='Digite o doc' value=''></td>");
+    tr.append("<td><input type='text' name='nascimento_menor_doc" + sessionStorage.menor_click + "' id='nascimento_menor_doc" + sessionStorage.menor_click + "' placeholder='Digite o doc' value=''></td>");
     tr.insertAfter("." + where);
 }
 
@@ -210,5 +271,6 @@ $(document).ready(function() {
         getProspectos();
     } else {
         createProspectName();
+        getAnalise();
     }
 });

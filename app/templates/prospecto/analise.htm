@@ -37,125 +37,125 @@
             <tr>
                 <td rowspan="2" style="vertical-align:middle">Requerente</td>
                 <td>Nascimento</td>
-                <td><input type="text" name="nascimento_requerente_nome" id="nascimento_requerente_nome" placeholder="Digite o nome" value="{{analise['nascimento_requerente_nome']}}"></td>
-                <td><input type="text" name="nascimento_requerente_local" id="nascimento_requerente_local" placeholder="Digite o local" value="{{analise['nascimento_requerente_local']}}"></td>
-                <td><input type="date" name="nascimento_requerente_data" id="nascimento_requerente_data" value="{{analise['nascimento_requerente_data']}}"></td>
+                <td><input type="text" name="nascimento_requerente_nome" id="nascimento_requerente_nome" placeholder="Digite o nome" value=""></td>
+                <td><input type="text" name="nascimento_requerente_local" id="nascimento_requerente_local" placeholder="Digite o local" value=""></td>
+                <td><input type="date" name="nascimento_requerente_data" id="nascimento_requerente_data" value=""></td>
                 <td></td>
                 <td></td>
-                <td><input type="text" name="nascimento_requerente_doc" id="nascimento_requerente_doc" placeholder="Digite o doc" value="{{analise['nascimento_requerente_doc']}}"></td>
-                <td rowspan="2" style="vertical-align:middle"><img class="image-button" onclick="addLine('menores','requerente')" src="{{url_for('static', filename='images/add.png')}}"></td>
+                <td><input type="text" name="nascimento_requerente_doc" id="nascimento_requerente_doc" placeholder="Digite o doc" value=""></td>
+                <td rowspan="2" style="vertical-align:middle"><img id="btnMenor" class="image-button" onclick="addLine('menores','requerente')" src="{{url_for('static', filename='images/add.png')}}"></td>
             </tr>
             <tr class="requerente">
                 <td>Casamento</td>
-                <td><input type="text" name="casamento_requerente_nome" id="casamento_requerente_nome" placeholder="Digite o nome" value="{{analise['casamento_requerente_nome']}}"></td>
-                <td><input type="text" name="casamento_requerente_local" id="casamento_requerente_local" placeholder="Digite o local" value="{{analise['casamento_requerente_local']}}"></td>
-                <td><input type="date" name="casamento_requerente_data" id="casamento_requerente_data" value="{{analise['casamento_requerente_data']}}"></td>
-                <td><input type="number" name="casamento_requerente_idade" id="casamento_requerente_idade" value="{{analise['casamento_requerente_idade']}}"></td>
-                <td><input type="text" name="casamento_requerente_conjuge" id="casamento_requerente_conjuge" placeholder="Digite o conjuge" value="{{analise['casamento_requerente_conjuge']}}"></td>
-                <td><input type="text" name="casamento_requerente_doc" id="casamento_requerente_doc" placeholder="Digite o doc" value="{{analise['casamento_requerente_doc']}}"></td>
+                <td><input type="text" name="casamento_requerente_nome" id="casamento_requerente_nome" placeholder="Digite o nome" value=""></td>
+                <td><input type="text" name="casamento_requerente_local" id="casamento_requerente_local" placeholder="Digite o local" value=""></td>
+                <td><input type="date" name="casamento_requerente_data" id="casamento_requerente_data" value=""></td>
+                <td><input type="number" name="casamento_requerente_idade" id="casamento_requerente_idade" value=""></td>
+                <td><input type="text" name="casamento_requerente_conjuge" id="casamento_requerente_conjuge" placeholder="Digite o conjuge" value=""></td>
+                <td><input type="text" name="casamento_requerente_doc" id="casamento_requerente_doc" placeholder="Digite o doc" value=""></td>
             </tr>
             <!-- Pai/Mãe -->
             <tr>
                 <td rowspan="5" style="vertical-align:middle">Pai/Mãe</td>
                 <td>Nascimento</td>
-                <td><input type="text" name="nascimento_paimae_nome" id="nascimento_paimae_nome" placeholder="Digite o nome" value="{{analise['nascimento_paimae_nome']}}"></td>
-                <td><input type="text" name="nascimento_paimae_local" id="nascimento_paimae_local" placeholder="Digite o local" value="{{analise['nascimento_paimae_local']}}"></td>
-                <td><input type="date" name="nascimento_paimae_data" id="nascimento_paimae_data" value="{{analise['nascimento_paimae_data']}}"></td>
+                <td><input type="text" name="nascimento_paimae_nome" id="nascimento_paimae_nome" placeholder="Digite o nome" value=""></td>
+                <td><input type="text" name="nascimento_paimae_local" id="nascimento_paimae_local" placeholder="Digite o local" value=""></td>
+                <td><input type="date" name="nascimento_paimae_data" id="nascimento_paimae_data" value=""></td>
                 <td></td>
                 <td></td>
-                <td><input type="text" name="nascimento_paimae_doc" id="nascimento_paimae_doc" placeholder="Digite o doc" value="{{analise['nascimento_paimae_doc']}}"></td>
+                <td><input type="text" name="nascimento_paimae_doc" id="nascimento_paimae_doc" placeholder="Digite o doc" value=""></td>
             </tr>
             <tr>
                 <td>Casamento</td>
-                <td><input type="text" name="casamento_paimae_nome" id="casamento_paimae_nome" placeholder="Digite o nome" value="{{analise['casamento_paimae_nome']}}"></td>
-                <td><input type="text" name="casamento_paimae_local" id="casamento_paimae_local" placeholder="Digite o local" value="{{analise['casamento_paimae_local']}}"></td>
-                <td><input type="date" name="casamento_paimae_data" id="casamento_paimae_data" value="{{analise['casamento_paimae_data']}}"></td>
-                <td><input type="number" name="casamento_paimae_idade" id="casamento_paimae_idade" value="{{analise['casamento_paimae_idade']}}"></td>
-                <td><input type="text" name="casamento_paimae_conjuge" id="casamento_paimae_conjuge" placeholder="Digite o conjuge" value="{{analise['casamento_paimae_conjuge']}}"></td>
-                <td><input type="text" name="casamento_paimae_doc" id="casamento_paimae_doc" placeholder="Digite o doc" value="{{analise['casamento_paimae_doc']}}"></td>
+                <td><input type="text" name="casamento_paimae_nome" id="casamento_paimae_nome" placeholder="Digite o nome" value=""></td>
+                <td><input type="text" name="casamento_paimae_local" id="casamento_paimae_local" placeholder="Digite o local" value=""></td>
+                <td><input type="date" name="casamento_paimae_data" id="casamento_paimae_data" value=""></td>
+                <td><input type="number" name="casamento_paimae_idade" id="casamento_paimae_idade" value=""></td>
+                <td><input type="text" name="casamento_paimae_conjuge" id="casamento_paimae_conjuge" placeholder="Digite o conjuge" value=""></td>
+                <td><input type="text" name="casamento_paimae_doc" id="casamento_paimae_doc" placeholder="Digite o doc" value=""></td>
             </tr>
             <tr>
                 <td>Óbito</td>
-                <td><input type="text" name="obito_paimae_nome" id="obito_paimae_nome" placeholder="Digite o nome" value="{{analise['obito_paimae_nome']}}"></td>
-                <td><input type="text" name="obito_paimae_local" id="obito_paimae_local" placeholder="Digite o local" value="{{analise['obito_paimae_local']}}"></td>
-                <td><input type="date" name="obito_paimae_data" id="obito_paimae_data" value="{{analise['obito_paimae_data']}}"></td>
-                <td><input type="number" name="obito_paimae_idade" id="obito_paimae_idade" value="{{analise['obito_requerente_idade']}}"></td>
-                <td><input type="text" name="obito_paimae_conjuge" id="obito_paimae_conjuge" placeholder="Digite o conjuge" value="{{analise['obito_paimae_conjuge']}}"></td>
-                <td><input type="text" name="obito_paimae_doc" id="obito_paimae_doc" placeholder="Digite o doc" value="{{analise['obito_paimae_doc']}}"></td>
+                <td><input type="text" name="obito_paimae_nome" id="obito_paimae_nome" placeholder="Digite o nome" value=""></td>
+                <td><input type="text" name="obito_paimae_local" id="obito_paimae_local" placeholder="Digite o local" value=""></td>
+                <td><input type="date" name="obito_paimae_data" id="obito_paimae_data" value=""></td>
+                <td><input type="number" name="obito_paimae_idade" id="obito_paimae_idade" value=""></td>
+                <td><input type="text" name="obito_paimae_conjuge" id="obito_paimae_conjuge" placeholder="Digite o conjuge" value=""></td>
+                <td><input type="text" name="obito_paimae_doc" id="obito_paimae_doc" placeholder="Digite o doc" value=""></td>
             </tr>
             <tr>
                 <td>Nasc Requerente</td>
-                <td><input type="text" name="nascimento_paimae_requerente_nome" id="nascimento_paimae_requerente_nome" placeholder="Digite o nome" value="{{analise['nascimento_paimae_requerente_nome']}}"></td>
+                <td><input type="text" name="nascimento_paimae_requerente_nome" id="nascimento_paimae_requerente_nome" placeholder="Digite o nome" value=""></td>
                 <td></td>
                 <td></td>
-                <td><input type="number" name="nascimento_paimae_requerente_idade" id="nascimento_paimae_requerente_idade" value="{{analise['nascimento_paimae_requerente_idade']}}"></td>
-                <td><input type="text" name="nascimento_paimae_requerente_conjuge" id="nascimento_paimae_requerente_conjuge" placeholder="Digite o conjuge" value="{{analise['nascimento_paimae_requerente_conjuge']}}"></td>
+                <td><input type="number" name="nascimento_paimae_requerente_idade" id="nascimento_paimae_requerente_idade" value=""></td>
+                <td><input type="text" name="nascimento_paimae_requerente_conjuge" id="nascimento_paimae_requerente_conjuge" placeholder="Digite o conjuge" value=""></td>
                 <td></td>
             </tr>
             <tr>
                 <td>Cas Requerente</td>
-                <td><input type="text" name="casamento_paimae_requerente_nome" id="casamento_paimae_requerente_nome" placeholder="Digite o nome" value="{{analise['casamento_paimae_requerente_nome']}}"></td>
+                <td><input type="text" name="casamento_paimae_requerente_nome" id="casamento_paimae_requerente_nome" placeholder="Digite o nome" value=""></td>
                 <td></td>
                 <td></td>
-                <td><input type="number" name="casamento_paimae_requerente_idade" id="casamento_paimae_requerente_idade" value="{{analise['casamento_paimae_requerente_idade']}}"></td>
-                <td><input type="text" name="casamento_paimae_requerente_conjuge" id="casamento_paimae_requerente_conjuge" placeholder="Digite o conjuge" value="{{analise['casamento_paimae_requerente_conjuge']}}"></td>
+                <td><input type="number" name="casamento_paimae_requerente_idade" id="casamento_paimae_requerente_idade" value=""></td>
+                <td><input type="text" name="casamento_paimae_requerente_conjuge" id="casamento_paimae_requerente_conjuge" placeholder="Digite o conjuge" value=""></td>
                 <td></td>
             </tr>
             <!-- Avô/Avó -->
             <tr>
                 <td rowspan="6" style="vertical-align:middle">Avô/Avó</td>
                 <td>Nascimento</td>
-                <td><input type="text" name="nascimento_avo_nome" id="nascimento_avo_nome" placeholder="Digite o nome" value="{{analise['nascimento_avo_nome']}}"></td>
-                <td><input type="text" name="nascimento_avo_local" id="nascimento_avo_local" placeholder="Digite o local" value="{{analise['nascimento_avo_local']}}"></td>
-                <td><input type="date" name="nascimento_avo_data" id="nascimento_avo_data" value="{{analise['nascimento_avo_data']}}"></td>
+                <td><input type="text" name="nascimento_avo_nome" id="nascimento_avo_nome" placeholder="Digite o nome" value=""></td>
+                <td><input type="text" name="nascimento_avo_local" id="nascimento_avo_local" placeholder="Digite o local" value=""></td>
+                <td><input type="date" name="nascimento_avo_data" id="nascimento_avo_data" value=""></td>
                 <td></td>
                 <td></td>
-                <td><input type="text" name="nascimento_avo_doc" id="nascimento_avo_doc" placeholder="Digite o doc" value="{{analise['nascimento_avo_doc']}}"></td>
+                <td><input type="text" name="nascimento_avo_doc" id="nascimento_avo_doc" placeholder="Digite o doc" value=""></td>
                 <td rowspan="6" style="vertical-align:middle"><img id="btnAvo" class="image-button" onclick="addLine('bisavo','avo')" src="{{url_for('static', filename='images/add.png')}}"></td>
             </tr>
             <tr>
                 <td>Casamento</td>
-                <td><input type="text" name="casamento_avo_nome" id="casamento_avo_nome" placeholder="Digite o nome" value="{{analise['casamento_avo_nome']}}"></td>
-                <td><input type="text" name="casamento_avo_local" id="casamento_avo_local" placeholder="Digite o local" value="{{analise['casamento_avo_local']}}"></td>
-                <td><input type="date" name="casamento_avo_data" id="casamento_avo_data" value="{{analise['casamento_avo_data']}}"></td>
-                <td><input type="number" name="casamento_avo_idade" id="casamento_avo_idade" value="{{analise['casamento_avo_idade']}}"></td>
-                <td><input type="text" name="casamento_avo_conjuge" id="casamento_avo_conjuge" placeholder="Digite o conjuge" value="{{analise['casamento_avo_conjuge']}}"></td>
-                <td><input type="text" name="casamento_avo_doc" id="casamento_avo_doc" placeholder="Digite o doc" value="{{analise['casamento_avo_doc']}}"></td>
+                <td><input type="text" name="casamento_avo_nome" id="casamento_avo_nome" placeholder="Digite o nome" value=""></td>
+                <td><input type="text" name="casamento_avo_local" id="casamento_avo_local" placeholder="Digite o local" value=""></td>
+                <td><input type="date" name="casamento_avo_data" id="casamento_avo_data" value=""></td>
+                <td><input type="number" name="casamento_avo_idade" id="casamento_avo_idade" value=""></td>
+                <td><input type="text" name="casamento_avo_conjuge" id="casamento_avo_conjuge" placeholder="Digite o conjuge" value=""></td>
+                <td><input type="text" name="casamento_avo_doc" id="casamento_avo_doc" placeholder="Digite o doc" value=""></td>
             </tr>
             <tr>
                 <td>Óbito</td>
-                <td><input type="text" name="obito_avo_nome" id="obito_avo_nome" placeholder="Digite o nome" value="{{analise['obito_avo_nome']}}"></td>
-                <td><input type="text" name="obito_avo_local" id="obito_avo_local" placeholder="Digite o local" value="{{analise['obito_avo_local']}}"></td>
-                <td><input type="date" name="obito_avo_data" id="obito_avo_data" value="{{analise['obito_avo_data']}}"></td>
-                <td><input type="number" name="obito_avo_idade" id="obito_avo_idade" value="{{analise['obito_avo_idade']}}"></td>
-                <td><input type="text" name="obito_avo_conjuge" id="obito_avo_conjuge" placeholder="Digite o conjuge" value="{{analise['obito_avo_conjuge']}}"></td>
-                <td><input type="text" name="obito_avo_doc" id="obito_avo_doc" placeholder="Digite o doc" value="{{analise['obito_avo_doc']}}"></td>
+                <td><input type="text" name="obito_avo_nome" id="obito_avo_nome" placeholder="Digite o nome" value=""></td>
+                <td><input type="text" name="obito_avo_local" id="obito_avo_local" placeholder="Digite o local" value=""></td>
+                <td><input type="date" name="obito_avo_data" id="obito_avo_data" value=""></td>
+                <td><input type="number" name="obito_avo_idade" id="obito_avo_idade" value=""></td>
+                <td><input type="text" name="obito_avo_conjuge" id="obito_avo_conjuge" placeholder="Digite o conjuge" value=""></td>
+                <td><input type="text" name="obito_avo_doc" id="obito_avo_doc" placeholder="Digite o doc" value=""></td>
             </tr>
             <tr>
                 <td>Nasc Pai/Mãe</td>
-                <td><input type="text" name="nascimento_avo_paimae_nome" id="nascimento_avo_paimae_nome" placeholder="Digite o nome" value="{{analise['nascimento_avo_paimae_nome']}}"></td>
+                <td><input type="text" name="nascimento_avo_paimae_nome" id="nascimento_avo_paimae_nome" placeholder="Digite o nome" value=""></td>
                 <td></td>
                 <td></td>
-                <td><input type="number" name="nascimento_avo_paimae_idade" id="nascimento_avo_paimae_idade" value="{{analise['nascimento_avo_paimae_idade']}}"></td>
-                <td><input type="text" name="nascimento_avo_paimae_conjuge" id="nascimento_avo_paimae_conjuge" placeholder="Digite o conjuge" value="{{analise['nascimento_avo_paimae_conjuge']}}"></td>
+                <td><input type="number" name="nascimento_avo_paimae_idade" id="nascimento_avo_paimae_idade" value=""></td>
+                <td><input type="text" name="nascimento_avo_paimae_conjuge" id="nascimento_avo_paimae_conjuge" placeholder="Digite o conjuge" value=""></td>
                 <td></td>
             </tr>
             <tr>
                 <td>Cas Pai/Mãe</td>
-                <td><input type="text" name="casamento_avo_paimae_nome" id="casamento_avo_paimae_nome" placeholder="Digite o nome" value="{{analise['casamento_avo_paimae_nome']}}"></td>
+                <td><input type="text" name="casamento_avo_paimae_nome" id="casamento_avo_paimae_nome" placeholder="Digite o nome" value=""></td>
                 <td></td>
                 <td></td>
-                <td><input type="number" name="casamento_avo_paimae_idade" id="casamento_avo_paimae_idade" value="{{analise['casamento_avo_paimae_idade']}}"></td>
-                <td><input type="text" name="casamento_avo_paimae_conjuge" id="casamento_avo_paimae_conjuge" placeholder="Digite o conjuge" value="{{analise['casamento_avo_paimae_conjuge']}}"></td>
+                <td><input type="number" name="casamento_avo_paimae_idade" id="casamento_avo_paimae_idade" value=""></td>
+                <td><input type="text" name="casamento_avo_paimae_conjuge" id="casamento_avo_paimae_conjuge" placeholder="Digite o conjuge" value=""></td>
                 <td></td>
             </tr>
             <tr class="avo">
                 <td>Nasc Requerente</td>
-                <td><input type="text" name="nascimento_avo_requerente_nome" id="nascimento_avo_requerente_nome" placeholder="Digite o nome" value="{{analise['nascimento_avo_requerente_nome']}}"></td>
+                <td><input type="text" name="nascimento_avo_requerente_nome" id="nascimento_avo_requerente_nome" placeholder="Digite o nome" value=""></td>
                 <td></td>
                 <td></td>
-                <td><input type="number" name="nascimento_avo_requerente_idade" id="nascimento_avo_requerente_idade" value="{{analise['nascimento_avo_requerente_idade']}}"></td>
-                <td><input type="text" name="nascimento_avo_requerente_conjuge" id="nascimento_avo_requerente_conjuge" placeholder="Digite o nome" value="{{analise['nascimento_avo_requerente_conjuge']}}"></td>
+                <td><input type="number" name="nascimento_avo_requerente_idade" id="nascimento_avo_requerente_idade" value=""></td>
+                <td><input type="text" name="nascimento_avo_requerente_conjuge" id="nascimento_avo_requerente_conjuge" placeholder="Digite o nome" value=""></td>
                 <td></td>
             </tr>
         </tbody>

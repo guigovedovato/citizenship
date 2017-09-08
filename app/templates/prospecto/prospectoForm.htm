@@ -25,14 +25,14 @@
                 <label>Celular</label>
                 <input type="text" placeholder="digite o celular aqui" name="celular" id="celular" value="{{prospecto['celular']}}">
                 <label>E-mail</label>
-                <input type="email" placeholder="digite o e-mail aqui" name="email" id="email" value="{{prospecto['email']}}"> {% if prospecto %}
-                <label>Indicação</label>
+                <input type="email" placeholder="digite o e-mail aqui" name="email" id="email" value="{{prospecto['email']}}">
+                <label>Indicação</label> {% if prospecto['indicacao'] %}
                 <h2>{{prospecto['indicacao']}}</h2>
+                {% else %}
+                <input type="text" placeholder="digite o nome da pessoa que indicou aqui" name="indicacao" id="indicacao" value=""> {% endif %} {% if prospecto['colaborador'] %}
                 <label>Colaborador</label>
                 <h2>{{prospecto['colaborador']}}</h2>
                 {% else %}
-                <label>Indicação</label>
-                <input type="text" placeholder="digite o nome da pessoa que indicou aqui" name="indicacao" id="indicacao" value="">
                 <fieldset>
                     <legend>Colaborador</legend>
                     <input type="checkbox" name="c1" id="c1" value="Arlindo"> <label for="c1">Arlindo</label> <br>
@@ -51,7 +51,7 @@
                     <option value="Jadson">Jadson</option>
                     <option value="Carolina" selected="selected">Carolina</option>
                     {% endif %}
-                </select> {% if prospecto %}
+                </select> {% if prospecto['data_contato'] %}
                 <label>Data de Contato</label>
                 <h2>{{prospecto['data_contato']}}</h2>
                 {% else %}

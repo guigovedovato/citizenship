@@ -216,6 +216,16 @@ function postData(dataSerialized, url) {
     });
 }
 
+function putData(dataSerialized, url) {
+    return $.ajax({
+        url: url + "/" + id,
+        type: 'PUT',
+        contentType: "application/json; charset=utf-8",
+        data: dataSerialized,
+        dataType: "json"
+    });
+}
+
 function uploadArquivo(url, id, form, message) {
     var formData = new FormData(form);
     $.ajax({
@@ -256,25 +266,19 @@ function submitForm(dataSerialized, url, reset, message, field, form) {
             setMessage("Houve um erro ao salvar.");
         });
     } else {
-        $.ajax({
-            url: url + "/" + id,
-            type: 'PUT',
-            contentType: "application/json; charset=utf-8",
-            data: dataSerialized,
-            dataType: "json",
-            success: function(response) {
-                if (document.getElementById("arquivo")) {
-                    if ($('#arquivo').val())
-                        uploadArquivo(url, id, $(form)[0], message.format(response[field]));
-                    else
-                        setMessage(message.format(response[field]));
-                } else {
+        put = putData(dataSerialized, url);
+        put.done(function(response) {
+            if (document.getElementById("arquivo")) {
+                if ($('#arquivo').val())
+                    uploadArquivo(url, id, $(form)[0], message.format(response[field]));
+                else
                     setMessage(message.format(response[field]));
-                }
-            },
-            error: function() {
-                setMessage("Houve um erro ao salvar.");
+            } else {
+                setMessage(message.format(response[field]));
             }
+        });
+        put.fail(function() {
+            setMessage("Houve um erro ao salvar.");
         });
     }
     $("#load").hide();

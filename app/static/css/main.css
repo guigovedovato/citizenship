@@ -2688,3 +2688,8 @@ table.analise thead {
     background: #E7EAE8;
     color: #fff;
 }
+
+.alert {
+    border-color: #DF0C0F !important;
+    background-color: #F9D7D7 !important;
+}
