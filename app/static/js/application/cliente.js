@@ -13,7 +13,7 @@ $("#clienteForm").submit(function(e) {
 });
 
 function getDocuments(kind) {
-    alert("TODO");
+    window.location.href = "/api/cliente/{\"document\":\"" + kind + "\", \"cliente\":\"" + $("#_id").html() + "\"}";
 }
 
 $(document).ready(function() {

@@ -1,3 +1,5 @@
+import os
+
 def field_blank(list):
     return {k:v for k, v in list.items() if v != ""}
 
@@ -52,6 +54,13 @@ def get_data(date):
     from datetime import datetime
     new_date = convert_date(date)
     return datetime.strftime(new_date, "%d/%m/%Y")
+
 def convert_date(str_date):
     from datetime import datetime
     return datetime.strptime(str_date, '%Y-%m-%d')
+
+def create_directory(directory, folder):
+    path = os.path.join(directory, folder)
+    if not os.path.exists(path):
+        os.makedirs(path)
+    return path

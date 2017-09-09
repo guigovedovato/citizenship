@@ -10,9 +10,10 @@ class ClienteBo(BaseBo):
     def __init__(self):
         super().__init__(ClienteDao())
 
-    def get_document(self, document):
-        document = DocumentBo(self)
-        return document.get_document(document)
+    def get_document(self, witch, entity_id):
+        cliente = self.get_by_id(entity_id)
+        document = DocumentBo()
+        return document.get_document(witch, cliente)
 
     def get_board(self):
         board = BoardBo()
@@ -46,13 +47,13 @@ class ClienteBo(BaseBo):
 
     def get_by_id(self, entity_id):
         entity = super().get_by_id(entity_id)
-        if(entity.get("colaborador")):
+        if entity.get("colaborador") :
             entity["colaborador"] = utils.get_separated_by_comma(entity["colaborador"])
-        if(entity.get("data_contato")):
+        if entity.get("data_contato") :
             entity["data_contato"] = utils.get_data(entity["data_contato"])
-        if(entity.get("data_interesse")):
+        if entity.get("data_interesse") :
             entity["data_interesse"] = utils.get_data(entity["data_interesse"])
-        if(entity.get("consulado")):
+        if entity.get("consulado") :
             entity["consulado"] = utils.get_separated_by_comma(entity["consulado"])
         return entity
 
@@ -67,10 +68,10 @@ def set_client(entity, fields):
             entity.pop(field)
 
 def set_consulados(query):
-    c = ["BH", "SP", "CR", "PA", "RJ", "RC", "BR"]
+    consulados = ["BH", "SP", "CR", "PA", "RJ", "RC", "BR"]
     consulado = []
-    for key in c:
+    for key in consulados:
         if query.get(key):
             consulado.append(query[key])
-            query.pop(key)             
+            query.pop(key)
     query["consulado"] = consulado
