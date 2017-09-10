@@ -24,11 +24,11 @@
                 <th style="width:1%">Parentesco</th>
                 <th style="width:1%">Ato</th>
                 <th style="width:26%">Nome</th>
-                <th style="width:25%">Local</th>
+                <th style="width:26%">Local</th>
                 <th style="width:0%">Data</th>
                 <th style="width:7%">Idade</th>
-                <th style="width:22%">Conjuge</th>
-                <th style="width:18%">Doc</th>
+                <th style="width:26%">Conjuge</th>
+                <th style="width:0%">Doc</th>
                 <th style="width:0%"></th>
             </tr>
         </thead>
@@ -42,7 +42,7 @@
                 <td><input type="date" name="nascimento_requerente_data" id="nascimento_requerente_data" value=""></td>
                 <td></td>
                 <td></td>
-                <td><input type="text" name="nascimento_requerente_doc" id="nascimento_requerente_doc" placeholder="Digite o doc" value=""></td>
+                <td><input type="date" name="nascimento_requerente_doc" id="nascimento_requerente_doc" value=""></td>
                 <td rowspan="2" style="vertical-align:middle"><img id="btnMenor" class="image-button" onclick="addLine('menores','requerente')" src="{{url_for('static', filename='images/add.png')}}"></td>
             </tr>
             <tr class="requerente">
@@ -52,7 +52,7 @@
                 <td><input type="date" name="casamento_requerente_data" id="casamento_requerente_data" value=""></td>
                 <td><input type="number" name="casamento_requerente_idade" id="casamento_requerente_idade" value=""></td>
                 <td><input type="text" name="casamento_requerente_conjuge" id="casamento_requerente_conjuge" placeholder="Digite o conjuge" value=""></td>
-                <td><input type="text" name="casamento_requerente_doc" id="casamento_requerente_doc" placeholder="Digite o doc" value=""></td>
+                <td><input type="date" name="casamento_requerente_doc" id="casamento_requerente_doc" value=""></td>
             </tr>
             <!-- Pai/Mãe -->
             <tr>
@@ -63,7 +63,7 @@
                 <td><input type="date" name="nascimento_paimae_data" id="nascimento_paimae_data" value=""></td>
                 <td></td>
                 <td></td>
-                <td><input type="text" name="nascimento_paimae_doc" id="nascimento_paimae_doc" placeholder="Digite o doc" value=""></td>
+                <td><input type="date" name="nascimento_paimae_doc" id="nascimento_paimae_doc" value=""></td>
             </tr>
             <tr>
                 <td>Casamento</td>
@@ -72,7 +72,7 @@
                 <td><input type="date" name="casamento_paimae_data" id="casamento_paimae_data" value=""></td>
                 <td><input type="number" name="casamento_paimae_idade" id="casamento_paimae_idade" value=""></td>
                 <td><input type="text" name="casamento_paimae_conjuge" id="casamento_paimae_conjuge" placeholder="Digite o conjuge" value=""></td>
-                <td><input type="text" name="casamento_paimae_doc" id="casamento_paimae_doc" placeholder="Digite o doc" value=""></td>
+                <td><input type="date" name="casamento_paimae_doc" id="casamento_paimae_doc" value=""></td>
             </tr>
             <tr>
                 <td>Óbito</td>
@@ -81,7 +81,7 @@
                 <td><input type="date" name="obito_paimae_data" id="obito_paimae_data" value=""></td>
                 <td><input type="number" name="obito_paimae_idade" id="obito_paimae_idade" value=""></td>
                 <td><input type="text" name="obito_paimae_conjuge" id="obito_paimae_conjuge" placeholder="Digite o conjuge" value=""></td>
-                <td><input type="text" name="obito_paimae_doc" id="obito_paimae_doc" placeholder="Digite o doc" value=""></td>
+                <td><input type="date" name="obito_paimae_doc" id="obito_paimae_doc" value=""></td>
             </tr>
             <tr>
                 <td>Nasc Requerente</td>
@@ -110,7 +110,7 @@
                 <td><input type="date" name="nascimento_avo_data" id="nascimento_avo_data" value=""></td>
                 <td></td>
                 <td></td>
-                <td><input type="text" name="nascimento_avo_doc" id="nascimento_avo_doc" placeholder="Digite o doc" value=""></td>
+                <td><input type="date" name="nascimento_avo_doc" id="nascimento_avo_doc" placeholder="Digite o doc" value=""></td>
                 <td rowspan="6" style="vertical-align:middle"><img id="btnAvo" class="image-button" onclick="addLine('bisavo','avo')" src="{{url_for('static', filename='images/add.png')}}"></td>
             </tr>
             <tr>
@@ -120,7 +120,7 @@
                 <td><input type="date" name="casamento_avo_data" id="casamento_avo_data" value=""></td>
                 <td><input type="number" name="casamento_avo_idade" id="casamento_avo_idade" value=""></td>
                 <td><input type="text" name="casamento_avo_conjuge" id="casamento_avo_conjuge" placeholder="Digite o conjuge" value=""></td>
-                <td><input type="text" name="casamento_avo_doc" id="casamento_avo_doc" placeholder="Digite o doc" value=""></td>
+                <td><input type="date" name="casamento_avo_doc" id="casamento_avo_doc" value=""></td>
             </tr>
             <tr>
                 <td>Óbito</td>
@@ -129,7 +129,7 @@
                 <td><input type="date" name="obito_avo_data" id="obito_avo_data" value=""></td>
                 <td><input type="number" name="obito_avo_idade" id="obito_avo_idade" value=""></td>
                 <td><input type="text" name="obito_avo_conjuge" id="obito_avo_conjuge" placeholder="Digite o conjuge" value=""></td>
-                <td><input type="text" name="obito_avo_doc" id="obito_avo_doc" placeholder="Digite o doc" value=""></td>
+                <td><input type="date" name="obito_avo_doc" id="obito_avo_doc" value=""></td>
             </tr>
             <tr>
                 <td>Nasc Pai/Mãe</td>

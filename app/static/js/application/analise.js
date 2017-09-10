@@ -99,7 +99,7 @@ function addMenores(where) {
     tr.append("<td><input type='date' name='nascimento_menor_data" + sessionStorage.menor_click + "' id='nascimento_menor_data" + sessionStorage.menor_click + "' value=''></td>");
     tr.append("<td></td>");
     tr.append("<td></td>");
-    tr.append("<td><input type='text' name='nascimento_menor_doc" + sessionStorage.menor_click + "' id='nascimento_menor_doc" + sessionStorage.menor_click + "' placeholder='Digite o doc' value=''></td>");
+    tr.append("<td><input type='date' name='nascimento_menor_doc" + sessionStorage.menor_click + "' id='nascimento_menor_doc" + sessionStorage.menor_click + "' value=''></td>");
     tr.insertAfter("." + where);
 }
 
@@ -114,7 +114,7 @@ function addBisavo(where) {
     tr.append("<td><input type='date' name='nascimento_bisavo_data' id='nascimento_bisavo_data' value=''></td>");
     tr.append("<td></td>");
     tr.append("<td></td>");
-    tr.append("<td><input type='text' name='nascimento_bisavo_doc' id='nascimento_bisavo_doc' placeholder='Digite o doc' value=''></td>");
+    tr.append("<td><input type='date' name='nascimento_bisavo_doc' id='nascimento_bisavo_doc' value=''></td>");
     var tdNascimento = $("<td rowspan='6' style='vertical-align:middle'>");
     var imgNascimento = $("<img id='btnBisavo' class='image-button'>");
     imgNascimento.attr("onclick", "addLine('trisavo','bisavo')");
@@ -129,7 +129,7 @@ function addBisavo(where) {
     tr.append("<td><input type='date' name='casamento_bisavo_data' id='casamento_bisavo_data' value=''></td>");
     tr.append("<td><input type='number' name='casamento_bisavo_idade' id='casamento_bisavo_idade' value=''></td>");
     tr.append("<td><input type='text' name='casamento_bisavo_conjuge' id='casamento_bisavo_conjuge' placeholder='Digite o conjuge' value=''></td>");
-    tr.append("<td><input type='text' name='casamento_bisavo_doc' id='casamento_bisavo_doc' placeholder='Digite o doc' value=''></td>");
+    tr.append("<td><input type='date' name='casamento_bisavo_doc' id='casamento_bisavo_doc' value=''></td>");
     tbody.append(tr);
     tr = $("<tr>");
     tr.append("<td>Óbito</td>");
@@ -138,7 +138,7 @@ function addBisavo(where) {
     tr.append("<td><input type='date' name='obito_bisavo_data' id='obito_bisavo_data' value=''></td>");
     tr.append("<td><input type='number' name='obito_bisavo_idade' id='obito_bisavo_idade' value=''></td>");
     tr.append("<td><input type='text' name='obito_bisavo_conjuge' id='obito_bisavo_conjuge' placeholder='Digite o conjuge' value=''></td>");
-    tr.append("<td><input type='text' name='obito_bisavo_doc' id='obito_bisavo_doc' placeholder='Digite o doc' value=''></td>");
+    tr.append("<td><input type='date' name='obito_bisavo_doc' id='obito_bisavo_doc' value=''></td>");
     tbody.append(tr);
     tr = $("<tr>");
     tr.append("<td>Nasc Avô/Avó</td>");
@@ -181,7 +181,7 @@ function addTrisavo(where) {
     tr.append("<td><input type='date' name='nascimento_trisavo_data' id='nascimento_trisavo_data' value=''></td>");
     tr.append("<td></td>");
     tr.append("<td></td>");
-    tr.append("<td><input type='text' name='nascimento_trisavo_doc' id='nascimento_trisavo_doc' placeholder='Digite o doc' value=''></td>");
+    tr.append("<td><input type='date' name='nascimento_trisavo_doc' id='nascimento_trisavo_doc' value=''></td>");
     tbody.append(tr);
     tr = $("<tr>");
     tr.append("<td>Casamento</td>");
@@ -190,7 +190,7 @@ function addTrisavo(where) {
     tr.append("<td><input type='date' name='casamento_trisavo_data' id='casamento_trisavo_data' value=''></td>");
     tr.append("<td><input type='number' name='casamento_trisavo_idade' id='casamento_trisavo_idade' value=''></td>");
     tr.append("<td><input type='text' name='casamento_trisavo_conjuge' id='casamento_trisavo_conjuge' placeholder='Digite o conjuge' value=''></td>");
-    tr.append("<td><input type='text' name='casamento_trisavo_doc' id='casamento_trisavo_doc' placeholder='Digite o doc' value=''></td>");
+    tr.append("<td><input type='date' name='casamento_trisavo_doc' id='casamento_trisavo_doc' value=''></td>");
     tbody.append(tr);
     tr = $("<tr>");
     tr.append("<td>Óbito</td>");
@@ -199,7 +199,7 @@ function addTrisavo(where) {
     tr.append("<td><input type='date' name='obito_trisavo_data' id='obito_trisavo_data' value=''></td>");
     tr.append("<td><input type='number' name='obito_trisavo_idade' id='obito_trisavo_idade' value=''></td>");
     tr.append("<td><input type='text' name='obito_trisavo_conjuge' id='obito_trisavo_conjuge' placeholder='Digite o conjuge' value=''></td>");
-    tr.append("<td><input type='text' name='obito_trisavo_doc' id='obito_trisavo_doc' placeholder='Digite o doc' value=''></td>");
+    tr.append("<td><input type='date' name='obito_trisavo_doc' id='obito_trisavo_doc' value=''></td>");
     tbody.append(tr);
     tr = $("<tr>");
     tr.append("<td>Nasc Bisavô/Bisavó</td>");

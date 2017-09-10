@@ -59,6 +59,10 @@ def convert_date(str_date):
     from datetime import datetime
     return datetime.strptime(str_date, '%Y-%m-%d')
 
+def date_convert(date):
+    from datetime import datetime
+    return datetime.strftime(date, "%d/%m/%Y")
+
 def create_directory(directory, folder):
     path = os.path.join(directory, folder)
     if not os.path.exists(path):

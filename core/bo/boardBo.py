@@ -32,9 +32,9 @@ class BoardBo(BaseBo):
         for cliente in clientes:
             data = utils.convert_date(cliente["data_entrada_processo"]).date()
             if data < start_date:
-                residencia.append(self.set_residencia_nr(cliente, cliente["data_entrada_processo"], "-1"))
+                residencia.append(self.set_residencia_nr(cliente, cliente["data_entrada_processo"], "-1", 45))
             else:
-                residencia.append(self.set_residencia_nr(cliente, cliente["data_entrada_processo"], self.get_expiration_date(utils.convert_date(cliente["data_entrada_processo"]).date(), start_date)))
+                residencia.append(self.set_residencia_nr(cliente, cliente["data_entrada_processo"], self.get_expiration_date(utils.convert_date(cliente["data_entrada_processo"]).date(), start_date), 45))
         return residencia
 
     def get_naoRenuncia(self):
@@ -47,9 +47,9 @@ class BoardBo(BaseBo):
         for cliente in clientes:
             data = utils.convert_date(cliente["data_entrada_nr"]).date()
             if data < start_date:
-                nao_renuncia.append(self.set_residencia_nr(cliente, cliente["data_entrada_nr"], "-1"))
+                nao_renuncia.append(self.set_residencia_nr(cliente, cliente["data_entrada_nr"], "-1", 30))
             else:
-                nao_renuncia.append(self.set_residencia_nr(cliente, cliente["data_entrada_nr"], self.get_expiration_date(utils.convert_date(cliente["data_entrada_nr"]).date(), start_date)))
+                nao_renuncia.append(self.set_residencia_nr(cliente, cliente["data_entrada_nr"], self.get_expiration_date(utils.convert_date(cliente["data_entrada_nr"]).date(), start_date), 30))
         return nao_renuncia
 
     def get_passaporte(self):
@@ -82,11 +82,13 @@ class BoardBo(BaseBo):
     def set_recepcao(self, cliente, data, hora, expiracao):
         return {"cognome":cliente["cognome"], "nome":cliente["nome"], "data":utils.get_data(data), "hora":hora, "aeroporto":cliente["aeroporto"], "expiracao":expiracao}
 
-    def set_residencia_nr(self, cliente, data, expiracao):
-        return {"cognome":cliente["cognome"], "nome":cliente["nome"], "data":utils.get_data(data), "comune":cliente["comune"], "expiracao":expiracao}
+    def set_residencia_nr(self, cliente, data, expiracao, days):
+        final_date = (utils.convert_date(data) + timedelta(days=days))
+        return {"cognome":cliente["cognome"], "nome":cliente["nome"], "data":utils.date_convert(final_date), "comune":cliente["comune"], "expiracao":expiracao}
 
     def set_passaporte(self, cliente, expiracao):
-        return {"cognome":cliente["cognome"], "nome":cliente["nome"], "data":utils.get_data(cliente["data_entrada_passaporte"]), "expiracao":expiracao}
+        final_date = (utils.convert_date(cliente["data_entrada_passaporte"]) + timedelta(days=20))
+        return {"cognome":cliente["cognome"], "nome":cliente["nome"], "data":utils.date_convert(final_date), "expiracao":expiracao}
 
     def get_expiration_date(self, end_date, start_date):
         days = (end_date - start_date).days
