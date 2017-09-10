@@ -2,7 +2,6 @@ from flask import request
 from flask_restful import Resource
 import json
 from core.bo.clienteBo import ClienteBo
-from flask import send_file
 
 class Cliente(Resource):
     def __init__(self):
@@ -16,7 +15,7 @@ class Cliente(Resource):
             if parameter.get('id'):
                 return self.cliente.get_by_id(parameter["id"]), 201
             elif parameter.get('document'):
-                return send_file(self.cliente.get_document(parameter["document"], parameter["cliente"]), as_attachment=True)
+                return self.cliente.get_document(parameter["document"], parameter["cliente"]), 201
             elif parameter.get('board'):
                 return self.cliente.get_board(), 201
             else:

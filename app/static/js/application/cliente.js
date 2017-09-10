@@ -13,7 +13,16 @@ $("#clienteForm").submit(function(e) {
 });
 
 function getDocuments(kind) {
-    window.location.href = "/api/cliente/{\"document\":\"" + kind + "\", \"cliente\":\"" + $("#_id").html() + "\"}";
+    $("#load").show();
+    $.get("/api/cliente/{\"document\":\"" + kind + "\", \"cliente\":\"" + $("#_id").html() + "\"}")
+        .done(function(response) {
+            $("#load").hide();
+            setMessage("Arquivo salvo.");
+        })
+        .fail(function(data) {
+            $("#load").hide();
+            setMessage("Houve um erro ao salvar o arquivo.");
+        });
 }
 
 $(document).ready(function() {

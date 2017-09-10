@@ -62,7 +62,7 @@ class DocumentBo():
                     text = inline[i].text.replace('{{cliente[“nome”]}}', cliente["nome"])
                     inline[i].text = text
                 if '{{cliente[“estado_civil”]}}' in inline[i].text:
-                    text = inline[i].text.replace('{{cliente[“estado_civil”]}}', cliente["estado_civil"])
+                    text = inline[i].text.replace('{{cliente[“estado_civil”]}}', get_estado_civil(cliente["estado_civil"]))
                     inline[i].text = text
                 if '{{cliente[“email”]}}' in inline[i].text:
                     text = inline[i].text.replace('{{cliente[“email”]}}', cliente["email"])
@@ -119,16 +119,28 @@ class DocumentBo():
 
 def get_formacao(str_formacao):
     if str_formacao == "superiorc":
-        return "Superior Completo"
+        return ""
     elif str_formacao == "superiori":
-        return "Superior Incompleto"
+        return ""
     elif str_formacao == "medioc":
-        return "Ensino Médio Completo"
+        return ""
     elif str_formacao == "medioi":
-        return "Ensino Médio Incompleto"
+        return ""
     elif str_formacao == "fundamentalc":
-        return "Fundamental Completo"
+        return ""
     elif str_formacao == "fundamentali":
-        return "Fundamental Incompleto"
+        return ""
+    else:
+        return ""
+
+def get_estado_civil(str_estado_civil):
+    if str_estado_civil == "solteiro":
+        return ""
+    elif str_estado_civil == "casado":
+        return ""
+    elif str_estado_civil == "divorciado":
+        return ""
+    elif str_estado_civil == "viuvo":
+        return ""
     else:
         return ""

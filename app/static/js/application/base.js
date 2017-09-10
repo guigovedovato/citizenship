@@ -83,12 +83,12 @@ function serializeToJson(serializer) {
     return JSON.stringify(JSON.parse(_string));
 }
 
-function setMessage(msg, refresh = true) {
+function setMessage(msg, refresh = false) {
     $("#message").html("<span>" + msg + "</span>");
     if (refresh)
-        $("#message").append('<div class="buttons"><input type="button" value="OK" onclick="$(\'#messager\').hide();"></div>');
+        $("#message").append('<div class="buttons"><input type="button" value="OK" onclick="setTimeout(window.location.reload(), 500);"></div>');
     else
-        $("#message").append('<div class="buttons"><input type="button" value="OK" onclick="window.location.reload();"></div>');
+        $("#message").append('<div class="buttons"><input type="button" value="OK" onclick="$(\'#messager\').hide();"></div>');
     $("#messager").show();
 }
 
@@ -226,7 +226,7 @@ function putData(dataSerialized, url) {
     });
 }
 
-function uploadArquivo(url, id, form, message) {
+function uploadArquivo(url, id, form, message, reset) {
     var formData = new FormData(form);
     $.ajax({
         url: url + "/" + id,
@@ -241,7 +241,7 @@ function uploadArquivo(url, id, form, message) {
             $("#load").hide();
             $("#arquivo").val('');
             if (response == true)
-                setMessage(message);
+                setMessage(message, reset);
             else
                 setMessage("Houve um erro ao salvar o arquivo.");
         },
@@ -258,7 +258,7 @@ function submitForm(dataSerialized, url, reset, message, field, form) {
     if (!id) {
         post = postData(dataSerialized, url);
         post.done(function(response) {
-            setMessage(message.format(response[field]), reset);
+            setMessage(message.format(response[field]));
             if (reset)
                 $(form)[0].reset();
         });
@@ -270,11 +270,11 @@ function submitForm(dataSerialized, url, reset, message, field, form) {
         put.done(function(response) {
             if (document.getElementById("arquivo")) {
                 if ($('#arquivo').val())
-                    uploadArquivo(url, id, $(form)[0], message.format(response[field]));
+                    uploadArquivo(url, id, $(form)[0], message.format(response[field]), reset);
                 else
-                    setMessage(message.format(response[field]));
+                    setMessage(message.format(response[field]), reset);
             } else {
-                setMessage(message.format(response[field]));
+                setMessage(message.format(response[field]), reset);
             }
         });
         put.fail(function() {
