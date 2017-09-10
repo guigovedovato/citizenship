@@ -32,7 +32,6 @@ $(document).ready(function() {
     document.getElementById("data_nascimento_pai").setAttribute("max", today);
     document.getElementById("data_nascimento_mae").setAttribute("max", today);
     setEstadoCivil();
-    setFormacao();
     setConsulados();
     setTimeout(setComune, 100);
     setTimeout(setResidencia, 200);
@@ -52,11 +51,6 @@ $("#comune_select").change(function() {
 function setEstadoCivil() {
     estadoCivil = $("#_estado_civil").html();
     $("#estado_civil_select").val(estadoCivil);
-}
-
-function setFormacao() {
-    formacao = $("#_formacao").html();
-    $("#formacao_select").val(formacao);
 }
 
 function setComune() {

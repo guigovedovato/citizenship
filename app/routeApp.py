@@ -1,11 +1,6 @@
 from app import app
 from flask import render_template
 
-# ---- Agenda ----
-@app.route("/agenda")
-def agendaView():
-    return render_template('agenda/agenda.htm', current_agenda = "current")
-
 # ---- Board ----
 @app.route("/")
 def index():

@@ -69,16 +69,7 @@
                     <option value="viuvo">Viúvo(a)</option>
                 </select>
                 <label>Formação</label>
-                <span id="_formacao" hidden>{{cliente["formacao"]}}</span>
-                <select id="formacao_select" name="formacao">
-                    <option value="">Selecione a formação</option>
-                    <option value="superiorc">Superior Completo</option>
-                    <option value="superiori">Superior Incompleto</option>
-                    <option value="medioc">Ensino Médio Completo</option>
-                    <option value="medioi">Ensino Médio Incompleto</option>
-                    <option value="fundamentalc">Fundamental Completo</option>
-                    <option value="fundamentali">Fundamental Incompleto</option>
-                </select>
+                <input type="text" placeholder="digite a formação aqui" name="formacao" id="formacao" value="{{cliente['formacao']}}">
                 <label>Profissão</label>
                 <input type="text" placeholder="digite a profissão aqui" name="profissao" id="profissao" value="{{cliente['profissao']}}">
                 <label>Cognome do Pai</label>
@@ -144,7 +135,7 @@
             <input type="button" value="Voltar" onclick="window.history.go(-1);">
             <input type="submit" value="Salvar">
             <input type="button" value="Contrato" onclick="getDocuments('contrato')">
-            <input type="button" value="Imprimir" onclick="getDocuments('richiedente')">
+            <input type="button" value="Richiedente" onclick="getDocuments('richiedente')">
         </div>
     </form>
 </section>
