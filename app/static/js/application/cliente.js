@@ -17,11 +17,11 @@ function getDocuments(kind) {
     $.get("/api/cliente/{\"document\":\"" + kind + "\", \"cliente\":\"" + $("#_id").html() + "\"}")
         .done(function(response) {
             $("#load").hide();
-            setMessage("Arquivo salvo.");
+            setMessage("Sucesso", "Arquivo salvo.");
         })
         .fail(function(data) {
             $("#load").hide();
-            setMessage("Houve um erro ao salvar o arquivo.");
+            setMessage("Erro", "Houve um erro ao salvar o arquivo.");
         });
 }
 

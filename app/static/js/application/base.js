@@ -83,9 +83,32 @@ function serializeToJson(serializer) {
     return JSON.stringify(JSON.parse(_string));
 }
 
-function setMessage(msg, refresh = false) {
-    $("#message").html("<span>" + msg + "</span>");
-    if (refresh)
+function clearMessage() {
+    $("#message").empty();
+}
+
+function getTitle(title) {
+    var typeTitle = "";
+    switch (title) {
+        case "Sucesso":
+            typeTitle = "success";
+            break;
+        case "Erro":
+            typeTitle = "error";
+            break;
+        case "Atenção":
+            typeTitle = "attention";
+            break;
+    }
+    return typeTitle;
+}
+
+function setMessage(title, msg, control = false) {
+    clearMessage();
+    var typeTitle = getTitle(title);
+    $("#message").append("<div id='title' class='" + typeTitle + "'><span>" + title + "</span></div>");
+    $("#message").append("<div id='msg'><span>" + msg + "</span></div>");
+    if (control)
         $("#message").append('<div class="buttons"><input type="button" value="OK" onclick="setTimeout(window.location.reload(), 500);"></div>');
     else
         $("#message").append('<div class="buttons"><input type="button" value="OK" onclick="$(\'#messager\').hide();"></div>');
@@ -122,7 +145,7 @@ function btnInactivate(btn) {
         dataType: "json",
         success: function(response) {
             $("#load").hide();
-            setMessage("Registro inativado com sucesso.");
+            setMessage("Sucesso", "Registro inativado com sucesso.");
             $("#btnSubmit").click();
         }
     });
@@ -133,12 +156,12 @@ function btnConvert(btn) {
     $.getJSON($(btn).attr("url"))
         .done(function(data) {
             $("#load").hide();
-            setMessage(data);
+            setMessage("Sucesso", data);
             $("#btnSubmit").click();
         })
         .fail(function(data) {
             $("#load").hide();
-            setMessage("Houve um erro ao realizar esta operação.");
+            setMessage("Erro", "Houve um erro ao realizar esta operação.");
         });
 }
 
@@ -161,7 +184,7 @@ function search(urlGET, urlEdit, fields, dataSerialized, convert = "") {
         })
         .fail(function(data) {
             $("#load").hide();
-            setMessage("Houve um erro ao fazer a consulta.");
+            setMessage("Erro", "Houve um erro ao fazer a consulta.");
         });
 }
 
@@ -180,7 +203,10 @@ function createTBody(data, tbody, urlGET, urlEdit, fields, dataSerialized, conve
                 result = operation(expression["operation"], element[values[0]], element[values[1]]);
                 tr.append('<td>' + result + '</td>');
             } else {
-                tr.append('<td>' + element[attr] + '</td>');
+                if (element[attr] != undefined)
+                    tr.append('<td>' + element[attr] + '</td>');
+                else
+                    tr.append('<td></td>');
             }
         });
         tr.append(getButtons(urlEdit, urlGET, element["_id"]["$oid"], convert));
@@ -241,13 +267,13 @@ function uploadArquivo(url, id, form, message, reset) {
             $("#load").hide();
             $("#arquivo").val('');
             if (response == true)
-                setMessage(message, reset);
+                setMessage("Sucesso", message, reset);
             else
-                setMessage("Houve um erro ao salvar o arquivo.");
+                setMessage("Erro", "Houve um erro ao salvar o arquivo.");
         },
         error: function() {
             $("#load").hide();
-            setMessage("Houve um erro ao fazer o upload do arquivo.");
+            setMessage("Erro", "Houve um erro ao fazer o upload do arquivo.");
         }
     });
 }
@@ -258,12 +284,12 @@ function submitForm(dataSerialized, url, reset, message, field, form) {
     if (!id) {
         post = postData(dataSerialized, url);
         post.done(function(response) {
-            setMessage(message.format(response[field]));
+            setMessage("Sucesso", message.format(response[field]));
             if (reset)
                 $(form)[0].reset();
         });
         post.fail(function() {
-            setMessage("Houve um erro ao salvar.");
+            setMessage("Erro", "Houve um erro ao salvar.");
         });
     } else {
         put = putData(dataSerialized, url);
@@ -272,13 +298,13 @@ function submitForm(dataSerialized, url, reset, message, field, form) {
                 if ($('#arquivo').val())
                     uploadArquivo(url, id, $(form)[0], message.format(response[field]), reset);
                 else
-                    setMessage(message.format(response[field]), reset);
+                    setMessage("Sucesso", message.format(response[field]), reset);
             } else {
-                setMessage(message.format(response[field]), reset);
+                setMessage("Sucesso", message.format(response[field]), reset);
             }
         });
         put.fail(function() {
-            setMessage("Houve um erro ao salvar.");
+            setMessage("Erro", "Houve um erro ao salvar.");
         });
     }
     $("#load").hide();

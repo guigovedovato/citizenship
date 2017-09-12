@@ -43,33 +43,52 @@ function verifyMenor(data) {
 
 function inputAlertClass(data) {
     for (var el in data) {
-        $("#" + el).addClass("alert");
+        $("#" + el).addClass("alerta");
     }
+}
+
+function removeAlertClasses() {
+    $(".alerta").removeClass("alerta");
+    $(".required").removeClass("required");
+}
+
+function verifyFields() {
+    var response = true;
+    response = verifyPaiMae(response);
+    response = verifyAvo(response);
+    response = verifyBisavo(response);
+    response = verifyTrisavo(response);
+    if (!response)
+        setMessage("Atenção", "Os campos marcados deverão ser preenchidos.");
+    return response;
 }
 
 function doAnalise() {
     $("#load").show();
+    removeAlertClasses();
     dataSerialized = serializeToJson($("#analiseForm").serializeArray());
     url = "/api/analise";
     id = $("#_id").html();
-    if (!id) {
-        post = postData(dataSerialized, url);
-        post.done(function(response) {
-            inputAlertClass(response);
-            setMessage("Análise realizada com sucesso.");
-        });
-        post.fail(function() {
-            setMessage("Houve um erro ao salvar.");
-        });
-    } else {
-        put = putData(dataSerialized, url);
-        put.done(function(response) {
-            inputAlertClass(response);
-            setMessage("Análise realizada com sucesso.");
-        });
-        put.fail(function() {
-            setMessage("Houve um erro ao salvar.");
-        });
+    if (verifyFields()) {
+        if (!id) {
+            post = postData(dataSerialized, url);
+            post.done(function(response) {
+                inputAlertClass(response);
+                setMessage("Sucesso", "Análise realizada com sucesso.");
+            });
+            post.fail(function() {
+                setMessage("Erro", "Houve um erro ao salvar.");
+            });
+        } else {
+            put = putData(dataSerialized, url);
+            put.done(function(response) {
+                inputAlertClass(response);
+                setMessage("Sucesso", "Análise realizada com sucesso.");
+            });
+            put.fail(function() {
+                setMessage("Erro", "Houve um erro ao salvar.");
+            });
+        }
     }
     $("#load").hide();
 }
@@ -274,3 +293,82 @@ $(document).ready(function() {
         getAnalise();
     }
 });
+
+function verifyPaiMae(response) {
+    if ($("#casamento_paimae_idade").val() && !$("#casamento_paimae_data").val()) {
+        $("#casamento_paimae_data").addClass("required");
+        response = false;
+    } else if (!$("#casamento_paimae_idade").val() && $("#casamento_paimae_data").val()) {
+        $("#casamento_paimae_idade").addClass("required");
+        response = false;
+    }
+    if ($("#obito_paimae_idade").val() && !$("#obito_paimae_data").val()) {
+        $("#obito_paimae_data").addClass("required");
+        response = false;
+    } else if (!$("#obito_paimae_idade").val() && $("#obito_paimae_data").val()) {
+        $("#obito_paimae_idade").addClass("required");
+        response = false;
+    }
+    if ($("#casamento_paimae_requerente_idade").val() && !$("#casamento_requerente_data").val()) {
+        $("#casamento_requerente_data").addClass("required");
+        response = false;
+    } else if (!$("#casamento_paimae_requerente_idade").val() && $("#casamento_requerente_data").val()) {
+        $("#casamento_paimae_requerente_idade").addClass("required");
+        response = false;
+    }
+    return response;
+}
+
+function verifyAvo(response) {
+    if ($("#casamento_avo_idade").val() && !$("#casamento_avo_data").val()) {
+        $("#casamento_avo_data").addClass("required");
+        response = false;
+    } else if (!$("#casamento_avo_idade").val() && $("#casamento_avo_data").val()) {
+        $("#casamento_avo_idade").addClass("required");
+        response = false;
+    }
+    if ($("#obito_avo_idade").val() && !$("#obito_avo_data").val()) {
+        $("#obito_avo_data").addClass("required");
+        response = false;
+    } else if (!$("#obito_avo_idade").val() && $("#obito_avo_data").val()) {
+        $("#obito_avo_idade").addClass("required");
+        response = false;
+    }
+    return response;
+}
+
+function verifyBisavo(response) {
+    if ($("#casamento_bisavo_idade").val() && !$("#casamento_bisavo_data").val()) {
+        $("#casamento_bisavo_data").addClass("required");
+        response = false;
+    } else if (!$("#casamento_bisavo_idade").val() && $("#casamento_bisavo_data").val()) {
+        $("#casamento_bisavo_idade").addClass("required");
+        response = false;
+    }
+    if ($("#obito_bisavo_idade").val() && !$("#obito_bisavo_data").val()) {
+        $("#obito_bisavo_data").addClass("required");
+        response = false;
+    } else if (!$("#obito_bisavo_idade").val() && $("#obito_bisavo_data").val()) {
+        $("#obito_bisavo_idade").addClass("required");
+        response = false;
+    }
+    return response;
+}
+
+function verifyTrisavo(response) {
+    if ($("#casamento_trisavo_idade").val() && !$("#casamento_trisavo_data").val()) {
+        $("#casamento_trisavo_data").addClass("required");
+        response = false;
+    } else if (!$("#casamento_trisavo_idade").val() && $("#casamento_trisavo_data").val()) {
+        $("#casamento_trisavo_idade").addClass("required");
+        response = false;
+    }
+    if ($("#obito_trisavo_idade").val() && !$("#obito_trisavo_data").val()) {
+        $("#obito_trisavo_data").addClass("required");
+        response = false;
+    } else if (!$("#obito_trisavo_idade").val() && $("#obito_trisavo_data").val()) {
+        $("#obito_trisavo_idade").addClass("required");
+        response = false;
+    }
+    return response;
+}

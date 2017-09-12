@@ -8,7 +8,7 @@ class Analise(Resource):
         self.analise = AnaliseBo()
 
     def get(self, parameter):
-        return self.analise.find_fields_by_id(parameter), 201
+        return self.analise.find_fields_by_id(parameter, {}), 201
 
     def put(self, parameter):
         analise = request.json

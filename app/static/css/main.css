@@ -1568,12 +1568,17 @@ form textarea:focus {
 form input[type="text"],
 form input[type="email"],
 form input[type="password"],
+form select {
+    /* line-height: 3em; */
+    padding: 0 1em;
+}
+
 form input[type="date"],
 form input[type="number"],
 form input[type="datetime-local"],
 form select {
     /* line-height: 3em; */
-    padding: 0 1em;
+    padding-left: 1em;
 }
 
 form textarea {
@@ -2642,7 +2647,7 @@ table.default thead {
 #message {
     position: absolute;
     width: 400px;
-    height: 120px;
+    height: 160px;
     left: 50%;
     top: 50%;
     margin-left: -20px;
@@ -2651,7 +2656,30 @@ table.default thead {
     transform: translate(-50%, -50%);
     border: 1px solid #f3f3f3;
     background-color: #fff;
-    padding: 12px 20px;
+}
+
+#title {
+    width: 100%;
+}
+
+#title,
+#msg {
+    padding: 5px;
+}
+
+.success {
+    color: #fff;
+    background-color: #59C959;
+}
+
+.error {
+    color: #fff;
+    background-color: #A32424;
+}
+
+.attention {
+    color: #fff;
+    background-color: #DBCF42;
 }
 
 .empty {
@@ -2689,7 +2717,12 @@ table.analise thead {
     color: #fff;
 }
 
-.alert {
+.alerta {
     border-color: #DF0C0F !important;
     background-color: #F9D7D7 !important;
+}
+
+.required {
+    border-color: #DFA70C !important;
+    background-color: #F9F8D7 !important;
 }

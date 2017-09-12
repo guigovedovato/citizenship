@@ -1,4 +1,5 @@
 import os
+from datetime import timedelta
 
 def field_blank(list):
     return {k:v for k, v in list.items() if v != ""}
@@ -68,3 +69,9 @@ def create_directory(directory, folder):
     if not os.path.exists(path):
         os.makedirs(path)
     return path
+
+def get_age(birth, date):
+    born = convert_date(birth)
+    today = convert_date(date)
+    extra_year = 1 if ((today.month, today.day) < (born.month, born.day)) else 0
+    return today.year - born.year - extra_year
