@@ -1,7 +1,7 @@
 $(document).ready(function() {
     session();
     if (verifySession())
-        setTimeout(research, 100);
+        setTimeout(research, 500);
     $("table").hide();
     if (document.getElementById("data_final")) {
         today = getToday();
@@ -109,9 +109,9 @@ function setMessage(title, msg, control = false) {
     $("#message").append("<div id='title' class='" + typeTitle + "'><span>" + title + "</span></div>");
     $("#message").append("<div id='msg'><span>" + msg + "</span></div>");
     if (control)
-        $("#message").append('<div class="buttons"><input type="button" value="OK" onclick="setTimeout(window.location.reload(), 500);"></div>');
+        $("#message").append('<div class="msgButtons"><input type="button" value="OK" onclick="setTimeout(window.location.reload(), 500);"></div>');
     else
-        $("#message").append('<div class="buttons"><input type="button" value="OK" onclick="$(\'#messager\').hide();"></div>');
+        $("#message").append('<div class="msgButtons"><input type="button" value="OK" onclick="$(\'#messager\').hide();"></div>');
     $("#messager").show();
 }
 
@@ -331,4 +331,12 @@ function setComment() {
     var comment = $("#comentario").val();
     var input = comment.replace(/\r?\\n/g, '\n');
     $("#comentario").val(input);
+}
+
+function removeAlertClass() {
+    $(".alerta").removeClass("alerta");
+}
+
+function removeRequiredClasses() {
+    $(".required").removeClass("required");
 }

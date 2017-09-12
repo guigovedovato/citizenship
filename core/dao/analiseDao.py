@@ -7,5 +7,8 @@ class AnaliseDao(BaseDao):
         super().__init__()
         super().set_coll(self.db.analise)
 
-    def get_by_prospecto(self, prospecto):
+    def get_name_by_prospecto(self, prospecto):
         return json_util.dumps(self.coll.find_one({'prospecto': prospecto}, {"prospecto": 1}))
+
+    def get_by_prospecto(self, prospecto):
+        return json_util.dumps(self.coll.find_one({'prospecto': prospecto}))

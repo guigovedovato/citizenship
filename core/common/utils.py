@@ -1,5 +1,6 @@
 import os
 from datetime import timedelta
+from bson import ObjectId
 
 def field_blank(list):
     return {k:v for k, v in list.items() if v != ""}
@@ -38,6 +39,13 @@ def is_number(var):
         int(var)
         return True
     except:
+        return False
+
+def is_oid(oid):
+    try:
+        ObjectId(oid)
+        return True
+    except (InvalidId, TypeError):
         return False
 
 def to_int(query, fields):

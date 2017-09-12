@@ -2599,6 +2599,12 @@ table.default thead {
     margin-bottom: 5px;
 }
 
+.msgButtons {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
 .image-button {
     cursor: pointer;
     margin-right: 5px;
@@ -2645,9 +2651,9 @@ table.default thead {
 }
 
 #message {
-    position: absolute;
+    position: relative;
     width: 400px;
-    height: 160px;
+    height: 170px;
     left: 50%;
     top: 50%;
     margin-left: -20px;

@@ -8,13 +8,26 @@ function getProspectos() {
         });
 }
 
+$("#prospecto_select").change(function() {
+    getAnalise();
+});
+
 function getAnalise() {
     id = $("#_id").html();
-    if (id)
+    if (id) {
         $.get("/api/analise/" + id)
-        .done(function(response) {
-            inputResponse(response);
-        });
+            .done(function(response) {
+                inputResponse(response);
+            });
+    } else {
+        prospecto = $("#prospecto_select").find(":selected").val();
+        $.get("/api/analise/" + prospecto)
+            .done(function(response) {
+                $("#analiseForm").append("<span id='_id' hidden></span>");
+                $("#_id").html(response["_id"]);
+                inputResponse(response);
+            });
+    }
 }
 
 function inputResponse(response) {
@@ -48,8 +61,8 @@ function inputAlertClass(data) {
 }
 
 function removeAlertClasses() {
-    $(".alerta").removeClass("alerta");
-    $(".required").removeClass("required");
+    removeAlertClass();
+    removeRequiredClasses();
 }
 
 function verifyFields() {

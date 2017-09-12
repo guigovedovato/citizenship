@@ -12,17 +12,110 @@ $("#clienteForm").submit(function(e) {
     setComment();
 });
 
+function verifyFields(kind) {
+    var response = true;
+    if (kind == "contrato")
+        response = verifyContract(response);
+    else
+        response = verifyRichiedente(response);
+    if (!response)
+        setMessage("Atenção", "Os campos marcados deverão ser preenchidos.");
+    return response;
+}
+
+function verifyContract(response) {
+    if (!$("#residencia").val()) {
+        $("#residencia").addClass("required");
+        response = false;
+    }
+    if (!$("#estado_civil_select").val()) {
+        $("#estado_civil_select").addClass("required");
+        response = false;
+    }
+    if (!$("#passaporte").val()) {
+        $("#passaporte").addClass("required");
+        response = false;
+    }
+    return response;
+}
+
+function verifyRichiedente(response) {
+    if (!$("#residencia").val()) {
+        $("#residencia").addClass("required");
+        response = false;
+    }
+    if (!$("#estado_civil_select").val()) {
+        $("#estado_civil_select").addClass("required");
+        response = false;
+    }
+    if (!$("#email").val()) {
+        $("#email").addClass("required");
+        response = false;
+    }
+    if (!$("#nato_a").val()) {
+        $("#nato_a").addClass("required");
+        response = false;
+    }
+    if (!$("#data_nascimento").val()) {
+        $("#data_nascimento").addClass("required");
+        response = false;
+    }
+    if (!$("#formacao").val()) {
+        $("#formacao").addClass("required");
+        response = false;
+    }
+    if (!$("#profissao").val()) {
+        $("#profissao").addClass("required");
+        response = false;
+    }
+    if (!$("#cognome_pai").val()) {
+        $("#cognome_pai").addClass("required");
+        response = false;
+    }
+    if (!$("#nome_pai").val()) {
+        $("#nome_pai").addClass("required");
+        response = false;
+    }
+    if (!$("#nato_a_pai").val()) {
+        $("#nato_a_pai").addClass("required");
+        response = false;
+    }
+    if (!$("#data_nascimento_pai").val()) {
+        $("#data_nascimento_pai").addClass("required");
+        response = false;
+    }
+    if (!$("#cognome_mae").val()) {
+        $("#cognome_mae").addClass("required");
+        response = false;
+    }
+    if (!$("#nome_mae").val()) {
+        $("#nome_mae").addClass("required");
+        response = false;
+    }
+    if (!$("#nato_a_mae").val()) {
+        $("#nato_a_mae").addClass("required");
+        response = false;
+    }
+    if (!$("#data_nascimento_mae").val()) {
+        $("#data_nascimento_mae").addClass("required");
+        response = false;
+    }
+    return response;
+}
+
 function getDocuments(kind) {
     $("#load").show();
-    $.get("/api/cliente/{\"document\":\"" + kind + "\", \"cliente\":\"" + $("#_id").html() + "\"}")
-        .done(function(response) {
-            $("#load").hide();
-            setMessage("Sucesso", "Arquivo salvo.");
-        })
-        .fail(function(data) {
-            $("#load").hide();
-            setMessage("Erro", "Houve um erro ao salvar o arquivo.");
-        });
+    removeRequiredClasses();
+    if (verifyFields(kind)) {
+        $.get("/api/cliente/{\"document\":\"" + kind + "\", \"cliente\":\"" + $("#_id").html() + "\"}")
+            .done(function(response) {
+                setMessage("Sucesso", "Arquivo salvo.");
+            })
+            .fail(function(data) {
+                setMessage("Erro", "Houve um erro ao salvar o arquivo.");
+            });
+    }
+    $("#load").hide();
 }
 
 $(document).ready(function() {

@@ -31,10 +31,11 @@ class ClienteBo(BaseBo):
         utils.from_on_to_boolean(entity)
         utils.itens_false(entity, ["ativo"])
         if entity["ativo"] == "False" or entity["data_chegada_aire"] != "":
-            if entity["_residencia_italia"] != "":
-                residencia = ResidenciaBo()
-                residencia.increase_vaga(entity["_residencia_italia"])
-                entity["_residencia_italia"] = ""
+            if entity.get("_residencia_italia"):
+                if entity["_residencia_italia"] != "":
+                    residencia = ResidenciaBo()
+                    residencia.increase_vaga(entity["_residencia_italia"])
+                    entity["_residencia_italia"] = ""
         else:
             if entity["residencia_italia"] != entity["_residencia_italia"]:
                 residencia = ResidenciaBo()
@@ -47,13 +48,12 @@ class ClienteBo(BaseBo):
 
     def get_by_id(self, entity_id):
         entity = super().get_by_id(entity_id)
-        if entity.get("colaborador") :
-            entity["colaborador"] = utils.get_separated_by_comma(entity["colaborador"])
-        if entity.get("data_contato") :
+        entity["colaborador"] = utils.get_separated_by_comma(entity["colaborador"])
+        if entity.get("data_contato"):
             entity["data_contato"] = utils.get_data(entity["data_contato"])
-        if entity.get("data_interesse") :
+        if entity.get("data_interesse"):
             entity["data_interesse"] = utils.get_data(entity["data_interesse"])
-        if entity.get("consulado") :
+        if entity.get("consulado"):
             entity["consulado"] = utils.get_separated_by_comma(entity["consulado"])
         return entity
 

@@ -196,9 +196,12 @@ class AnaliseBo(BaseBo):
             if entity["casamento_trisavo_nome"] != entity["obito_trisavo_nome"]:
                 entity_response.update({"obito_trisavo_nome": entity["obito_trisavo_nome"]})
 
-    def get_by_prospecto(self, entity):
+    def get_name_by_prospecto(self, entity):
         if utils.is_number(entity):
             return []
+        return json.loads(self.context.get_name_by_prospecto(entity))
+
+    def get_by_prospecto(self, entity):
         return json.loads(self.context.get_by_prospecto(entity))
 
     def insert(self, entity):
@@ -207,7 +210,8 @@ class AnaliseBo(BaseBo):
         analise_inserted.pop("prospecto")
         analise_inserted.pop("ativo")
         analise_inserted.pop("data_cadastro")
-        analise_inserted.pop("data_atualizacao")
+        if analise_inserted.get("data_atualizacao"):
+            analise_inserted.pop("data_atualizacao")
         return self.do_analise(analise_inserted)
 
     def update(self, entity_id, entity):
